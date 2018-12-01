@@ -6,7 +6,7 @@ go install github.com/kevinburke/go-bindata
 
 echo "Building assets"
 rm -f assets/binassets.go
-go-bindata -o assets/binassets.go -pkg assets -debug -ignore=.*\\.md assets/...
+go-bindata -o assets/binassets.go -pkg assets -debug -ignore=.*\\.md assets/... -ignore=.*\\.xcf
 
 echo "Running tests"
 go test ./... -race

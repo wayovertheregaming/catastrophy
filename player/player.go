@@ -10,7 +10,7 @@ import (
 const (
 	// velocity is the speed at which the player moves
 	// The number 10 is used as a placeholder, no idea how fast this is!
-	velocity float64 = 10
+	velocity float64 = 100
 
 	maxHunger       float64 = 100
 	hungerRate      float64 = 2

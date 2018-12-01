@@ -11,4 +11,4 @@ echo "Running tests"
 go test ./... -race
 
 echo "Running application"
-go run --tags=debug main.go
+go run --tags=debug main.go binassets.go

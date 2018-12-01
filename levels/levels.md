@@ -54,7 +54,7 @@ Bonus - Speak to Human's guest for riddle
 
 Trophy - Spill litter tray
 Items - Sofa(s), Litter Tray, Plant(s)
-Bonus - Sunbathjng Caterpillar with riddle
+Bonus - Sunbathing Caterpillar with riddle
 
 ## Garden
 

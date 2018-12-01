@@ -5,18 +5,68 @@ import (
 	"io"
 	"io/ioutil"
 	"path/filepath"
+	"time"
 
 	"github.com/faiface/beep"
 	"github.com/faiface/beep/flac"
 	"github.com/faiface/beep/mp3"
+	"github.com/faiface/beep/speaker"
 	"github.com/faiface/beep/vorbis"
 	"github.com/faiface/beep/wav"
 	"github.com/wayovertheregaming/catastrophy/assets"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 )
 
-func init() {
+const (
+	// dirPrefix is the directory path for all audio files
+	dirPrefix = "assets/audio"
+)
 
+var (
+	// bufferSize is amount of the time the audio file is loaded before it starts
+	// playing
+	bufferSize = time.Second / 10
+
+	// allAudioFiles holds all playable audio files
+	allAudioFiles = map[string]*audio{}
+)
+
+type audio struct {
+	streamer beep.Streamer
+	format   beep.Format
+	loops    int
+}
+
+func (a *audio) play() {
+	speaker.Init(a.format.SampleRate, a.format.SampleRate.N(bufferSize))
+	speaker.Play(a.streamer)
+}
+
+func init() {
+	for filename, a := range allAudioFiles {
+		// Create the full path to the file
+		fullPath := filepath.Join(dirPrefix, filename)
+		// Get the streamseaker and format
+		ss, f := mustLoadAudioFile(fullPath)
+
+		// Loop, converting to a streamer
+		s := beep.Loop(a.loops, ss)
+
+		a.streamer = s
+		a.format = f
+	}
+}
+
+// Play will attempt to play a sound
+func Play(filename string) {
+	// Check if audio file exists
+	if aud, ok := allAudioFiles[filename]; ok {
+		// If it does, play then return
+		aud.play()
+		return
+	}
+
+	catlog.Info("Could not find %s while trying to play audio, will not play", filename)
 }
 
 func mustLoadAudioFile(path string) (beep.StreamSeekCloser, beep.Format) {

@@ -50,7 +50,8 @@ func initGround() {
 }
 
 func updateGround(dt float64, win *pixelgl.Window) {
-
+	// Try move the player
+	movePlayer(win, dt, groundFloorCollisions)
 }
 
 func drawGround(target pixel.Target) {

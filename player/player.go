@@ -10,6 +10,11 @@ const (
 	// velocity is the speed at which the player moves
 	// The number 10 is used as a placeholder, no idea how fast this is!
 	velocity float64 = 10
+
+	maxHunger       float64 = 100
+	hungerRate      float64 = 2
+	maxBladder      float64 = 100
+	bladderFillRate float64 = 2
 )
 
 // These consts hold different animation states
@@ -37,6 +42,8 @@ type player struct {
 	// We'll only be dealing with right angles
 	direction float64
 	inventory []string
+	hunger    float64
+	bladder   float64
 }
 
 func init() {
@@ -44,6 +51,9 @@ func init() {
 		animationState: animationStateIdle,
 		pos:            pixel.ZV,
 		direction:      0,
+		inventory:      []string{},
+		hunger:         100,
+		bladder:        0,
 	}
 }
 
@@ -104,4 +114,9 @@ func CollidesWith(obj pixel.Rect) bool {
 // GetInventory will return the players current inventory
 func GetInventory() []string {
 	return p.inventory
+}
+
+// Draw draws the player to the target
+func Draw(target pixel.Target) {
+
 }

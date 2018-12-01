@@ -126,17 +126,26 @@ func mustParseFloat64(s string) float64 {
 }
 
 // movePlayer will attempt to move the player if the user is pressing the keys
-func movePlayer(win *pixelgl.Window, dt float64, collisions []pixel.Rect) {
+// Returns if the player is moving - can be used to change animation
+func movePlayer(win *pixelgl.Window, dt float64, collisions []pixel.Rect) bool {
+	isMoving := false
+
 	if win.Pressed(pixelgl.KeyW) || win.Pressed(pixelgl.KeyUp) {
 		player.WalkUp(dt, collisions)
+		isMoving = true
 	}
 	if win.Pressed(pixelgl.KeyS) || win.Pressed(pixelgl.KeyDown) {
 		player.WalkDown(dt, collisions)
+		isMoving = true
 	}
 	if win.Pressed(pixelgl.KeyA) || win.Pressed(pixelgl.KeyLeft) {
 		player.WalkLeft(dt, collisions)
+		isMoving = true
 	}
 	if win.Pressed(pixelgl.KeyD) || win.Pressed(pixelgl.KeyRight) {
 		player.WalkRight(dt, collisions)
+		isMoving = true
 	}
+
+	return isMoving
 }

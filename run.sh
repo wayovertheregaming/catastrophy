@@ -1,6 +1,6 @@
 echo "Getting dependencies"
 go get -v
-go get -v github.com/kevinburke/go-bindata
+go get -v -u github.com/kevinburke/go-bindata/...
 
 go install github.com/kevinburke/go-bindata
 

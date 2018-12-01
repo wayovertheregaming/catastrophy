@@ -1,6 +1,7 @@
 package main
 
 import (
+	"image/color"
 	"time"
 
 	"github.com/faiface/pixel"
@@ -18,6 +19,7 @@ const (
 
 var (
 	winBounds = pixel.R(0, 0, winWidth, winHeight)
+	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0x00}
 )
 
 func run() {
@@ -40,6 +42,8 @@ func run() {
 	last := time.Now()
 
 	for !win.Closed() {
+		win.Clear(backgroundColour)
+
 		dt := time.Since(last).Seconds()
 		last = time.Now()
 

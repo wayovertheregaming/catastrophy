@@ -58,7 +58,7 @@ func (p *player) bounds() pixel.Rect {
 	}
 }
 
-// nextBounds retuns the next bounding box of the player
+// nextBounds returns the next bounding box of the player
 // This is the next pos plus the player size
 func (p *player) nextBounds(v pixel.Vec) pixel.Rect {
 	return pixel.Rect{

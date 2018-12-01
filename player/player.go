@@ -49,7 +49,7 @@ type player struct {
 	bladder   float64
 }
 
-// bounds retuns the current bounding box of the player
+// bounds returns the current bounding box of the player
 // This is the pos plus the player size
 func (p *player) bounds() pixel.Rect {
 	return pixel.Rect{

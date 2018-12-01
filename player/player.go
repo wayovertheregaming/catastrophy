@@ -120,3 +120,16 @@ func GetInventory() []string {
 func Draw(target pixel.Target) {
 
 }
+
+// GetPos returns the current player position.
+// This is really the position of the background, as the player will always be
+// in the centre, but conceptually it's clearer to have this as the player pos
+func GetPos() pixel.Vec {
+	return p.pos
+}
+
+// SetPos will set the players position.  This should be used when initiating a
+// level so the player is at the start position
+func SetPos(v pixel.Vec) {
+	p.pos = v
+}

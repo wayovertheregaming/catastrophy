@@ -1,6 +1,24 @@
 # Dev Notes
 Notes for devs.
 
+## Running/building
+I have created a run.sh file in the root of this project.  You should be able to
+run the file from command line:
+```bash
+sh ./run.sh
+```
+
+On Linux you can first run `chmod +x run.sh` (you only ever need run this once)
+then everytime you want to run (might work on Mac too...?):
+```bash
+./run.sh
+```
+
+This script installs all dependencies and makes sure you're running in debug
+mode.
+
+Nearer the end of the weekend I'll also create build script.
+
 ## Git workflow
 We'll be using `master` as the release branch.  Use `devel` as the branch to
 branch from.  Branch into your bug/feature branch from `devel`, make commits,

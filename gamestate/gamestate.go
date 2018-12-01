@@ -26,7 +26,7 @@ type gameState struct {
 func init() {
 	gs = gameState{
 		runState: RunStatePaused,
-		// TODO(need to set this to intro/main menu)
+		// level is set in `main.go`
 		level: nil,
 	}
 }

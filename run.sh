@@ -1,5 +1,11 @@
 echo "Getting dependencies"
 go get -v
+go get -v github.com/kevinburke/go-bindata
+
+go install github.com/kevinburke/go-bindata
+
+echo "Building assets"
+go-bindata -o binassets.go -debug assets/
 
 echo "Running tests"
 go test ./... -race

@@ -4,8 +4,13 @@
 package levels
 
 import (
+	"bytes"
+	"encoding/csv"
+	"strconv"
+
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
+	"github.com/wayovertheregaming/catastrophy/assets"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 )
@@ -71,4 +76,50 @@ func (m *Menu) Draw(target pixel.Target) {
 // Name will return the name of the level
 func (m *Menu) Name() string {
 	return m.name
+}
+
+// loadCollisions will read each line of a CSV expecting four columns
+// x1,y1,x2,y2; these are the bottom left and top right coordinates of the box
+func loadCollisions(path string) []pixel.Rect {
+	catlog.Debugf("Loading collision CSV: %s", path)
+
+	// Get the CSV file from assets
+	collisionF, err := assets.Asset(path)
+	if err != nil {
+		catlog.Fatalf("Could not load CSV: %v", err)
+	}
+
+	// Read it as a CSV, getting all rows
+	csvReader := csv.NewReader(bytes.NewReader(collisionF))
+	collisions, err := csvReader.ReadAll()
+	if err != nil {
+		catlog.Fatalf("Could not read CSV: %v", err)
+	}
+
+	// retRect is the slice to return
+	retRect := make([]pixel.Rect, len(collisions))
+
+	// Loop each row of the CSV
+	for _, row := range collisions {
+		// Get the coords of rect
+		x1 := mustParseFloat64(row[0])
+		y1 := mustParseFloat64(row[1])
+		x2 := mustParseFloat64(row[2])
+		y2 := mustParseFloat64(row[3])
+
+		retRect = append(retRect, pixel.R(x1, y1, x2, y2))
+	}
+
+	return retRect
+}
+
+// mustParseFloat64 uses `strconv.ParseFloat` and creates a fatal error if an
+// error occurs
+func mustParseFloat64(s string) float64 {
+	f64, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		catlog.Fatalf("Could not convert float64: %v", err)
+	}
+
+	return f64
 }

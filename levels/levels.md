@@ -8,25 +8,25 @@ Landing with below rooms off it:
 
 Trophy - Drink toilet water
 Items - Toilet, Bath, Bath Mat, Sink, Door
-Bonus -
+Bonus - Spider in the bath with a riddle
 
 ### Master Bedroom
 
 Trophy - Curl one out on your owners pillow
 Items - Double Bed, Bedside Table, Rug, Lamp(s), Wardrobe
-Bonus -
+Bonus - Human Wife on bed with riddle
 
 ### Guest Bedroom
 
 Trophy - Destroy guest's shoes
-Items - Single Bed, Bedside Table, Plant, Chest of Drawers
-Bonus -
+Items - Single Bed, Bedside Table, Plant, Chest of Drawers, Suitcase
+Bonus - Page from diary in suitcase with riddle
 
 ### Office
 
-Trophy - Urinate on PC, breaking it
-Items - PC, Desk, Filing Cabinet, Desk Chair
-Bonus -
+Trophy - Use phone to call Human's boss and get him fired
+Items - PC, Desk, Filing Cabinet, Desk Chair, Telephone
+Bonus - Email on PC with riddle
 
 ## Ground Floor
 
@@ -42,26 +42,26 @@ Bonus - Minigame 'Bowl'd Over'
 
 Trophy - Block human's view of TV to make him mad
 Items - TV, Sofa(s), Rug, Coffee Table, Plant(s)
-Bonus -
+Bonus - Magazine on table with riddle
 
 ### Dining Room
 
 Trophy - Steal human's food
 Items - Dining Table & Chairs, Plate of food, Sideboard
-Bonus -
+Bonus - Speak to Human's guest for riddle
 
 ### Conservatory
 
 Trophy - Spill litter tray
-Items -
-Bonus -
+Items - Sofa(s), Litter Tray, Plant(s)
+Bonus - Sunbathjng Caterpillar with riddle
 
 ## Garden
 
 ### Garden
 
-Trophy -
-Items -
+Trophy - Catch a bird
+Items - Football, Baseball Bat, Hosepipe, Bench, Human Child
 Bonus - Minigame 'Pet Hate'
 
 

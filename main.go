@@ -41,6 +41,18 @@ func run() {
 
 	last := time.Now()
 
+	d := []dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "Name",
+			Text:     "Hello",
+		},
+		dialogue.Dialogue{
+			IsPlayer: true,
+			Text:     "Hello back",
+		},
+	}
+
 	for !win.Closed() {
 		win.Clear(backgroundColour)
 
@@ -49,8 +61,19 @@ func run() {
 
 		dialogue.Update(dt, win)
 
+		// TEST lines
+		if win.JustPressed(pixelgl.KeyP) {
+			dialogue.Start(d)
+		}
+		if win.JustPressed(pixelgl.MouseButtonLeft) {
+			catlog.Debug(win.MousePosition())
+		}
+
 		gamestate.Update(dt, win)
 		gamestate.Draw(win)
+
+		// Draw dialogue on top of other layers
+		dialogue.Draw(win)
 		win.Update()
 	}
 }

@@ -13,6 +13,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/assets"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
+	"github.com/wayovertheregaming/catastrophy/player"
 )
 
 // Level represents a playable level.  It implements the `gamestate.Leveller`
@@ -122,4 +123,20 @@ func mustParseFloat64(s string) float64 {
 	}
 
 	return f64
+}
+
+// movePlayer will attempt to move the player if the user is pressing the keys
+func movePlayer(win *pixelgl.Window, dt float64, collisions []pixel.Rect) {
+	if win.Pressed(pixelgl.KeyW) || win.Pressed(pixelgl.KeyUp) {
+		player.WalkUp(dt, collisions)
+	}
+	if win.Pressed(pixelgl.KeyS) || win.Pressed(pixelgl.KeyDown) {
+		player.WalkDown(dt, collisions)
+	}
+	if win.Pressed(pixelgl.KeyA) || win.Pressed(pixelgl.KeyLeft) {
+		player.WalkLeft(dt, collisions)
+	}
+	if win.Pressed(pixelgl.KeyD) || win.Pressed(pixelgl.KeyRight) {
+		player.WalkRight(dt, collisions)
+	}
 }

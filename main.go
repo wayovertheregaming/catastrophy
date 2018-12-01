@@ -7,19 +7,18 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/levels"
 )
 
 const (
-	winWidth  = 1270
-	winHeight = 900
-	winTitle  = "Catastrophy"
+	winTitle = "Catastrophy"
 )
 
 var (
-	winBounds = pixel.R(0, 0, winWidth, winHeight)
 	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0x00}
+	winBounds        = pixel.R(0, 0, consts.WinWidth, consts.WinHeight)
 )
 
 func run() {

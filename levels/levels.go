@@ -55,6 +55,7 @@ type Menu struct {
 	name       string
 	updateFunc func(float64, *pixelgl.Window)
 	drawFunc   func(pixel.Target)
+	initFunc   func()
 }
 
 // Update will update the state of the menu
@@ -66,6 +67,7 @@ func (m *Menu) Update(dt float64, win *pixelgl.Window) {
 func (m *Menu) Init() {
 	catlog.Debugf("Initialising %s", m.Name())
 
+	m.initFunc()
 	gamestate.PauseGame()
 }
 

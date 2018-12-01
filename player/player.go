@@ -1,10 +1,10 @@
 package player
 
 import (
-	"Deadication/util"
 	"math"
 
 	"github.com/faiface/pixel"
+	"github.com/wayovertheregaming/catastrophy/util"
 )
 
 const (
@@ -108,7 +108,7 @@ func WalkUp(dt float64, collisionables []pixel.Rect) {
 	nextPos := p.pos.Add(pixel.V(0, dt*velocity))
 	// Loop each collision to find out if we can move
 	for _, r := range collisionables {
-		if util.RectCollide(r, p.nextBounds(nextPos)) {
+		if util.RectCollides(r, p.nextBounds(nextPos)) {
 			// Player does collide with something
 			// return without moving
 			return
@@ -129,7 +129,7 @@ func WalkDown(dt float64, collisionables []pixel.Rect) {
 	nextPos := p.pos.Sub(pixel.V(0, dt*velocity))
 	// Loop each collision to find out if we can move
 	for _, r := range collisionables {
-		if util.RectCollide(r, p.nextBounds(nextPos)) {
+		if util.RectCollides(r, p.nextBounds(nextPos)) {
 			// Player does collide with something
 			// return without moving
 			return
@@ -150,7 +150,7 @@ func WalkLeft(dt float64, collisionables []pixel.Rect) {
 	nextPos := p.pos.Sub(pixel.V(dt*velocity, 0))
 	// Loop each collision to find out if we can move
 	for _, r := range collisionables {
-		if util.RectCollide(r, p.nextBounds(nextPos)) {
+		if util.RectCollides(r, p.nextBounds(nextPos)) {
 			// Player does collide with something
 			// return without moving
 			return
@@ -171,7 +171,7 @@ func WalkRight(dt float64, collisionables []pixel.Rect) {
 	nextPos := p.pos.Add(pixel.V(dt*velocity, 0))
 	// Loop each collision to find out if we can move
 	for _, r := range collisionables {
-		if util.RectCollide(r, p.nextBounds(nextPos)) {
+		if util.RectCollides(r, p.nextBounds(nextPos)) {
 			// Player does collide with something
 			// return without moving
 			return

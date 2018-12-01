@@ -8,6 +8,7 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/levels"
 )
@@ -45,6 +46,8 @@ func run() {
 
 		dt := time.Since(last).Seconds()
 		last = time.Now()
+
+		dialogue.Update(dt, win)
 
 		gamestate.Update(dt, win)
 		gamestate.Draw(win)

@@ -28,6 +28,7 @@ var (
 	bufferSize = time.Second / 10
 
 	// allAudioFiles holds all playable audio files
+	// TODO(populate with filenames and loop counts as they are produced)
 	allAudioFiles = map[string]*audio{}
 )
 

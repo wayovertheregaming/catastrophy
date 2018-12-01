@@ -16,6 +16,7 @@ type Level struct {
 	name       string
 	updateFunc func(float64, *pixelgl.Window)
 	drawFunc   func(pixel.Target)
+	initFunc   func()
 }
 
 // Update will update the state of the level
@@ -28,6 +29,7 @@ func (l *Level) Update(dt float64, win *pixelgl.Window) {
 func (l *Level) Init() {
 	catlog.Debugf("Initialising %s", l.Name())
 
+	l.initFunc()
 	gamestate.UnPauseGame()
 }
 

@@ -55,6 +55,8 @@ func init() {
 
 		a.streamer = s
 		a.format = f
+
+		catlog.Debugf("Initialised audio file %s", fullPath)
 	}
 }
 

@@ -7,6 +7,7 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
+	"github.com/wayovertheregaming/catastrophy/levels"
 )
 
 const (
@@ -32,6 +33,9 @@ func run() {
 	if err != nil {
 		catlog.Fatalf("Could not create window: %v", err)
 	}
+
+	// Set the initial level
+	gamestate.SetLevel(levels.Ground)
 
 	last := time.Now()
 

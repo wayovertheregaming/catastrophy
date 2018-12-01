@@ -59,6 +59,5 @@ func updateGround(dt float64, win *pixelgl.Window) {
 
 func drawGround(target pixel.Target) {
 	// inverseMoved is the player position inversed
-	// inverseMoved := player.GetPos().Scaled(-1)
 	backgroundSprite.Draw(target, pixel.IM)
 }

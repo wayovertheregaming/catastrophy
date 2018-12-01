@@ -9,19 +9,19 @@ import (
 // They map the file name to the location on the image file
 var (
 	sleeping = map[string]pixel.Rect{
-		"assets/graphics/catSleep1": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catSleep1.png": pixel.R(0, 0, 100, 200),
 	}
 	idling = map[string]pixel.Rect{
-		"assets/graphics/catIdle1": pixel.R(0, 0, 100, 200),
-		"assets/graphics/catIdle2": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catIdle1.png": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catIdle2.png": pixel.R(0, 0, 100, 200),
 	}
 	sitting = map[string]pixel.Rect{
-		"assets/graphics/catSit1": pixel.R(0, 0, 100, 200),
-		"assets/graphics/catSit2": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catSit1.png": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catSit2.png": pixel.R(0, 0, 100, 200),
 	}
 	walking = map[string]pixel.Rect{
-		"assets/graphics/catWalk1": pixel.R(0, 0, 100, 200),
-		"assets/graphics/catWalk2": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catWalk1.png": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catWalk2.png": pixel.R(0, 0, 100, 200),
 	}
 )
 

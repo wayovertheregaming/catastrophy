@@ -13,12 +13,14 @@ import (
 // Level represents a playable level.  It implements the `gamestate.Leveller`
 // interface
 type Level struct {
-	name string
+	name       string
+	updateFunc func(float64, *pixelgl.Window)
+	drawFunc   func(pixel.Target)
 }
 
 // Update will update the state of the level
 func (l *Level) Update(dt float64, win *pixelgl.Window) {
-
+	l.updateFunc(dt, win)
 }
 
 // Init will initialise the level.  The gamestate is provided so we can see
@@ -31,7 +33,7 @@ func (l *Level) Init() {
 
 // Draw will draw the level and contents to the target
 func (l *Level) Draw(target pixel.Target) {
-
+	l.drawFunc(target)
 }
 
 // Name will return the name of the level
@@ -42,12 +44,14 @@ func (l *Level) Name() string {
 // Menu represents a clickable menu. It implements the `gamestate.Leveller`
 // interface
 type Menu struct {
-	name string
+	name       string
+	updateFunc func(float64, *pixelgl.Window)
+	drawFunc   func(pixel.Target)
 }
 
 // Update will update the state of the menu
 func (m *Menu) Update(dt float64, win *pixelgl.Window) {
-
+	m.updateFunc(dt, win)
 }
 
 // Init will initialise the menu
@@ -59,7 +63,7 @@ func (m *Menu) Init() {
 
 // Draw will draw the menu to the target
 func (m *Menu) Draw(target pixel.Target) {
-
+	m.drawFunc(target)
 }
 
 // Name will return the name of the level

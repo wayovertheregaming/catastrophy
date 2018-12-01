@@ -8,7 +8,8 @@ import (
 )
 
 const (
-	groundImagePath = "assets/graphics/groundFloor.png"
+	groundImagePath     = "assets/graphics/groundFloor.png"
+	groundCollisionPath = "assets/csv/groundFloorWalls.csv"
 )
 
 var (
@@ -25,12 +26,20 @@ var (
 
 	// groundImageDimensions is effectively the size of the image
 	groundImageDimensions = pixel.R(0, 0, 1000, 1000)
+
+	// groundFloorCollisions are all the rectangles which should cause the player
+	// to collide: i.e. unpassable
+	groundFloorCollisions []pixel.Rect
 )
 
 func init() {
 	catlog.Debug("Preparing ground level")
 
+	// Load the background image
 	backgroundSprite, backgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
+
+	// Get all collision bounds from the CSV file
+	groundFloorCollisions = loadCollisions(groundCollisionPath)
 }
 
 func initGround() {

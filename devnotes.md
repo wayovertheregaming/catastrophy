@@ -8,6 +8,13 @@ push then PR into develop.
 
 Assign PR to both other devs.
 
+### Assets
+All assets (graphics, audio, CSV etc), should be stored in the `assets` directory.
+This will be used by [go-bindata](github.com/kevinburke/go-bindata) (you should
+go look at that - it's really simple and I'll do the setup for you).  It takes
+files and turns them into `[]byte` so we can compile them and don't need to
+distribute extra files.
+
 ## Game details
 ### Environment
 The game takes place in a large house and garden.  This is made of three maps,

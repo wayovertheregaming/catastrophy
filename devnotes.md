@@ -1,7 +1,15 @@
-# Game details
+# Dev Notes
 Notes for devs.
 
-## Environment
+## Git workflow
+We'll be using `master` as the release branch.  Use `devel` as the branch to
+branch from.  Branch into your bug/feature branch from `devel`, make commits,
+push then PR into develop.
+
+Assign PR to both other devs.
+
+## Game details
+### Environment
 The game takes place in a large house and garden.  This is made of three maps,
 which have multiple rooms/areas each (this is the same map and will not reload,
 but we will load individual maps as different levels):
@@ -18,7 +26,7 @@ but we will load individual maps as different levels):
    - Conservatory
  3. Garden
 
-## Gameplay
+### Gameplay
 The player will control a cat.  The cat will get tokens (called "trophies") by
 doing one of two things:
  1. Getting an achievement.  This is done by doing something 'annoying' for the
@@ -31,12 +39,12 @@ doing one of two things:
   - Garden - duck hunt clone
   - Kitchen - catch falling food in a bowl
 
-### Minigames
+#### Minigames
 We're using minigames so that we can easily add more gameplay to the game,
 without it looking like we've missed bits.  Ideally we'll have at least one
 minigame per room, this may not be possible due to time restaints.
 
-### Shadow realm
+#### Shadow realm
 Having gained the first trophy, the player should be told they can sleep; this
 will transport them to an identically laid out house, but looking different -
 maybe less decorations, maybe it is all dark and purple (could use a shader to
@@ -48,7 +56,7 @@ gain abilities.  Abilities will be needed to progress through the game; i.e.
 minigames/achievements/rooms will be locked off until certain sacrifices have
 been made.
 
-### Trophies
+#### Trophies
 Trophies will be unique.  Minigames are replayable, but you'll always get the
 same trophy from playing it.  The cat god will accept repeat sacrifices (the
 same trohpy twice) but will not unlock anything after the first one.
@@ -58,7 +66,7 @@ sacrificed gives access to the pond in the garden.  If the player goes back and
 collects the 'feather' trophy again, the cat god will accept it but nothing will
 be unlocked.
 
-### Winning the game
+#### Winning the game
 This is subject to having enough time.  If we do not get enough time, the boss
 battle will be skipped and jump straight to the win screen.
 

@@ -39,7 +39,7 @@ var (
 type player struct {
 	animationState int
 	// pos is the bottom left position of the player
-	// Technically this controls the backgrounddis
+	// Technically this controls the backgroundd
 	pos pixel.Vec
 	// direction is the angle the player is pointing
 	// We'll only be dealing with right angles

@@ -4,6 +4,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -30,6 +31,8 @@ var (
 	// groundFloorCollisions are all the rectangles which should cause the player
 	// to collide: i.e. unpassable
 	groundFloorCollisions []pixel.Rect
+
+	groundFloorStartPos = pixel.V(0, 0)
 )
 
 func init() {
@@ -43,7 +46,7 @@ func init() {
 }
 
 func initGround() {
-
+	player.SetPos(groundFloorStartPos)
 }
 
 func updateGround(dt float64, win *pixelgl.Window) {
@@ -51,5 +54,7 @@ func updateGround(dt float64, win *pixelgl.Window) {
 }
 
 func drawGround(target pixel.Target) {
-
+	// inverseMoved is the player position inversed
+	inverseMoved := player.GetPos().Scaled(-1)
+	backgroundSprite.Draw(target, pixel.IM.Moved(inverseMoved))
 }

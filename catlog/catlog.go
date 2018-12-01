@@ -1,6 +1,8 @@
 package catlog
 
-import "log"
+import (
+	"log"
+)
 
 var (
 	myLog *log.Logger

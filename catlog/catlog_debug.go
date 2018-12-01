@@ -14,6 +14,9 @@ func init() {
 		"Running in debug mode",
 		log.Ldate|log.Ltime|log.Llongfile,
 	)
+
+	// Clear some space on the terminal
+	fmt.Println("\n\n  *** Starting debug log ***\n\n")
 }
 
 // Debug will write a debug line to the log

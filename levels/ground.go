@@ -51,7 +51,10 @@ func initGround() {
 
 func updateGround(dt float64, win *pixelgl.Window) {
 	// Try move the player
-	movePlayer(win, dt, groundFloorCollisions)
+	if !movePlayer(win, dt, groundFloorCollisions) {
+		// Player is not moving, update animation
+		player.AnimateIdle()
+	}
 }
 
 func drawGround(target pixel.Target) {

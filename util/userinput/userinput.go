@@ -17,7 +17,7 @@ var (
 	// backgroundBounds is the rect that represents the background that users type
 	// into.  This is the full width of the window, but 1/3 of the height
 	backgroundBounds = pixel.R(0, consts.WinHeight/3, consts.WinWidth, (consts.WinHeight*2)/3)
-	backgroundColour = color.RGBA{0x8a, 0xc3, 0x6a, 0x99}
+	backgroundColour = color.RGBA{0x8a, 0xc3, 0x6a, 0xdd}
 )
 
 // GetUserInput will wait for the user to press keys, displaying what they type

@@ -12,7 +12,7 @@ func init() {
 	myLog = log.New(
 		os.Stdout,
 		"Running in debug mode",
-		log.Ldate|log.Ltime|log.Llongfile,
+		log.Ldate|log.Ltime|log.Lshortfile,
 	)
 
 	// Clear some space on the terminal

@@ -23,10 +23,6 @@ var (
 	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0xff}
 )
 
-func test() {
-	catlog.Debug(userinput.GetUserInput())
-}
-
 func run() {
 	catlog.Debug("Game launched")
 
@@ -73,10 +69,6 @@ func run() {
 		// Shift the camera for the background
 		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
 		gameView.Draw(win, cam)
-
-		if win.JustPressed(pixelgl.MouseButtonLeft) {
-			go test()
-		}
 
 		// Draw ImDraw shape layer
 		consts.ImdLayer.Draw(win)

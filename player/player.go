@@ -11,7 +11,7 @@ import (
 const (
 	// velocity is the speed at which the player moves
 	// The number 10 is used as a placeholder, no idea how fast this is!
-	velocity float64 = 100
+	velocity float64 = 1000
 
 	maxHunger       float64 = 100
 	hungerRate      float64 = 2
@@ -142,7 +142,6 @@ func AnimateWalk() {
 func WalkUp(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
 	p.direction = 0
-	p.pos.Y += dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Add(pixel.V(0, dt*velocity))
@@ -163,7 +162,6 @@ func WalkUp(dt float64, collisionables []pixel.Rect) {
 func WalkDown(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
 	p.direction = math.Pi
-	p.pos.Y -= dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Sub(pixel.V(0, dt*velocity))
@@ -184,7 +182,6 @@ func WalkDown(dt float64, collisionables []pixel.Rect) {
 func WalkLeft(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
 	p.direction = math.Pi / 2
-	p.pos.X -= dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Sub(pixel.V(dt*velocity, 0))
@@ -205,7 +202,6 @@ func WalkLeft(dt float64, collisionables []pixel.Rect) {
 func WalkRight(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
 	p.direction = (math.Pi * 3) / 2
-	p.pos.X += dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Add(pixel.V(dt*velocity, 0))

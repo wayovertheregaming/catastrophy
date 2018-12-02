@@ -4,112 +4,112 @@
 Landing with below rooms off it:
 
 ### Bathroom
- - Trophy
-  * Drink toilet water
- - Items
-  * Toilet
-  * Bath
-  * Bath Mat
-  * Sink
-  * Door
- - Bonus
-  * [Spider in the bath with a riddle](#Riddle)
+- Trophy
+..* Drink toilet water
+- Items
+..* Toilet
+..* Bath
+..* Bath Mat
+..* Sink
+..* Door
+- Bonus
+..* [Spider in the bath with a riddle](#Riddle)
 
 ### Master Bedroom
- - Trophy
-  * Curl one out on your owners pillow
- - Items
-  * Double Bed
-  * Bedside Table
-  * Rug
-  * Lamp(s)
-  * Wardrobe
- - Bonus
-  * [Human Wife on bed with riddle](#Riddle)
+- Trophy
+..* Curl one out on your owners pillow
+- Items
+..* Double Bed
+..* Bedside Table
+..* Rug
+..* Lamp(s)
+..* Wardrobe
+- Bonus
+..* [Human Wife on bed with riddle](#Riddle)
 
 ### Guest Bedroom
- - Trophy
-  * Destroy guest's shoes
- - Items
-  * Single Bed
-  * Bedside Table
-  * Plant
-  * Chest of Drawers
-  * Suitcase
- - Bonus
-  * [Page from diary in suitcase with riddle](#Riddle)
+- Trophy
+..* Destroy guest's shoes
+- Items
+..* Single Bed
+..* Bedside Table
+..* Plant
+..* Chest of Drawers
+..* Suitcase
+- Bonus
+..* [Page from diary in suitcase with riddle](#Riddle)
 
 ### Office
- - Trophy
-  * Use phone to call Human's boss and get him fired
- - Items
-  * PC
-  * Desk
-  * Filing Cabinet
-  * Desk Chair
-  * Telephone
- - Bonus
-  * [Email on PC with riddle](#Riddle)
+- Trophy
+..* Use phone to call Human's boss and get him fired
+- Items
+..* PC
+..* Desk
+..* Filing Cabinet
+..* Desk Chair
+..* Telephone
+- Bonus
+..* [Email on PC with riddle](#Riddle)
 
 ## Ground Floor
 Entrance hall with below rooms off it:
 
 ### Kitchen
- - Trophy
-  * Steal tin of Tuna
- - Items
-  * Cupboard(s)
-  * Worktops
-  * Oven
-  * Dishwasher
-  * Hob
-  * Table & Chairs
- - Bonus
-  * [Minigame 'Bowl'd Over'](#Minigames)
+- Trophy
+..* Steal tin of Tuna
+- Items
+..* Cupboard(s)
+..* Worktops
+..* Oven
+..* Dishwasher
+..* Hob
+..* Table & Chairs
+- Bonus
+..* [Minigame 'Bowl'd Over'](#Minigames)
 
 ### Lounge
- - Trophy
-  * Block human's view of TV to make him mad
- - Items
-  * TV
-  * Sofa(s)
-  * Rug
-  * Coffee Table
-  * Plant(s)
- - Bonus
-  * [Magazine on table with riddle](#Riddle)
+- Trophy
+..* Block human's view of TV to make him mad
+- Items
+..* TV
+..* Sofa(s)
+..* Rug
+..* Coffee Table
+..* Plant(s)
+- Bonus
+..* [Magazine on table with riddle](#Riddle)
 
 ### Dining Room
- - Trophy
-  * Steal human's food
- - Items
-  * Dining Table & Chairs
-  * Plate of food
-  * Sideboard
- - Bonus
-  * [Speak to Human's guest for riddle](#Riddle)
+- Trophy
+..* Steal human's food
+- Items
+..* Dining Table & Chairs
+..* Plate of food
+..* Sideboard
+- Bonus
+..* [Speak to Human's guest for riddle](#Riddle)
 
 ### Conservatory
- - Trophy
-  * Spill litter tray
- - Items
-  * Sofa(s)
-  * Litter Tray
-  * Plant(s)
- - Bonus
-  * [Sunbathing Caterpillar with riddle](#Riddle)
+- Trophy
+..* Spill litter tray
+- Items
+..* Sofa(s)
+..* Litter Tray
+..* Plant(s)
+- Bonus
+..* [Sunbathing Caterpillar with riddle](#Riddle)
 
 ## Garden
- - Trophy
-  * Catch a bird
- - Items
-  * Football
-  * Baseball Bat
-  * Hosepipe
-  * Bench
-  * Human Child
- - Bonus
-  * [Minigame 'Pet Hate'](#Minigame)
+- Trophy
+..* Catch a bird
+- Items
+..* Football
+..* Baseball Bat
+..* Hosepipe
+..* Bench
+..* Human Child
+- Bonus
+..* [Minigame 'Pet Hate'](#Minigame)
 
 
 # Bonus

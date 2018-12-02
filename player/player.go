@@ -75,6 +75,8 @@ func (p *player) nextBounds(v pixel.Vec) pixel.Rect {
 // changeAnimationState will attempt to change the animation state.  This will
 // reset the animation frame and counter if the state changes
 func (p *player) changeAnimationState(newState int) {
+	// If the current animation state is the same as the new requested state, just
+	// return
 	if p.animationState == newState {
 		return
 	}

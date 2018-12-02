@@ -71,6 +71,18 @@ func (p *player) nextBounds(v pixel.Vec) pixel.Rect {
 	}
 }
 
+// changeAnimationState will attempt to change the animation state.  This will
+// reset the animation frame and counter if the state changes
+func (p *player) changeAnimationState(newState int) {
+	if p.animationState == newState {
+		return
+	}
+	p.animationFrame = 0
+	p.animationCounter = 0
+
+	p.animationState = newState
+}
+
 func init() {
 	p = player{
 		animationState:   animationStateIdle,
@@ -86,46 +98,22 @@ func init() {
 
 // AnimateSleep will set the player to animate sleeping
 func AnimateSleep() {
-	if p.animationState == animationStateSleep {
-		return
-	}
-	p.animationFrame = 0
-	p.animationCounter = 0
-
-	p.animationState = animationStateSleep
+	p.changeAnimationState(animationStateSleep)
 }
 
 // AnimateSit will set the player to animate sitting
 func AnimateSit() {
-	if p.animationState == animationStateSitting {
-		return
-	}
-	p.animationFrame = 0
-	p.animationCounter = 0
-
-	p.animationState = animationStateSitting
+	p.changeAnimationState(animationStateSitting)
 }
 
 // AnimateIdle will set the player to animate idling/standing
 func AnimateIdle() {
-	if p.animationState == animationStateIdle {
-		return
-	}
-	p.animationFrame = 0
-	p.animationCounter = 0
-
-	p.animationState = animationStateIdle
+	p.changeAnimationState(animationStateIdle)
 }
 
 // AnimateWalk will set the player to animate walking
 func AnimateWalk() {
-	if p.animationState == animationStateWalking {
-		return
-	}
-	p.animationFrame = 0
-	p.animationCounter = 0
-
-	p.animationState = animationStateWalking
+	p.changeAnimationState(animationStateWalking)
 }
 
 // WalkUp will move the player upwards and animate them walking

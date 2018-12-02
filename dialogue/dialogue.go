@@ -41,7 +41,7 @@ var (
 	textColour                            = color.RGBA{0x00, 0x00, 0xf1, 0x00}
 	dialoguePanelBackgroundColour         = color.RGBA{0xf3, 0xff, 0xf1, 0x00}
 	dialoguePanelBorderColour             = color.RGBA{0x00, 0x00, 0xf1, 0x00}
-	borderThinkness               float64 = 2
+	borderThickness               float64 = 2
 
 	// atlas contains the font to writing text to screen
 	atlas *text.Atlas
@@ -83,10 +83,10 @@ func (d *Dialogue) draw(target pixel.Target) {
 	// Border
 	imd.Color = dialoguePanelBorderColour
 	imd.Push(
-		posMin.Sub(pixel.V(borderThinkness, borderThinkness)),
-		posMin.Add(dialoguePanelSize).Add(pixel.V(borderThinkness, borderThinkness)),
+		posMin.Sub(pixel.V(borderThickness, borderThickness)),
+		posMin.Add(dialoguePanelSize).Add(pixel.V(borderThickness, borderThickness)),
 	)
-	imd.Rectangle(borderThinkness)
+	imd.Rectangle(borderThickness)
 	imd.Draw(target)
 
 	// Write text to screen

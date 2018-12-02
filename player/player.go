@@ -83,6 +83,22 @@ func (p *player) changeAnimationState(newState int) {
 	p.animationState = newState
 }
 
+// update will move animation forward
+func (p *player) update(dt float64) {
+	// Add the amount of seconds since last update
+	p.animationCounter += dt
+
+	// Check if we need to tick over frames
+	if p.animationCounter > frameRate {
+		p.animationFrame++
+	}
+
+	// If we've reached the end of the animation loop, reset frame to 0
+	if p.animationFrame == len(stateToSprites(p.animationState)) {
+		p.animationFrame = 0
+	}
+}
+
 func init() {
 	p = player{
 		animationState:   animationStateIdle,
@@ -231,5 +247,5 @@ func SetPos(v pixel.Vec) {
 
 // Update will update the player with things such as animiation frame
 func Update(dt float64) {
-
+	p.update(dt)
 }

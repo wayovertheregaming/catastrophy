@@ -11,8 +11,9 @@ import (
 )
 
 const (
-	groundImagePath     = "assets/graphics/groundFloor.png"
-	groundCollisionPath = "assets/csv/groundFloorWalls.csv"
+	groundImagePath          = "assets/graphics/groundFloor.png"
+	groundCollisionPath      = "assets/csv/groundFloorWalls.csv"
+	groundActivationZonesCSV = "assets/csv/groundFloorZones.csv"
 )
 
 var (
@@ -49,7 +50,10 @@ func init() {
 
 	// groundImageDimensions is effectively the size of the image
 	groundImageDimensions = pixel.R(0, 0, float64(groundImageConfig.Width), float64(groundImageConfig.Height))
+
+	// Set properties that require bounding box
 	Ground.bounds = groundImageDimensions
+	Ground.zones = loadActivationZones(groundActivationZonesCSV, groundImageDimensions)
 
 	// Load the background image
 	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)

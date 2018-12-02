@@ -179,7 +179,7 @@ func movePlayer(win *pixelgl.Window, dt float64, collisions []pixel.Rect) bool {
 // CSV file.  It returns a map of the Rect zones (shifted by the map shift)
 // mapped to the name of the function to call when the player enters that
 // bounding box
-func loadActivationZones(path string, levelBounds pixel.Rect) map[pixel.Rect]string {
+func loadActivationZones(path string, levelBounds pixel.Rect) *map[pixel.Rect]string {
 	catlog.Debugf("Loading activation zones CSV: %s", path)
 
 	// Get the CSV file from assets
@@ -212,5 +212,5 @@ func loadActivationZones(path string, levelBounds pixel.Rect) map[pixel.Rect]str
 		catlog.Debugf("Create activation zone %v for '%s'", zoneRect, funcName)
 	}
 
-	return retMap
+	return &retMap
 }

@@ -35,7 +35,8 @@ var (
 	groundImageDimensions pixel.Rect
 	groundFloorStartPos   = pixel.V(0, 0)
 
-	groundZones *map[pixel.Rect]string
+	groundZones     *map[pixel.Rect]string
+	groundZoneFuncs = map[string]func(){}
 )
 
 func init() {
@@ -76,6 +77,11 @@ func updateGround(dt float64, win *pixelgl.Window) {
 	zoneFunc := player.GetActivationZoneChange(*groundZones)
 	if zoneFunc != "" {
 		catlog.Debugf("Got new zone, trying to call function '%s'", zoneFunc)
+		if f, ok := groundZoneFuncs[zoneFunc]; ok {
+			f()
+		} else {
+			catlog.Debugf("Did not find function %s, doing nothing", zoneFunc)
+		}
 	}
 }
 

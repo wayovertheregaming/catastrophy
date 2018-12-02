@@ -65,7 +65,7 @@ Entrance hall with below rooms off it:
   - Hob
   - Table & Chairs
  - Bonus
-  - (Minigame 'Bowl'd Over')[#Minigames]
+  - [Minigame 'Bowl'd Over'](#Minigames)
 
 ### Lounge
  - Trophy
@@ -109,7 +109,7 @@ Entrance hall with below rooms off it:
   - Bench
   - Human Child
  - Bonus
-  - (Minigame 'Pet Hate')[#Minigame]
+  - [Minigame 'Pet Hate'](#Minigame)
 
 
 # Bonus

@@ -25,8 +25,8 @@ var (
 		displayPlayer: true,
 	}
 
-	backgroundSprite *pixel.Sprite
-	backgroundPic    pixel.Picture
+	groundBackgroundSprite *pixel.Sprite
+	groundBackgroundPic    pixel.Picture
 
 	// groundFloorCollisions are all the rectangles which should cause the player
 	// to collide: i.e. unpassable
@@ -51,7 +51,7 @@ func init() {
 	groundImageDimensions = pixel.R(0, 0, float64(groundImageConfig.Width), float64(groundImageConfig.Height))
 
 	// Load the background image
-	backgroundSprite, backgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
+	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
 }
 
 func initGround() {
@@ -68,5 +68,5 @@ func updateGround(dt float64, win *pixelgl.Window) {
 
 func drawGround(target pixel.Target) {
 	// inverseMoved is the player position inversed
-	backgroundSprite.Draw(target, pixel.IM)
+	groundBackgroundSprite.Draw(target, pixel.IM)
 }

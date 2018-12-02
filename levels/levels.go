@@ -49,6 +49,10 @@ func (l *Level) Init() {
 // Draw will draw the level and contents to the target
 func (l *Level) Draw(target pixel.Target) {
 	l.drawFunc(target)
+
+	if l.displayPlayer {
+		player.Draw(target)
+	}
 }
 
 // Name will return the name of the level

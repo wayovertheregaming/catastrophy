@@ -183,7 +183,7 @@ func WalkDown(dt float64, collisionables []pixel.Rect) {
 // WalkLeft will move the player left and animate them walking
 func WalkLeft(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
-	p.direction = (math.Pi * 3) / 4
+	p.direction = math.Pi / 2
 	p.pos.X -= dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
@@ -204,7 +204,7 @@ func WalkLeft(dt float64, collisionables []pixel.Rect) {
 // WalkRight will move the player right and animate them walking
 func WalkRight(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
-	p.direction = math.Pi / 2
+	p.direction = (math.Pi * 3) / 2
 	p.pos.X += dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide

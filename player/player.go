@@ -86,21 +86,37 @@ func init() {
 
 // AnimateSleep will set the player to animate sleeping
 func AnimateSleep() {
+	if p.animationState == animationStateSleep {
+		return
+	}
+
 	p.animationState = animationStateSleep
 }
 
 // AnimateSit will set the player to animate sitting
 func AnimateSit() {
+	if p.animationState == animationStateSitting {
+		return
+	}
+
 	p.animationState = animationStateSitting
 }
 
 // AnimateIdle will set the player to animate idling/standing
 func AnimateIdle() {
+	if p.animationState == animationStateIdle {
+		return
+	}
+
 	p.animationState = animationStateIdle
 }
 
 // AnimateWalk will set the player to animate walking
 func AnimateWalk() {
+	if p.animationState == animationStateWalking {
+		return
+	}
+
 	p.animationState = animationStateWalking
 }
 

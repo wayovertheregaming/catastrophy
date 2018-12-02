@@ -86,6 +86,5 @@ func run() {
 }
 
 func main() {
-	catlog.Debug("first")
 	pixelgl.Run(run)
 }

@@ -3,6 +3,7 @@ package player
 import (
 	"github.com/faiface/pixel"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -15,20 +16,20 @@ const (
 // They map the file name to the location on the image file
 var (
 	sleeping = map[string]pixel.Rect{
-		"assets/graphics/catSleep1.png": pixel.R(0, 0, playerSide, playerSide),
-		"assets/graphics/catSleep2.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catSleep1.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catSleep2.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 	}
 	idling = map[string]pixel.Rect{
-		"assets/graphics/catIdle1.png": pixel.R(0, 0, playerSide, playerSide),
-		"assets/graphics/catIdle2.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catIdle1.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catIdle2.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 	}
 	sitting = map[string]pixel.Rect{
-		"assets/graphics/catSit1.png": pixel.R(0, 0, playerSide, playerSide),
-		"assets/graphics/catSit2.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catSit1.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catSit2.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 	}
 	walking = map[string]pixel.Rect{
-		"assets/graphics/catWalk1.png": pixel.R(0, 0, playerSide, playerSide),
-		"assets/graphics/catWalk2.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catWalk1.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catWalk2.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 	}
 )
 

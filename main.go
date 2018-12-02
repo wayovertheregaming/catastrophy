@@ -12,6 +12,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/levels"
 	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/util/userinput"
 )
 
 const (
@@ -22,9 +23,9 @@ var (
 	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0x00}
 )
 
-// func test() {
-// 	catlog.Debug(userinput.GetUserInput())
-// }
+func test() {
+	catlog.Debug(userinput.GetUserInput())
+}
 
 func run() {
 	catlog.Debug("Game launched")
@@ -45,6 +46,7 @@ func run() {
 	// TODO(too much work with time restrictions to make this dynamic, but can be
 	// done)
 	gameView := pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
+	consts.TextLayer = pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
 
 	// Set the initial level
 	gamestate.SetLevel(levels.Ground)
@@ -64,15 +66,15 @@ func run() {
 
 		dialogue.Update(dt, win)
 
-		// userinput.Update(win)
-		// userinput.Draw()
+		userinput.Update(win)
+		userinput.Draw()
 
 		// Shift the camera for the background
 		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
 		gameView.Draw(win, cam)
 
 		if win.JustPressed(pixelgl.KeyP) {
-			// go test()
+			go test()
 		}
 
 		// Draw ImDraw shape layer

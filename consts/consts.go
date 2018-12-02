@@ -35,5 +35,5 @@ var (
 
 	// TextLayer is used as a foreground text drawing layer.  This is drawn to the
 	// window late in the draw process so will be above most things
-	TextLayer = pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
+	TextLayer *pixelgl.Canvas
 )

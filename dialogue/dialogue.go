@@ -48,6 +48,8 @@ var (
 )
 
 func init() {
+	catlog.Debug("Doing dialogue init")
+
 	// TODO(get a nice font)
 	atlas = text.NewAtlas(basicfont.Face7x13, text.ASCII)
 

@@ -61,6 +61,8 @@ func (a *audio) play() {
 }
 
 func init() {
+	catlog.Debug("Doing cataudio init")
+
 	for filename, a := range allAudioFiles {
 		// Create the full path to the file
 		fullPath := filepath.Join(dirPrefix, filename)

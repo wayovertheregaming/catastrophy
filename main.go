@@ -22,6 +22,10 @@ var (
 	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0x00}
 )
 
+// func test() {
+// 	catlog.Debug(userinput.GetUserInput())
+// }
+
 func run() {
 	catlog.Debug("Game launched")
 
@@ -50,6 +54,7 @@ func run() {
 	for !win.Closed() {
 		win.Clear(backgroundColour)
 		gameView.Clear(backgroundColour)
+		consts.ImdLayer.Clear()
 
 		dt := time.Since(last).Seconds()
 		last = time.Now()
@@ -59,10 +64,19 @@ func run() {
 
 		dialogue.Update(dt, win)
 
+		// userinput.Update(win)
+		// userinput.Draw()
+
 		// Shift the camera for the background
 		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
 		gameView.Draw(win, cam)
 
+		if win.JustPressed(pixelgl.KeyP) {
+			// go test()
+		}
+
+		// Draw ImDraw shape layer
+		consts.ImdLayer.Draw(win)
 		// Draw dialogue on top of other layers
 		dialogue.Draw(win)
 		win.Update()
@@ -70,5 +84,6 @@ func run() {
 }
 
 func main() {
+	catlog.Debug("first")
 	pixelgl.Run(run)
 }

@@ -46,6 +46,8 @@ type spritePic struct {
 }
 
 func init() {
+	catlog.Debug("Doing animation init")
+
 	sleepingSprites = loadIntoVar(sleeping)
 	idlingSprites = loadIntoVar(idling)
 	sittingSprites = loadIntoVar(sitting)

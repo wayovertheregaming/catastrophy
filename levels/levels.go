@@ -26,6 +26,7 @@ type Level struct {
 	// displayPlayer determines whether the level needs the player displayed
 	displayPlayer bool
 	bounds        pixel.Rect
+	zones         *map[pixel.Rect]string
 }
 
 // Bounds returns the size of the background image

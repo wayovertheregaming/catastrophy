@@ -32,7 +32,7 @@ var (
 	// to collide: i.e. unpassable
 	groundFloorCollisions []pixel.Rect
 	groundImageDimensions pixel.Rect
-	groundFloorStartPos   = pixel.V(0, 0)
+	groundFloorStartPos   = pixel.V(-1300, -1400)
 )
 
 func init() {

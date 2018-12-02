@@ -99,8 +99,8 @@ func (m *Menu) Init() {
 }
 
 // Draw will draw the menu to the target
-func (m *Menu) Draw(target pixel.Target) {
-	m.drawFunc(target)
+func (m *Menu) Draw() {
+	m.drawFunc()
 }
 
 // Name will return the name of the level

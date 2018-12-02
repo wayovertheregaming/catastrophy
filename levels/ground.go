@@ -59,10 +59,6 @@ func updateGround(dt float64, win *pixelgl.Window) {
 }
 
 func drawGround(target pixel.Target) {
-	// This is placeholder code - will probably need to use campos matrix
-	// transforms.  If we don't need to, we won't - but probably will need to
-
 	// inverseMoved is the player position inversed
-	inverseMoved := player.GetPos().Scaled(-1)
-	backgroundSprite.Draw(target, pixel.IM.Moved(inverseMoved))
+	backgroundSprite.Draw(target, pixel.IM)
 }

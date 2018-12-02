@@ -29,6 +29,11 @@ type Level struct {
 
 // Update will update the state of the level
 func (l *Level) Update(dt float64, win *pixelgl.Window) {
+	// Do not update the level if the game is paused
+	if gamestate.IsPaused() {
+		return
+	}
+
 	l.updateFunc(dt, win)
 
 	// Update the player if displayed

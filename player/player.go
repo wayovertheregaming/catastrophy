@@ -17,6 +17,9 @@ const (
 	hungerRate      float64 = 2
 	maxBladder      float64 = 100
 	bladderFillRate float64 = 2
+
+	// playerSide is the size of one side of the player box
+	playerSide = 50
 )
 
 // These consts hold different animation states
@@ -33,7 +36,7 @@ var (
 	// playerSize is the width and height of the player, assuming the player is
 	// facing upwards
 	// Note, not tested, just placeholder sizes
-	playerSize = pixel.V(10, 30)
+	playerSize = pixel.V(playerSide, playerSide)
 )
 
 // player represents the cat that the player controls

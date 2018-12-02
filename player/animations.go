@@ -15,20 +15,20 @@ const (
 // They map the file name to the location on the image file
 var (
 	sleeping = map[string]pixel.Rect{
-		"assets/graphics/catSleep1.png": pixel.R(0, 0, 50, 50),
-		"assets/graphics/catSleep2.png": pixel.R(0, 0, 50, 50),
+		"assets/graphics/catSleep1.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catSleep2.png": pixel.R(0, 0, playerSide, playerSide),
 	}
 	idling = map[string]pixel.Rect{
-		"assets/graphics/catIdle1.png": pixel.R(0, 0, 50, 50),
-		"assets/graphics/catIdle2.png": pixel.R(0, 0, 50, 50),
+		"assets/graphics/catIdle1.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catIdle2.png": pixel.R(0, 0, playerSide, playerSide),
 	}
 	sitting = map[string]pixel.Rect{
-		"assets/graphics/catSit1.png": pixel.R(0, 0, 50, 50),
-		"assets/graphics/catSit2.png": pixel.R(0, 0, 50, 50),
+		"assets/graphics/catSit1.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catSit2.png": pixel.R(0, 0, playerSide, playerSide),
 	}
 	walking = map[string]pixel.Rect{
-		"assets/graphics/catWalk1.png": pixel.R(0, 0, 50, 50),
-		"assets/graphics/catWalk2.png": pixel.R(0, 0, 50, 50),
+		"assets/graphics/catWalk1.png": pixel.R(0, 0, playerSide, playerSide),
+		"assets/graphics/catWalk2.png": pixel.R(0, 0, playerSide, playerSide),
 	}
 )
 

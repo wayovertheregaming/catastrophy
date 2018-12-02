@@ -226,13 +226,13 @@ func GetInventory() []string {
 }
 
 // Draw draws the player to the target
-func Draw(target pixel.Target) {
+func Draw() {
 	spritepic := stateFrameToSprites(p.animationState, p.animationFrame)
 
 	// Draw to the centre of the window
 	// playerShift is how much to shift the player by so it sits in the middle of the window
 	playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
-	spritepic.sprite.Draw(target, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
+	spritepic.sprite.Draw(consts.GameView, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
 }
 
 // GetActivationZoneChange checks if the player is in a zone different to the

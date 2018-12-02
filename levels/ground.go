@@ -34,6 +34,8 @@ var (
 	groundFloorCollisions []pixel.Rect
 	groundImageDimensions pixel.Rect
 	groundFloorStartPos   = pixel.V(0, 0)
+
+	groundZones *map[pixel.Rect]string
 )
 
 func init() {
@@ -53,7 +55,7 @@ func init() {
 
 	// Set properties that require bounding box
 	Ground.bounds = groundImageDimensions
-	Ground.zones = loadActivationZones(groundActivationZonesCSV, groundImageDimensions)
+	groundZones = loadActivationZones(groundActivationZonesCSV, groundImageDimensions)
 
 	// Load the background image
 	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
@@ -68,6 +70,12 @@ func updateGround(dt float64, win *pixelgl.Window) {
 	if !movePlayer(win, dt, groundFloorCollisions) {
 		// Player is not moving, update animation
 		player.AnimateIdle()
+	}
+
+	// Check for activation zone changes
+	zoneFunc := player.GetActivationZoneChange(*groundZones)
+	if zoneFunc != "" {
+		catlog.Debugf("Got new zone, trying to call function '%s'", zoneFunc)
 	}
 }
 

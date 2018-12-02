@@ -16,6 +16,7 @@ const (
 var (
 	sleeping = map[string]pixel.Rect{
 		"assets/graphics/catSleep1.png": pixel.R(0, 0, 100, 200),
+		"assets/graphics/catSleep2.png": pixel.R(0, 0, 100, 200),
 	}
 	idling = map[string]pixel.Rect{
 		"assets/graphics/catIdle1.png": pixel.R(0, 0, 100, 200),

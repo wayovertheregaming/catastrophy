@@ -28,7 +28,7 @@ var (
 	// Note, not tested, just placeholder sizes
 	PlayerSize = pixel.V(PlayerSide, PlayerSide)
 
-	// imdLayer is used as the foreground drawing object.  This is drawn to the
+	// ImdLayer is used as the foreground drawing object.  This is drawn to the
 	// window late in the draw process so will be above most things
-	imdLayer = imdraw.New(nil)
+	ImdLayer = imdraw.New(nil)
 )

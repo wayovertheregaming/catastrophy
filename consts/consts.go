@@ -5,6 +5,7 @@ package consts
 import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/imdraw"
+	"github.com/faiface/pixel/pixelgl"
 )
 
 const (
@@ -31,4 +32,8 @@ var (
 	// ImdLayer is used as the foreground drawing object.  This is drawn to the
 	// window late in the draw process so will be above most things
 	ImdLayer = imdraw.New(nil)
+
+	// TextLayer is used as a foreground text drawing layer.  This is drawn to the
+	// window late in the draw process so will be above most things
+	TextLayer = pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
 )

@@ -23,7 +23,6 @@ var (
 		drawFunc:      drawGround,
 		initFunc:      initGround,
 		displayPlayer: true,
-		bounds:        pixel.R(0, 0, 3000, 3000),
 	}
 
 	groundBackgroundSprite *pixel.Sprite
@@ -50,6 +49,7 @@ func init() {
 
 	// groundImageDimensions is effectively the size of the image
 	groundImageDimensions = pixel.R(0, 0, float64(groundImageConfig.Width), float64(groundImageConfig.Height))
+	Ground.bounds = groundImageDimensions
 
 	// Load the background image
 	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)

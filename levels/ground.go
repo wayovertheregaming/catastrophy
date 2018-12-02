@@ -51,7 +51,7 @@ func init() {
 	groundImageDimensions = pixel.R(0, 0, float64(groundImageConfig.Width), float64(groundImageConfig.Height))
 
 	// Load the background image
-	backgroundSprite, backgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
+	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
 }
 
 func initGround() {

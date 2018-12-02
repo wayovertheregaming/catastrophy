@@ -37,8 +37,10 @@ func run() {
 	}
 
 	// gameView is a batch drawing element for all game view things
-	// Will allow us to overlay stuff such as HUD and notifications
-	gameView := pixelgl.NewCanvas(win.Bounds())
+	// this restricts the size of the level to 3000x3000
+	// TODO(too much work with time restrictions to make this dynamic, but can be
+	// done)
+	gameView := pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
 
 	// Set the initial level
 	gamestate.SetLevel(levels.Ground)
@@ -57,10 +59,9 @@ func run() {
 
 		dialogue.Update(dt, win)
 
-		// inverseMoved is the player position inversed
-		inverseMoved := player.GetPos().Scaled(-1)
-		// This shift is effectively doing camera controls -- woo!
-		gameView.Draw(win, pixel.IM.Moved(inverseMoved))
+		// Shift the camera for the background
+		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
+		gameView.Draw(win, cam)
 
 		// Draw dialogue on top of other layers
 		dialogue.Draw(win)

@@ -23,8 +23,8 @@ var (
 		displayPlayer: true,
 	}
 
-	backgroundSprite *pixel.Sprite
-	backgroundPic    pixel.Picture
+	groundBackgroundSprite *pixel.Sprite
+	shadowBackgroundPic    pixel.Picture
 
 	// groundImageDimensions is effectively the size of the image
 	groundImageDimensions = pixel.R(0, 0, 1000, 1000)
@@ -40,7 +40,7 @@ func init() {
 	catlog.Debug("Preparing ground level")
 
 	// Load the background image
-	backgroundSprite, backgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
+	groundBackgroundSprite, shadowBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
 
 	// Get all collision bounds from the CSV file
 	groundFloorCollisions = loadCollisions(groundCollisionPath)
@@ -60,5 +60,5 @@ func updateGround(dt float64, win *pixelgl.Window) {
 
 func drawGround(target pixel.Target) {
 	// inverseMoved is the player position inversed
-	backgroundSprite.Draw(target, pixel.IM)
+	groundBackgroundSprite.Draw(target, pixel.IM)
 }

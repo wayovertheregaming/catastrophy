@@ -2,7 +2,10 @@
 // cannot be passed around
 package consts
 
-import "github.com/faiface/pixel"
+import (
+	"github.com/faiface/pixel"
+	"github.com/faiface/pixel/pixelgl"
+)
 
 const (
 	// WinWidth is the pixel width to set the game window to
@@ -24,4 +27,8 @@ var (
 	// facing upwards
 	// Note, not tested, just placeholder sizes
 	PlayerSize = pixel.V(PlayerSide, PlayerSide)
+
+	// GameView is a batch drawing element for all game view things. It is set at
+	// level init
+	GameView *pixelgl.Canvas
 )

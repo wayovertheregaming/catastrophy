@@ -219,12 +219,6 @@ func WalkRight(dt float64, collisionables []pixel.Rect) {
 	p.pos = nextPos
 }
 
-// CollidesWith determines whether the player collides with a rectangle
-func CollidesWith(obj pixel.Rect) bool {
-	// TODO(actually calculate this - must encoporate if we are facing left/right or up/down)
-	return false
-}
-
 // GetInventory will return the players current inventory
 func GetInventory() []string {
 	return p.inventory

@@ -236,8 +236,11 @@ func GetInventory() []string {
 // Draw draws the player to the target
 func Draw(target pixel.Target) {
 	spritepic := stateFrameToSprites(p.animationState, p.animationFrame)
+
 	// Draw to the centre of the window
-	spritepic.sprite.Draw(target, pixel.IM.Moved(consts.WinBounds.Max.Add(p.pos)).Rotated(consts.WinCentre, p.direction))
+	// playerShift is how much to shift the player by so it sits in the middle of the window
+	playerShift := consts.WinBounds.Max.Add(p.pos)
+	spritepic.sprite.Draw(target, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
 }
 
 // GetPos returns the current player position.

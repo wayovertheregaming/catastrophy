@@ -25,6 +25,12 @@ type Level struct {
 	initFunc   func()
 	// displayPlayer determines whether the level needs the player displayed
 	displayPlayer bool
+	bounds        pixel.Rect
+}
+
+// Bounds returns the size of the background image
+func (l *Level) Bounds() pixel.Rect {
+	return l.bounds
 }
 
 // Update will update the state of the level

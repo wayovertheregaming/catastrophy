@@ -4,7 +4,7 @@ import (
 	"math"
 
 	"github.com/faiface/pixel"
-	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -233,7 +233,7 @@ func Draw(target pixel.Target) {
 
 	// Draw to the centre of the window
 	// playerShift is how much to shift the player by so it sits in the middle of the window
-	playerShift := consts.WinBounds.Max.Add(p.pos)
+	playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
 	spritepic.sprite.Draw(target, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
 }
 

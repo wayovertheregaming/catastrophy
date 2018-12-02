@@ -49,6 +49,7 @@ func init() {
 
 	// groundImageDimensions is effectively the size of the image
 	groundImageDimensions = pixel.R(0, 0, float64(groundImageConfig.Width), float64(groundImageConfig.Height))
+	Ground.bounds = groundImageDimensions
 
 	// Load the background image
 	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
@@ -67,6 +68,5 @@ func updateGround(dt float64, win *pixelgl.Window) {
 }
 
 func drawGround(target pixel.Target) {
-	// inverseMoved is the player position inversed
-	groundBackgroundSprite.Draw(target, pixel.IM)
+	groundBackgroundSprite.Draw(target, pixel.IM.Moved(groundImageDimensions.Center()))
 }

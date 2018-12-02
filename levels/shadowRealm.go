@@ -46,6 +46,7 @@ func init() {
 
 	// shadowmageDimensions is effectively the size of the image
 	shadowImageDimensions = pixel.R(0, 0, float64(shadowImageConfig.Width), float64(shadowImageConfig.Height))
+	ShadowRealm.bounds = shadowImageDimensions
 
 	// Load the background image
 	shadowBackgroundSprite, shadowBackgroundPic = util.LoadSprite(shadowImagePath, shadowImageDimensions)

@@ -11,4 +11,5 @@ type Leveller interface {
 	Init()
 	Draw(pixel.Target)
 	Name() string
+	Bounds() pixel.Rect
 }

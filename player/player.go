@@ -4,6 +4,7 @@ import (
 	"math"
 
 	"github.com/faiface/pixel"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -47,6 +48,10 @@ type player struct {
 	inventory []string
 	hunger    float64
 	bladder   float64
+	// animationFrame is the index of the frame
+	animationFrame int
+	// animationCounter is the number of seconds since the animation frame changed
+	animationCounter float64
 }
 
 // bounds returns the current bounding box of the player
@@ -67,35 +72,67 @@ func (p *player) nextBounds(v pixel.Vec) pixel.Rect {
 	}
 }
 
+// changeAnimationState will attempt to change the animation state.  This will
+// reset the animation frame and counter if the state changes
+func (p *player) changeAnimationState(newState int) {
+	// If the current animation state is the same as the new requested state, just
+	// return
+	if p.animationState == newState {
+		return
+	}
+	p.animationFrame = 0
+	p.animationCounter = 0
+
+	p.animationState = newState
+}
+
+// update will move animation forward
+func (p *player) update(dt float64) {
+	// Add the amount of seconds since last update
+	p.animationCounter += dt
+
+	// Check if we need to tick over frames
+	if p.animationCounter > frameRate {
+		p.animationFrame++
+	}
+
+	// If we've reached the end of the animation loop, reset frame to 0
+	if p.animationFrame == len(stateToSprites(p.animationState)) {
+		p.animationFrame = 0
+	}
+}
+
 func init() {
 	p = player{
-		animationState: animationStateIdle,
-		pos:            pixel.ZV,
-		direction:      0,
-		inventory:      []string{},
-		hunger:         100,
-		bladder:        0,
+		animationState:   animationStateIdle,
+		pos:              pixel.ZV,
+		direction:        0,
+		inventory:        []string{},
+		hunger:           100,
+		bladder:          0,
+		animationFrame:   0,
+		animationCounter: 0,
 	}
 }
 
 // AnimateSleep will set the player to animate sleeping
 func AnimateSleep() {
-	p.animationState = animationStateSleep
+	p.changeAnimationState(animationStateSleep)
 }
 
 // AnimateSit will set the player to animate sitting
 func AnimateSit() {
-	p.animationState = animationStateSitting
+	p.changeAnimationState(animationStateSitting)
 }
 
 // AnimateIdle will set the player to animate idling/standing
 func AnimateIdle() {
-	p.animationState = animationStateIdle
+	p.changeAnimationState(animationStateIdle)
 }
 
 // AnimateWalk will set the player to animate walking
 func AnimateWalk() {
-	p.animationState = animationStateWalking
+	p.changeAnimationState(animationStateWalking)
 }
 
 // WalkUp will move the player upwards and animate them walking
@@ -195,7 +232,9 @@ func GetInventory() []string {
 
 // Draw draws the player to the target
 func Draw(target pixel.Target) {
-
+	spritepic := stateFrameToSprites(p.animationState, p.animationFrame)
+	// Draw to the centre of the window
+	spritepic.sprite.Draw(target, pixel.IM.Moved(consts.WinCentre))
 }
 
 // GetPos returns the current player position.
@@ -209,4 +248,9 @@ func GetPos() pixel.Vec {
 // level so the player is at the start position
 func SetPos(v pixel.Vec) {
 	p.pos = v
+}
+
+// Update will update the player with things such as animiation frame
+func Update(dt float64) {
+	p.update(dt)
 }

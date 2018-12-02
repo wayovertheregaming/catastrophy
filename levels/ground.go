@@ -1,6 +1,8 @@
 package levels
 
 import (
+	"image"
+
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
@@ -26,24 +28,30 @@ var (
 	groundBackgroundSprite *pixel.Sprite
 	groundBackgroundPic    pixel.Picture
 
-	// groundImageDimensions is effectively the size of the image
-	groundImageDimensions = pixel.R(0, 0, 1000, 1000)
-
 	// groundFloorCollisions are all the rectangles which should cause the player
 	// to collide: i.e. unpassable
 	groundFloorCollisions []pixel.Rect
-
-	groundFloorStartPos = pixel.V(0, 0)
+	groundImageDimensions pixel.Rect
+	groundFloorStartPos   = pixel.V(0, 0)
 )
 
 func init() {
 	catlog.Debug("Preparing ground level")
 
-	// Load the background image
-	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
-
 	// Get all collision bounds from the CSV file
 	groundFloorCollisions = loadCollisions(groundCollisionPath)
+
+	//groundImageConfig returns dimensions of groundImagePath
+	groundImageConfig, _, err := image.DecodeConfig(util.GetReaderFromFile(groundImagePath))
+	if err != nil {
+		catlog.Fatalf("Could not load ground image %v", err)
+	}
+
+	// groundImageDimensions is effectively the size of the image
+	groundImageDimensions = pixel.R(0, 0, float64(groundImageConfig.Width), float64(groundImageConfig.Height))
+
+	// Load the background image
+	backgroundSprite, backgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
 }
 
 func initGround() {

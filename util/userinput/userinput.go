@@ -86,6 +86,7 @@ func Draw() {
 	consts.ImdLayer.Push(backgroundBounds.Min, backgroundBounds.Max)
 	consts.ImdLayer.Rectangle(0)
 
+	inpText.Clear()
 	fmt.Fprintf(inpText, "%s_", typed)
 	inpText.Draw(consts.TextLayer, pixel.IM.Scaled(inpText.Orig, 7))
 }

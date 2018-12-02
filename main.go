@@ -74,7 +74,7 @@ func run() {
 		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
 		gameView.Draw(win, cam)
 
-		if win.JustPressed(pixelgl.KeyP) {
+		if win.JustPressed(pixelgl.MouseButtonLeft) {
 			go test()
 		}
 

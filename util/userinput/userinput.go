@@ -71,6 +71,11 @@ func Update(win *pixelgl.Window) {
 		userInp <- typed
 	}
 
+	// Check for backspace
+	if win.JustPressed(pixelgl.KeyBackspace) && len(typed) > 0 {
+		typed = typed[:len(typed)-1]
+	}
+
 	// Add anything the user has typed to the end of the string
 	typed += win.Typed()
 }

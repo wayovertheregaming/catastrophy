@@ -35,7 +35,11 @@ var (
 	groundImageDimensions pixel.Rect
 	groundFloorStartPos   = pixel.V(0, 0)
 
-	groundZones     *map[pixel.Rect]string
+	// groundZones holds the zones and the function name to call, as read from the
+	// CSV
+	groundZones *map[pixel.Rect]string
+	// groundZoneFuncs is a map of function names (as they appear in the CSV) and
+	// the function as defined in this file
 	groundZoneFuncs = map[string]func(){}
 )
 

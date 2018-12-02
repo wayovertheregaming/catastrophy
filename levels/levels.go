@@ -105,7 +105,7 @@ func (m *Menu) Name() string {
 
 // loadCollisions will read each line of a CSV expecting four columns
 // x1,y1,x2,y2; these are the bottom left and top right coordinates of the box
-func loadCollisions(path string) []pixel.Rect {
+func loadCollisions(path string, levelBounds pixel.Rect) []pixel.Rect {
 	catlog.Debugf("Loading collision CSV: %s", path)
 
 	// Get the CSV file from assets
@@ -132,7 +132,7 @@ func loadCollisions(path string) []pixel.Rect {
 		x2 := mustParseFloat64(row[2])
 		y2 := mustParseFloat64(row[3])
 
-		retRect = append(retRect, pixel.R(x1, y1, x2, y2))
+		retRect = append(retRect, pixel.R(x1, y1, x2, y2).Moved(pixel.ZV.Sub(levelBounds.Center())))
 	}
 
 	return retRect

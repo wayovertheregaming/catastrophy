@@ -6,9 +6,9 @@ import "github.com/faiface/pixel"
 
 const (
 	// WinWidth is the pixel width to set the game window to
-	WinWidth = 2500
+	WinWidth = 1270
 	// WinHeight is the pixel height to set the game window to
-	WinHeight = 2000
+	WinHeight = 900
 )
 
 var (

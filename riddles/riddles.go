@@ -14,6 +14,7 @@ const (
 
 var (
 	riddles []riddle
+	counter = 0
 )
 
 type riddle struct {
@@ -47,4 +48,15 @@ func init() {
 
 		riddles = append(riddles, r)
 	}
+}
+
+// GetRiddle selects a riddle from list
+func GetRiddle() (string, string) {
+	if counter == len(riddles) {
+		counter = 0
+	}
+
+	r := riddles[counter]
+	counter++
+	return r.question, r.answer
 }

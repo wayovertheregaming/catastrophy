@@ -210,3 +210,8 @@ func GetPos() pixel.Vec {
 func SetPos(v pixel.Vec) {
 	p.pos = v
 }
+
+// Update will update the player with things such as animiation frame
+func Update(dt float64) {
+
+}

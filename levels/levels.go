@@ -23,11 +23,18 @@ type Level struct {
 	updateFunc func(float64, *pixelgl.Window)
 	drawFunc   func(pixel.Target)
 	initFunc   func()
+	// displayPlayer determines whether the level needs the player displayed
+	displayPlayer bool
 }
 
 // Update will update the state of the level
 func (l *Level) Update(dt float64, win *pixelgl.Window) {
 	l.updateFunc(dt, win)
+
+	// Update the player if displayed
+	if l.displayPlayer {
+		player.Update(dt)
+	}
 }
 
 // Init will initialise the level.  The gamestate is provided so we can see

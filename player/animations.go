@@ -65,11 +65,6 @@ func loadIntoVar(assetList map[string]pixel.Rect) []spritePic {
 	return retSlice
 }
 
-// getAnimationFrame returns the sprite/picture of the sprite to display
-func getAnimationFrame() {
-
-}
-
 func stateFrameToSprites(state, frame int) spritePic {
 	return stateToSprites(state)[frame]
 }

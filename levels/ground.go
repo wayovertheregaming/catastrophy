@@ -24,7 +24,7 @@ var (
 	}
 
 	groundBackgroundSprite *pixel.Sprite
-	shadowBackgroundPic    pixel.Picture
+	groundBackgroundPic    pixel.Picture
 
 	// groundImageDimensions is effectively the size of the image
 	groundImageDimensions = pixel.R(0, 0, 1000, 1000)
@@ -40,7 +40,7 @@ func init() {
 	catlog.Debug("Preparing ground level")
 
 	// Load the background image
-	groundBackgroundSprite, shadowBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
+	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
 
 	// Get all collision bounds from the CSV file
 	groundFloorCollisions = loadCollisions(groundCollisionPath)

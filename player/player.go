@@ -4,6 +4,7 @@ import (
 	"math"
 
 	"github.com/faiface/pixel"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
@@ -11,15 +12,12 @@ import (
 const (
 	// velocity is the speed at which the player moves
 	// The number 10 is used as a placeholder, no idea how fast this is!
-	velocity float64 = 1000
+	velocity float64 = 500
 
 	maxHunger       float64 = 100
 	hungerRate      float64 = 2
 	maxBladder      float64 = 100
 	bladderFillRate float64 = 2
-
-	// playerSide is the size of one side of the player box
-	playerSide = 50
 )
 
 // These consts hold different animation states
@@ -32,11 +30,6 @@ const (
 
 var (
 	p player
-
-	// playerSize is the width and height of the player, assuming the player is
-	// facing upwards
-	// Note, not tested, just placeholder sizes
-	playerSize = pixel.V(playerSide, playerSide)
 )
 
 // player represents the cat that the player controls
@@ -66,7 +59,7 @@ type player struct {
 func (p *player) bounds() pixel.Rect {
 	return pixel.Rect{
 		Min: p.pos,
-		Max: p.pos.Add(playerSize),
+		Max: p.pos.Add(consts.PlayerSize),
 	}
 }
 
@@ -75,7 +68,7 @@ func (p *player) bounds() pixel.Rect {
 func (p *player) nextBounds(v pixel.Vec) pixel.Rect {
 	return pixel.Rect{
 		Min: v,
-		Max: v.Add(playerSize),
+		Max: v.Add(consts.PlayerSize),
 	}
 }
 

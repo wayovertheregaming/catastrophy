@@ -33,7 +33,7 @@ var (
 	// to collide: i.e. unpassable
 	groundFloorCollisions []pixel.Rect
 	groundImageDimensions pixel.Rect
-	groundFloorStartPos   = pixel.V(0, 0)
+	groundFloorStartPos   = pixel.V(-1300, -1400)
 
 	// groundZones holds the zones and the function name to call, as read from the
 	// CSV
@@ -45,9 +45,6 @@ var (
 
 func init() {
 	catlog.Debug("Preparing ground level")
-
-	// Get all collision bounds from the CSV file
-	groundFloorCollisions = loadCollisions(groundCollisionPath)
 
 	//groundImageConfig returns dimensions of groundImagePath
 	groundImageConfig, _, err := image.DecodeConfig(util.GetReaderFromFile(groundImagePath))
@@ -64,6 +61,9 @@ func init() {
 
 	// Load the background image
 	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
+
+	// Get all collision bounds from the CSV file
+	groundFloorCollisions = loadCollisions(groundCollisionPath, Ground.bounds)
 }
 
 func initGround() {

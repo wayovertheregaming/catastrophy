@@ -173,3 +173,43 @@ func movePlayer(win *pixelgl.Window, dt float64, collisions []pixel.Rect) bool {
 
 	return isMoving
 }
+
+// loadActivationZones will attempt to load activation zones for a level from a
+// CSV file.  It returns a map of the Rect zones (shifted by the map shift)
+// mapped to the name of the function to call when the player enters that
+// bounding box
+func loadActivationZones(path string, levelBounds pixel.Rect) map[pixel.Rect]string {
+	catlog.Debugf("Loading activation zones CSV: %s", path)
+
+	// Get the CSV file from assets
+	activationsF, err := assets.Asset(path)
+	if err != nil {
+		catlog.Fatalf("Could not load CSV: %v", err)
+	}
+
+	// Read it as a CSV, getting all rows
+	csvReader := csv.NewReader(bytes.NewReader(activationsF))
+	activationZones, err := csvReader.ReadAll()
+	if err != nil {
+		catlog.Fatalf("Could not read CSV: %v", err)
+	}
+
+	retMap := make(map[pixel.Rect]string)
+
+	for _, row := range activationZones {
+		x1 := mustParseFloat64(row[0])
+		y1 := mustParseFloat64(row[1])
+		x2 := mustParseFloat64(row[2])
+		y2 := mustParseFloat64(row[3])
+
+		funcName := row[4]
+
+		zoneRect := pixel.R(x1, y1, x2, y2).Moved(pixel.ZV.Sub(levelBounds.Center()))
+
+		retMap[zoneRect] = funcName
+
+		catlog.Debugf("Create activation zone %v for '%s'", zoneRect, funcName)
+	}
+
+	return retMap
+}

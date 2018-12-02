@@ -8,6 +8,7 @@ import (
 	"encoding/csv"
 	"strconv"
 
+	"github.com/bcvery1/pixelpractice/shooter/consts"
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/assets"
@@ -132,7 +133,8 @@ func loadCollisions(path string, levelBounds pixel.Rect) []pixel.Rect {
 		x2 := mustParseFloat64(row[2])
 		y2 := mustParseFloat64(row[3])
 
-		retRect = append(retRect, pixel.R(x1, y1, x2, y2).Moved(pixel.ZV.Sub(levelBounds.Center())))
+		shiftVec := pixel.ZV.Sub(levelBounds.Center()).Add(consts.PlayerSize)
+		retRect = append(retRect, pixel.R(x1, y1, x2, y2).Moved(shiftVec))
 	}
 
 	return retRect

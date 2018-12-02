@@ -12,6 +12,8 @@ const (
 )
 
 var (
+	// WinBounds is the bounds of the viewer window
+	WinBounds = pixel.R(0, 0, WinHeight, WinWidth)
 	// WinCentre is the centre of the window as a vector
 	WinCentre = pixel.V(WinWidth/2, WinHeight/2)
 )

@@ -6,6 +6,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
@@ -64,7 +65,7 @@ func updateShadow(dt float64, win *pixelgl.Window) {
 	}
 }
 
-func drawShadow(target pixel.Target) {
+func drawShadow() {
 	// inverseMoved is the player position inversed
-	shadowBackgroundSprite.Draw(target, pixel.IM)
+	shadowBackgroundSprite.Draw(consts.GameView, pixel.IM.Moved(shadowImageDimensions.Center()))
 }

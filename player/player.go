@@ -89,6 +89,8 @@ func AnimateSleep() {
 	if p.animationState == animationStateSleep {
 		return
 	}
+	p.animationFrame = 0
+	p.animationCounter = 0
 
 	p.animationState = animationStateSleep
 }
@@ -98,6 +100,8 @@ func AnimateSit() {
 	if p.animationState == animationStateSitting {
 		return
 	}
+	p.animationFrame = 0
+	p.animationCounter = 0
 
 	p.animationState = animationStateSitting
 }
@@ -107,6 +111,8 @@ func AnimateIdle() {
 	if p.animationState == animationStateIdle {
 		return
 	}
+	p.animationFrame = 0
+	p.animationCounter = 0
 
 	p.animationState = animationStateIdle
 }
@@ -116,6 +122,8 @@ func AnimateWalk() {
 	if p.animationState == animationStateWalking {
 		return
 	}
+	p.animationFrame = 0
+	p.animationCounter = 0
 
 	p.animationState = animationStateWalking
 }

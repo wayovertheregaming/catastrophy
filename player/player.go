@@ -3,8 +3,8 @@ package player
 import (
 	"math"
 
-	"github.com/bcvery1/pixelpractice/shooter/consts"
 	"github.com/faiface/pixel"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/util"
 )

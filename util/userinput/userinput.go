@@ -9,6 +9,7 @@ import (
 	"github.com/faiface/pixel/text"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"golang.org/x/image/font/basicfont"
 )
 
@@ -22,7 +23,7 @@ var (
 	// into.  This is the full width of the window, but 1/3 of the height
 	backgroundBounds = pixel.R(0, consts.WinHeight/3, consts.WinWidth, (consts.WinHeight*2)/3)
 	backgroundColour = color.RGBA{0x8a, 0xc3, 0x6a, 0xdd}
-	textStartPos     = pixel.V(consts.WinWidth/3, consts.WinHeight/3)
+	textStartPos     = pixel.V(consts.WinWidth/3, consts.WinHeight/2)
 
 	// atlas contains the font to writing text to screen
 	atlas   *text.Atlas
@@ -42,6 +43,9 @@ func init() {
 // presses esc, the function will return a blank string.  This function blocks
 // until a string is returned
 func GetUserInput() string {
+	gamestate.PauseGame()
+	defer gamestate.UnPauseGame()
+
 	isActive = true
 	typed = ""
 
@@ -83,5 +87,5 @@ func Draw() {
 	consts.ImdLayer.Rectangle(0)
 
 	fmt.Fprintf(inpText, "%s_", typed)
-	inpText.Draw(consts.TextLayer, pixel.IM.Scaled(inpText.Orig, 5))
+	inpText.Draw(consts.TextLayer, pixel.IM.Scaled(inpText.Orig, 7))
 }

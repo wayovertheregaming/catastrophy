@@ -20,7 +20,7 @@ const (
 )
 
 var (
-	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0x00}
+	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0xff}
 )
 
 func test() {
@@ -46,7 +46,7 @@ func run() {
 	// TODO(too much work with time restrictions to make this dynamic, but can be
 	// done)
 	gameView := pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
-	consts.TextLayer = pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
+	consts.TextLayer = pixelgl.NewCanvas(consts.WinBounds)
 
 	// Set the initial level
 	gamestate.SetLevel(levels.Ground)
@@ -56,6 +56,7 @@ func run() {
 	for !win.Closed() {
 		win.Clear(backgroundColour)
 		gameView.Clear(backgroundColour)
+		consts.TextLayer.Clear(color.Transparent)
 		consts.ImdLayer.Clear()
 
 		dt := time.Since(last).Seconds()
@@ -79,6 +80,7 @@ func run() {
 
 		// Draw ImDraw shape layer
 		consts.ImdLayer.Draw(win)
+		consts.TextLayer.Draw(win, pixel.IM.Moved(consts.WinBounds.Center()))
 		// Draw dialogue on top of other layers
 		dialogue.Draw(win)
 		win.Update()

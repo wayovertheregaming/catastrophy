@@ -96,6 +96,7 @@ func (p *player) update(dt float64) {
 
 	// Check if we need to tick over frames
 	if p.animationCounter > frameRate {
+		p.animationCounter = 0
 		p.animationFrame++
 	}
 

@@ -20,7 +20,6 @@ const (
 
 var (
 	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0x00}
-	winBounds        = pixel.R(0, 0, consts.WinWidth, consts.WinHeight)
 )
 
 func run() {
@@ -28,7 +27,7 @@ func run() {
 
 	cfg := pixelgl.WindowConfig{
 		Title:  winTitle,
-		Bounds: winBounds,
+		Bounds: consts.WinBounds,
 		VSync:  true,
 	}
 

@@ -17,6 +17,9 @@ const (
 	hungerRate      float64 = 2
 	maxBladder      float64 = 100
 	bladderFillRate float64 = 2
+
+	// playerSide is the size of one side of the player box
+	playerSide = 50
 )
 
 // These consts hold different animation states
@@ -33,7 +36,7 @@ var (
 	// playerSize is the width and height of the player, assuming the player is
 	// facing upwards
 	// Note, not tested, just placeholder sizes
-	playerSize = pixel.V(10, 30)
+	playerSize = pixel.V(playerSide, playerSide)
 )
 
 // player represents the cat that the player controls
@@ -180,7 +183,7 @@ func WalkDown(dt float64, collisionables []pixel.Rect) {
 // WalkLeft will move the player left and animate them walking
 func WalkLeft(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
-	p.direction = (math.Pi * 3) / 4
+	p.direction = math.Pi / 2
 	p.pos.X -= dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
@@ -201,7 +204,7 @@ func WalkLeft(dt float64, collisionables []pixel.Rect) {
 // WalkRight will move the player right and animate them walking
 func WalkRight(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
-	p.direction = math.Pi / 2
+	p.direction = (math.Pi * 3) / 2
 	p.pos.X += dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
@@ -233,8 +236,11 @@ func GetInventory() []string {
 // Draw draws the player to the target
 func Draw(target pixel.Target) {
 	spritepic := stateFrameToSprites(p.animationState, p.animationFrame)
+
 	// Draw to the centre of the window
-	spritepic.sprite.Draw(target, pixel.IM.Moved(consts.WinCentre))
+	// playerShift is how much to shift the player by so it sits in the middle of the window
+	playerShift := consts.WinBounds.Max.Add(p.pos)
+	spritepic.sprite.Draw(target, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
 }
 
 // GetPos returns the current player position.

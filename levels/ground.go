@@ -11,8 +11,9 @@ import (
 )
 
 const (
-	groundImagePath     = "assets/graphics/groundFloor.png"
-	groundCollisionPath = "assets/csv/groundFloorWalls.csv"
+	groundImagePath          = "assets/graphics/groundFloor.png"
+	groundCollisionPath      = "assets/csv/groundFloorWalls.csv"
+	groundActivationZonesCSV = "assets/csv/groundFloorZones.csv"
 )
 
 var (
@@ -33,6 +34,13 @@ var (
 	groundFloorCollisions []pixel.Rect
 	groundImageDimensions pixel.Rect
 	groundFloorStartPos   = pixel.V(-1300, -1400)
+
+	// groundZones holds the zones and the function name to call, as read from the
+	// CSV
+	groundZones *map[pixel.Rect]string
+	// groundZoneFuncs is a map of function names (as they appear in the CSV) and
+	// the function as defined in this file
+	groundZoneFuncs = map[string]func(){}
 )
 
 func init() {
@@ -46,7 +54,10 @@ func init() {
 
 	// groundImageDimensions is effectively the size of the image
 	groundImageDimensions = pixel.R(0, 0, float64(groundImageConfig.Width), float64(groundImageConfig.Height))
+
+	// Set properties that require bounding box
 	Ground.bounds = groundImageDimensions
+	groundZones = loadActivationZones(groundActivationZonesCSV, groundImageDimensions)
 
 	// Load the background image
 	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
@@ -64,6 +75,17 @@ func updateGround(dt float64, win *pixelgl.Window) {
 	if !movePlayer(win, dt, groundFloorCollisions) {
 		// Player is not moving, update animation
 		player.AnimateIdle()
+	}
+
+	// Check for activation zone changes
+	zoneFunc := player.GetActivationZoneChange(*groundZones)
+	if zoneFunc != "" {
+		catlog.Debugf("Got new zone, trying to call function '%s'", zoneFunc)
+		if f, ok := groundZoneFuncs[zoneFunc]; ok {
+			f()
+		} else {
+			catlog.Debugf("Did not find function %s, doing nothing", zoneFunc)
+		}
 	}
 }
 

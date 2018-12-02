@@ -22,6 +22,7 @@ var (
 		drawFunc:      drawShadow,
 		initFunc:      initShadow,
 		displayPlayer: true,
+		bounds:        pixel.R(0, 0, 3000, 3000),
 	}
 
 	shadowBackgroundSprite *pixel.Sprite

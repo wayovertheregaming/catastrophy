@@ -5,111 +5,111 @@ Landing with below rooms off it:
 
 ### Bathroom
  - Trophy
-  - Drink toilet water
+  * Drink toilet water
  - Items
-  - Toilet
-  - Bath
-  - Bath Mat
-  - Sink
-  - Door
+  * Toilet
+  * Bath
+  * Bath Mat
+  * Sink
+  * Door
  - Bonus
-  - Spider in the bath with a riddle
+  * [Spider in the bath with a riddle](#Riddle)
 
 ### Master Bedroom
  - Trophy
-  - Curl one out on your owners pillow
+  * Curl one out on your owners pillow
  - Items
-  - Double Bed
-  - Bedside Table
-  - Rug
-  - Lamp(s)
-  - Wardrobe
+  * Double Bed
+  * Bedside Table
+  * Rug
+  * Lamp(s)
+  * Wardrobe
  - Bonus
-  - Human Wife on bed with riddle
+  * [Human Wife on bed with riddle](#Riddle)
 
 ### Guest Bedroom
  - Trophy
-  - Destroy guest's shoes
+  * Destroy guest's shoes
  - Items
-  - Single Bed
-  - Bedside Table
-  - Plant
-  - Chest of Drawers
-  - Suitcase
+  * Single Bed
+  * Bedside Table
+  * Plant
+  * Chest of Drawers
+  * Suitcase
  - Bonus
-  - Page from diary in suitcase with riddle
+  * [Page from diary in suitcase with riddle](#Riddle)
 
 ### Office
  - Trophy
-  - Use phone to call Human's boss and get him fired
+  * Use phone to call Human's boss and get him fired
  - Items
-  - PC
-  - Desk
-  - Filing Cabinet
-  - Desk Chair
-  - Telephone
+  * PC
+  * Desk
+  * Filing Cabinet
+  * Desk Chair
+  * Telephone
  - Bonus
-  - Email on PC with riddle
+  * [Email on PC with riddle](#Riddle)
 
 ## Ground Floor
 Entrance hall with below rooms off it:
 
 ### Kitchen
  - Trophy
-  - Steal tin of Tuna
+  * Steal tin of Tuna
  - Items
-  - Cupboard(s)
-  - Worktops
-  - Oven
-  - Dishwasher
-  - Hob
-  - Table & Chairs
+  * Cupboard(s)
+  * Worktops
+  * Oven
+  * Dishwasher
+  * Hob
+  * Table & Chairs
  - Bonus
-  - [Minigame 'Bowl'd Over'](#Minigames)
+  * [Minigame 'Bowl'd Over'](#Minigames)
 
 ### Lounge
  - Trophy
-  - Block human's view of TV to make him mad
+  * Block human's view of TV to make him mad
  - Items
-  - TV
-  - Sofa(s)
-  - Rug
-  - Coffee Table
-  - Plant(s)
+  * TV
+  * Sofa(s)
+  * Rug
+  * Coffee Table
+  * Plant(s)
  - Bonus
-  - Magazine on table with riddle
+  * [Magazine on table with riddle](#Riddle)
 
 ### Dining Room
  - Trophy
-  - Steal human's food
+  * Steal human's food
  - Items
-  - Dining Table & Chairs
-  - Plate of food
-  - Sideboard
+  * Dining Table & Chairs
+  * Plate of food
+  * Sideboard
  - Bonus
-  - Speak to Human's guest for riddle
+  * [Speak to Human's guest for riddle](#Riddle)
 
 ### Conservatory
  - Trophy
-  - Spill litter tray
+  * Spill litter tray
  - Items
-  - Sofa(s)
-  - Litter Tray
-  - Plant(s)
+  * Sofa(s)
+  * Litter Tray
+  * Plant(s)
  - Bonus
-  - Sunbathing Caterpillar with riddle
+  * [Sunbathing Caterpillar with riddle](#Riddle)
 
 ## Garden
  - Trophy
-  - Catch a bird
+  * Catch a bird
  - Items
-  - Football
-  - Baseball Bat
-  - Hosepipe
-  - Bench
-  - Human Child
+  * Football
+  * Baseball Bat
+  * Hosepipe
+  * Bench
+  * Human Child
  - Bonus
-  - [Minigame 'Pet Hate'](#Minigame)
+  * [Minigame 'Pet Hate'](#Minigame)
 
 
 # Bonus

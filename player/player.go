@@ -55,6 +55,10 @@ type player struct {
 	animationFrame int
 	// animationCounter is the number of seconds since the animation frame changed
 	animationCounter float64
+	// currentZone is the activation zone the player currently resides in.  This
+	// allows us to avoid calling an acitvation function more than once.  This is
+	// a blank string when the player is not in a zone.
+	currentZone string
 }
 
 // bounds returns the current bounding box of the player
@@ -232,6 +236,29 @@ func Draw(target pixel.Target) {
 	// playerShift is how much to shift the player by so it sits in the middle of the window
 	playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
 	spritepic.sprite.Draw(target, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
+}
+
+// GetActivationZoneChange checks if the player is in a zone different to the
+// last time it checked.  If the zone is the same, or it is not in a zone, this
+// function will return a blank string, otherwise it returns the name of the
+// zone
+func GetActivationZoneChange(zones map[pixel.Rect]string) string {
+	// Loop through each zone
+	for r, f := range zones {
+		// Check if we collide with the zone
+		if util.RectCollides(r, p.bounds()) {
+			// Check if we've already returned we're in that zone
+			if f == p.currentZone {
+				// Same zone as last check, do not activate again
+				return ""
+			}
+
+			// New zone
+			return f
+		}
+	}
+	// No zone matched, return blank string
+	return ""
 }
 
 // GetPos returns the current player position.

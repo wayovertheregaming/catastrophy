@@ -4,6 +4,7 @@ import (
 	"math"
 
 	"github.com/faiface/pixel"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -229,7 +230,9 @@ func GetInventory() []string {
 
 // Draw draws the player to the target
 func Draw(target pixel.Target) {
-
+	spritepic := stateFrameToSprites(p.animationState, p.animationFrame)
+	// Draw to the centre of the window
+	spritepic.sprite.Draw(target, pixel.IM.Moved(consts.WinCentre))
 }
 
 // GetPos returns the current player position.

@@ -5,6 +5,11 @@ import (
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
+const (
+	// frameRate is the number of seconds each animation frame is displayed for
+	frameRate = 0.5
+)
+
 // These are the images for each frame of animation
 // They map the file name to the location on the image file
 var (

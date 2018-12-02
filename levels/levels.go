@@ -205,6 +205,7 @@ func loadActivationZones(path string, levelBounds pixel.Rect) *map[pixel.Rect]st
 
 		funcName := row[4]
 
+		// Get the zone rectangle, shift it by the centre position of the levelBounds
 		zoneRect := pixel.R(x1, y1, x2, y2).Moved(pixel.ZV.Sub(levelBounds.Center()))
 
 		retMap[zoneRect] = funcName

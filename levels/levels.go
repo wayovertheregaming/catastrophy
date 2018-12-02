@@ -22,7 +22,7 @@ import (
 type Level struct {
 	name       string
 	updateFunc func(float64, *pixelgl.Window)
-	drawFunc   func(pixel.Target)
+	drawFunc   func()
 	initFunc   func()
 	// displayPlayer determines whether the level needs the player displayed
 	displayPlayer bool
@@ -81,7 +81,7 @@ func (l *Level) Name() string {
 type Menu struct {
 	name       string
 	updateFunc func(float64, *pixelgl.Window)
-	drawFunc   func(pixel.Target)
+	drawFunc   func()
 	initFunc   func()
 }
 

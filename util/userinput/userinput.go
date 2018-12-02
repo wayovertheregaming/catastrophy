@@ -17,6 +17,8 @@ var (
 	isActive bool
 	typed    string
 
+	// userInp allows us to block return when another part of code requests input
+	// But still run updates to screen
 	userInp = make(chan string, 1)
 
 	// backgroundBounds is the rect that represents the background that users type
@@ -71,8 +73,9 @@ func Update(win *pixelgl.Window) {
 		userInp <- typed
 	}
 
-	// Check for backspace
+	// Check for backspace, also that the string length is above zero
 	if win.JustPressed(pixelgl.KeyBackspace) && len(typed) > 0 {
+		// Remove last character from the typed string
 		typed = typed[:len(typed)-1]
 	}
 
@@ -92,6 +95,8 @@ func Draw() {
 	consts.ImdLayer.Rectangle(0)
 
 	inpText.Clear()
+	// Print to scree the typed value followed by an underscore.  This is
+	// indicate the user should type
 	fmt.Fprintf(inpText, "%s_", typed)
 	inpText.Draw(consts.TextLayer, pixel.IM.Scaled(inpText.Orig, 7))
 }

@@ -142,7 +142,7 @@ func AnimateWalk() {
 func WalkUp(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
 	p.direction = 0
-
+	p.pos.Y += dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Add(pixel.V(0, dt*velocity))
@@ -163,7 +163,7 @@ func WalkUp(dt float64, collisionables []pixel.Rect) {
 func WalkDown(dt float64, collisionables []pixel.Rect) {
 	AnimateWalk()
 	p.direction = math.Pi
-
+	p.pos.Y -= dt * velocity
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Sub(pixel.V(0, dt*velocity))

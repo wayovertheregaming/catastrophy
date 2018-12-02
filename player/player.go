@@ -110,6 +110,10 @@ func (p *player) update(dt float64) {
 	}
 }
 
+func (p *player) setZone(zoneName string) {
+	p.currentZone = zoneName
+}
+
 func init() {
 	p = player{
 		animationState:   animationStateIdle,
@@ -254,10 +258,12 @@ func GetActivationZoneChange(zones map[pixel.Rect]string) string {
 			}
 
 			// New zone
+			p.setZone(f)
 			return f
 		}
 	}
 	// No zone matched, return blank string
+	p.setZone("")
 	return ""
 }
 

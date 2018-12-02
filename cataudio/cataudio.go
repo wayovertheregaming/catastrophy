@@ -29,7 +29,24 @@ var (
 
 	// allAudioFiles holds all playable audio files
 	// TODO(populate with filenames and loop counts as they are produced)
-	allAudioFiles = map[string]*audio{}
+	allAudioFiles = map[string]*audio{
+		"Menu.mp3": &audio{loops: -1},
+		"PlayingInGarden.mp3": &audio{loops: -1},
+		"PlayingInHouse.mp3": &audio{loops: -1},
+		"ShadowRealm.mp3": &audio{loops: -1},
+		"BirdsChirping.mp3": &audio{loops: 0},
+		"CatDrinking.mp3": &audio{loops: 0},
+		"CatPeeing.mp3": &audio{loops: 0},
+		"CatPoop.mp3": &audio{loops: 0},
+		"CatWalking.mp3": &audio{loops: 0},
+		"DoorClosed.mp3": &audio{loops: 0},
+		"DoorOpen.mp3": &audio{loops: 0},
+		"Excited.mp3": &audio{loops: 0},
+		"Snoring.mp3": &audio{loops: 0},
+		"TvNoise.mp3": &audio{loops: 0},
+		"TvStatic.mp3": &audio{loops: 0}
+		"WhistlingFall.mp3": &audio{loops: 0},
+	}
 )
 
 type audio struct {

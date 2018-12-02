@@ -47,6 +47,10 @@ type player struct {
 	inventory []string
 	hunger    float64
 	bladder   float64
+	// animationFrame is the index of the frame
+	animationFrame int
+	// animationCounter is the number of seconds since the animation frame changed
+	animationCounter float64
 }
 
 // bounds returns the current bounding box of the player
@@ -69,12 +73,14 @@ func (p *player) nextBounds(v pixel.Vec) pixel.Rect {
 
 func init() {
 	p = player{
-		animationState: animationStateIdle,
-		pos:            pixel.ZV,
-		direction:      0,
-		inventory:      []string{},
-		hunger:         100,
-		bladder:        0,
+		animationState:   animationStateIdle,
+		pos:              pixel.ZV,
+		direction:        0,
+		inventory:        []string{},
+		hunger:           100,
+		bladder:          0,
+		animationFrame:   0,
+		animationCounter: 0,
 	}
 }
 

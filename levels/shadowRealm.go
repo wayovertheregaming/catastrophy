@@ -25,6 +25,7 @@ var (
 		drawFunc:      drawShadow,
 		initFunc:      initShadow,
 		displayPlayer: true,
+		musicFile:     "ShadowRealm.mp3",
 	}
 
 	shadowBackgroundSprite *pixel.Sprite

@@ -25,6 +25,7 @@ var (
 		drawFunc:      drawFirst,
 		initFunc:      initFirst,
 		displayPlayer: true,
+		musicFile:     "PlayingInHouse.mp3",
 	}
 
 	firstBackgroundSprite *pixel.Sprite

@@ -18,7 +18,7 @@ const (
 var (
 	// ShadowRealm is the ground level
 	ShadowRealm = &Level{
-		name:          "Shadow Realm",
+		name:          consts.LevelNameShadow,
 		updateFunc:    updateShadow,
 		drawFunc:      drawShadow,
 		initFunc:      initShadow,

@@ -22,7 +22,7 @@ const (
 var (
 	// Ground is the ground level
 	Ground = &Level{
-		name:          "Ground",
+		name:          consts.LevelNameGround,
 		updateFunc:    updateGround,
 		drawFunc:      drawGround,
 		initFunc:      initGround,

@@ -20,7 +20,7 @@ const (
 var (
 	// First is the first floor level
 	First = &Level{
-		name:          "First",
+		name:          consts.LevelNameFirst,
 		updateFunc:    updateFirst,
 		drawFunc:      drawFirst,
 		initFunc:      initFirst,

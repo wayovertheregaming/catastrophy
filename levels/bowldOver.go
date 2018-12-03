@@ -19,7 +19,7 @@ const (
 var (
 	// BowldOver is a minigame
 	BowldOver = &Level{
-		name:          "Bowl'd Over",
+		name:          consts.LevelNameBowldOver,
 		updateFunc:    updateBowldOver,
 		drawFunc:      drawBowldOver,
 		initFunc:      initBowldOver,

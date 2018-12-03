@@ -6,6 +6,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util"
@@ -99,5 +100,8 @@ func drawGround(target pixel.Target) {
 // stairs is called by an activation zone, it will take the player to the first
 // floor
 func stairs() {
+	catlog.Debug("Going upstairs")
+
+	dialogue.Start(dialogue.GoingUpstairs)
 	gamestate.SetLevel(First)
 }

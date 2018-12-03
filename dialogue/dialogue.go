@@ -5,7 +5,6 @@ import (
 	"image/color"
 
 	"github.com/faiface/pixel"
-	"github.com/faiface/pixel/imdraw"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/faiface/pixel/text"
 	"github.com/wayovertheregaming/catastrophy/catlog"
@@ -38,9 +37,9 @@ var (
 
 	dialoguePanelSize = pixel.V(dialogueWidth, dialogueHeight)
 
-	textColour                            = color.RGBA{0x00, 0x00, 0xf1, 0x00}
-	dialoguePanelBackgroundColour         = color.RGBA{0xf3, 0xff, 0xf1, 0x00}
-	dialoguePanelBorderColour             = color.RGBA{0x00, 0x00, 0xf1, 0x00}
+	textColour                            = color.RGBA{0x00, 0x00, 0xf1, 0xff}
+	dialoguePanelBackgroundColour         = color.RGBA{0xf3, 0xff, 0xf1, 0xff}
+	dialoguePanelBorderColour             = color.RGBA{0x00, 0x00, 0xf1, 0xff}
 	borderThickness               float64 = 2
 
 	// atlas contains the font to writing text to screen
@@ -67,7 +66,7 @@ type Dialogue struct {
 	Text     string
 }
 
-func (d *Dialogue) draw(target pixel.Target) {
+func (d *Dialogue) draw() {
 	// Draw the containing box
 	var posMin pixel.Vec
 
@@ -77,19 +76,17 @@ func (d *Dialogue) draw(target pixel.Target) {
 		posMin = leftPos
 	}
 
-	imd := imdraw.New(nil)
 	// Background
-	imd.Color = dialoguePanelBackgroundColour
-	imd.Push(posMin, posMin.Add(dialoguePanelSize))
-	imd.Rectangle(0)
+	consts.ImdLayer.Color = dialoguePanelBackgroundColour
+	consts.ImdLayer.Push(posMin, posMin.Add(dialoguePanelSize))
+	consts.ImdLayer.Rectangle(0)
 	// Border
-	imd.Color = dialoguePanelBorderColour
-	imd.Push(
+	consts.ImdLayer.Color = dialoguePanelBorderColour
+	consts.ImdLayer.Push(
 		posMin.Sub(pixel.V(borderThickness, borderThickness)),
 		posMin.Add(dialoguePanelSize).Add(pixel.V(borderThickness, borderThickness)),
 	)
-	imd.Rectangle(borderThickness)
-	imd.Draw(target)
+	consts.ImdLayer.Rectangle(borderThickness)
 
 	// Write text to screen
 	// TODO(low priority - type this out letter by letter)
@@ -97,7 +94,7 @@ func (d *Dialogue) draw(target pixel.Target) {
 	text.Color = textColour
 	fmt.Fprintf(text, "%s \n\n Press space to continue", d.Text)
 
-	text.Draw(target, pixel.IM.Scaled(text.Orig, 2))
+	text.Draw(consts.TextLayer, pixel.IM.Scaled(text.Orig, 2))
 }
 
 // Start will play a dialogue.  This will pause the game until the dialogue ends
@@ -110,7 +107,7 @@ func Start(dialogue []Dialogue) {
 }
 
 // Draw will draw the current panel
-func Draw(target pixel.Target) {
+func Draw() {
 	// We set the panel to a negative number when not displaying anything
 	if dialoguePanel < 0 {
 		return
@@ -127,7 +124,7 @@ func Draw(target pixel.Target) {
 		return
 	}
 
-	currentDialogue[dialoguePanel].draw(target)
+	currentDialogue[dialoguePanel].draw()
 }
 
 // Update will display the current dialogue if one exists

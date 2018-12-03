@@ -58,6 +58,9 @@ var (
 	// efficient drawing
 	DecorationsLayer *pixel.Batch
 
+	// PlayerLayer lets us put the player above decorations
+	PlayerLayer *pixelgl.Canvas
+
 	// SleepFor is how long the player sleeps when transitioning to/from shadow
 	// realm
 	SleepFor = time.Second * 2

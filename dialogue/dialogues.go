@@ -125,4 +125,40 @@ var (
 			Text:     "By sleeping",
 		},
 	}
+
+	// FirstSpiderRiddle is the riddle dialogue the spider gives on the first floor
+	FirstSpiderRiddle = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     "Hi",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "Hello",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     "I'm a spider",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "I know, it says on the panel",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     "The what?",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "Nevermind, what do you want?",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     "I have a riddle for you",
+		},
+	}
 )

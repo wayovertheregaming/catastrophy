@@ -4,6 +4,7 @@ package consts
 
 import (
 	"github.com/faiface/pixel"
+	"github.com/faiface/pixel/imdraw"
 	"github.com/faiface/pixel/pixelgl"
 )
 
@@ -28,6 +29,14 @@ var (
 	// Note, not tested, just placeholder sizes
 	PlayerSize = pixel.V(PlayerSide, PlayerSide)
 
+	// ImdLayer is used as the foreground drawing object.  This is drawn to the
+	// window late in the draw process so will be above most things
+	ImdLayer = imdraw.New(nil)
+
+	// TextLayer is used as a foreground text drawing layer.  This is drawn to the
+	// window late in the draw process so will be above most things
+	TextLayer *pixelgl.Canvas
+  
 	// GameView is a batch drawing element for all game view things. It is set at
 	// level init
 	GameView *pixelgl.Canvas

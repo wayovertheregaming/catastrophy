@@ -24,6 +24,8 @@ type riddle struct {
 }
 
 func init() {
+	catlog.Debug("Doing riddles init")
+
 	catlog.Debugf("Loading riddles CSV: %s", path)
 
 	// Get the CSV file from assets

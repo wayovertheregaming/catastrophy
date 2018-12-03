@@ -23,6 +23,8 @@ type gameState struct {
 }
 
 func init() {
+	catlog.Debug("Doing gamestate init")
+
 	gs = gameState{
 		runState: RunStatePaused,
 		// level is set in `main.go`

@@ -12,6 +12,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/levels"
 	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/util/userinput"
 )
 
 const (
@@ -19,7 +20,7 @@ const (
 )
 
 var (
-	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0x00}
+	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0xff}
 )
 
 func run() {
@@ -36,6 +37,8 @@ func run() {
 		catlog.Fatalf("Could not create window: %v", err)
 	}
 
+	consts.TextLayer = pixelgl.NewCanvas(consts.WinBounds)
+
 	// Set the initial level
 	gamestate.SetLevel(levels.Ground)
 
@@ -43,6 +46,8 @@ func run() {
 
 	for !win.Closed() {
 		win.Clear(backgroundColour)
+		consts.TextLayer.Clear(color.Transparent)
+		consts.ImdLayer.Clear()
 		consts.GameView.Clear(color.Transparent)
 
 		dt := time.Since(last).Seconds()
@@ -53,10 +58,16 @@ func run() {
 
 		dialogue.Update(dt, win)
 
+		userinput.Update(win)
+		userinput.Draw()
+
 		// Shift the camera for the background
 		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
 		consts.GameView.Draw(win, cam)
 
+		// Draw ImDraw shape layer
+		consts.ImdLayer.Draw(win)
+		consts.TextLayer.Draw(win, pixel.IM.Moved(consts.WinBounds.Center()))
 		// Draw dialogue on top of other layers
 		dialogue.Draw(win)
 		win.Update()

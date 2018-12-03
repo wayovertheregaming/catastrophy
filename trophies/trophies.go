@@ -24,21 +24,21 @@ var (
 var (
 	// AllTrophies are all the tropies in the game
 	AllTrophies = []*Trophy{
-		AchToilet,
+		// AchToilet,
 		RidSpider,
-		AchPillow,
+		// AchPillow,
 		RidWife,
-		ItemShoe,
+		// ItemShoe,
 		RidSuitcase,
-		AchFired,
+		// AchFired,
 		RidPC,
 		ItemTuna,
 		AchTV,
-		RidMag,
+		// RidMag,
 		ItemFood,
-		RidGuest,
-		AchLitter,
-		RidCata,
+		// RidGuest,
+		// AchLitter,
+		// RidCata,
 	}
 
 	// HowManyUnsacrificed is how many trohpies are left to be sacrificed

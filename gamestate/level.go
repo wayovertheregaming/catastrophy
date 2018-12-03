@@ -9,7 +9,7 @@ import (
 type Leveller interface {
 	Update(float64, *pixelgl.Window)
 	Init()
-	Draw(pixel.Target)
+	Draw()
 	Name() string
 	Bounds() pixel.Rect
 }

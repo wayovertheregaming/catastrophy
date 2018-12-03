@@ -1,7 +1,6 @@
 package gamestate
 
 import (
-	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 )
@@ -74,6 +73,6 @@ func Update(dt float64, win *pixelgl.Window) {
 }
 
 // Draw will call draw on the currently active leveller
-func Draw(target pixel.Target) {
-	gs.level.Draw(target)
+func Draw() {
+	gs.level.Draw()
 }

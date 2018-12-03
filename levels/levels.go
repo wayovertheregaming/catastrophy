@@ -22,7 +22,7 @@ import (
 type Level struct {
 	name       string
 	updateFunc func(float64, *pixelgl.Window)
-	drawFunc   func(pixel.Target)
+	drawFunc   func()
 	initFunc   func()
 	// displayPlayer determines whether the level needs the player displayed
 	displayPlayer bool
@@ -55,16 +55,19 @@ func (l *Level) Update(dt float64, win *pixelgl.Window) {
 func (l *Level) Init() {
 	catlog.Debugf("Initialising %s", l.Name())
 
+	// Set the game view canvas according to the level bounds
+	consts.GameView = pixelgl.NewCanvas(l.Bounds())
+
 	l.initFunc()
 	gamestate.UnPauseGame()
 }
 
-// Draw will draw the level and contents to the target
-func (l *Level) Draw(target pixel.Target) {
-	l.drawFunc(target)
+// Draw will draw the level and contents to the consts gameView canvas
+func (l *Level) Draw() {
+	l.drawFunc()
 
 	if l.displayPlayer {
-		player.Draw(target)
+		player.Draw()
 	}
 }
 
@@ -78,7 +81,7 @@ func (l *Level) Name() string {
 type Menu struct {
 	name       string
 	updateFunc func(float64, *pixelgl.Window)
-	drawFunc   func(pixel.Target)
+	drawFunc   func()
 	initFunc   func()
 }
 
@@ -96,8 +99,8 @@ func (m *Menu) Init() {
 }
 
 // Draw will draw the menu to the target
-func (m *Menu) Draw(target pixel.Target) {
-	m.drawFunc(target)
+func (m *Menu) Draw() {
+	m.drawFunc()
 }
 
 // Name will return the name of the level

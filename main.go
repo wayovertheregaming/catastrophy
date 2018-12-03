@@ -59,6 +59,7 @@ func run() {
 		gamestate.Draw()
 
 		dialogue.Update(dt, win)
+		dialogue.Draw()
 
 		userinput.Update(win)
 		userinput.Draw()
@@ -71,7 +72,6 @@ func run() {
 		consts.ImdLayer.Draw(win)
 		consts.TextLayer.Draw(win, pixel.IM.Moved(consts.WinBounds.Center()))
 		// Draw dialogue on top of other layers
-		dialogue.Draw(win)
 		win.Update()
 	}
 }

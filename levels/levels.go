@@ -59,7 +59,6 @@ func (l *Level) Init() {
 	consts.GameView = pixelgl.NewCanvas(l.Bounds())
 
 	l.initFunc()
-	gamestate.UnPauseGame()
 }
 
 // Draw will draw the level and contents to the consts gameView canvas

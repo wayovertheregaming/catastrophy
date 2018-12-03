@@ -7,6 +7,8 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
+	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
@@ -41,7 +43,9 @@ var (
 	groundZones *map[pixel.Rect]string
 	// groundZoneFuncs is a map of function names (as they appear in the CSV) and
 	// the function as defined in this file
-	groundZoneFuncs = map[string]func(){}
+	groundZoneFuncs = map[string]func(){
+		"stairs": stairs,
+	}
 )
 
 func init() {
@@ -92,4 +96,13 @@ func updateGround(dt float64, win *pixelgl.Window) {
 
 func drawGround() {
 	groundBackgroundSprite.Draw(consts.GameView, pixel.IM.Moved(groundImageDimensions.Center()))
+}
+
+// stairs is called by an activation zone, it will take the player to the first
+// floor
+func stairs() {
+	catlog.Debug("Going upstairs")
+
+	dialogue.Start(dialogue.GoingUpstairs)
+	gamestate.SetLevel(First)
 }

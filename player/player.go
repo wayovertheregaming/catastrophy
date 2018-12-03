@@ -21,6 +21,8 @@ const (
 	hungerRate      float64 = 2
 	maxBladder      float64 = 100
 	bladderFillRate float64 = 2
+
+	scaledFactor float64 = 4
 )
 
 // These consts hold different animation states
@@ -66,10 +68,7 @@ type player struct {
 // bounds returns the current bounding box of the player
 // This is the pos plus the player size
 func (p *player) bounds() pixel.Rect {
-	return pixel.Rect{
-		Min: p.pos,
-		Max: p.pos.Add(consts.PlayerSize),
-	}
+	return p.nextBounds(p.pos)
 }
 
 // nextBounds returns the next bounding box of the player
@@ -263,7 +262,10 @@ func Draw() {
 	// Draw to the centre of the window
 	// playerShift is how much to shift the player by so it sits in the middle of the window
 	playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
-	spritepic.Sprite.Draw(consts.GameView, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
+	spritepic.Sprite.Draw(
+		consts.GameView,
+		pixel.IM.Scaled(pixel.ZV, consts.PlayerScale).Moved(playerShift).Rotated(playerShift, p.direction),
+	)
 }
 
 // GetActivationZoneChange checks if the player is in a zone different to the

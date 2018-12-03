@@ -49,16 +49,16 @@ func Draw() {
 
 	// The offset for the decorations is the same as the map
 	levelCentre := gamestate.GetLevel().Bounds().Center()
-	// Offset is moving:
-	//  - up-right to the centre of the window
-	//  - down-left the distance the player has moved
-	//  - down-left the centre of this level
-	//  - up-right the centre of this sprite (this one done in for loop)
-	cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()).Sub(levelCentre))
 
 	// Loop through each sprite for this level
 	for sprite, pos := range allSprites[currentLevel] {
+		// Offset is moving:
+		//  - up-right to the centre of the window
+		//  - down-left the distance the player has moved
+		//  - down-left the centre of this level
+		//  - up-right the centre of this sprite
 		spriteCentre := sprite.Frame().Size().Scaled(0.5)
+		cam := pixel.IM.Scaled(spriteCentre, 3).Moved(consts.WinBounds.Center().Sub(player.GetPos()).Sub(levelCentre))
 		sprite.Draw(consts.DecorationsLayer, cam.Moved(pos.Add(spriteCentre)))
 	}
 }

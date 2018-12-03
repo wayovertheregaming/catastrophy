@@ -263,7 +263,10 @@ func Draw() {
 	// Draw to the centre of the window
 	// playerShift is how much to shift the player by so it sits in the middle of the window
 	playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
-	spritepic.Sprite.Draw(consts.GameView, pixel.IM.Moved(playerShift).Rotated(playerShift, p.direction))
+	spritepic.Sprite.Draw(
+		consts.GameView,
+		pixel.IM.Scaled(playerShift, 2).Moved(playerShift).Rotated(playerShift, p.direction)
+	)
 }
 
 // GetActivationZoneChange checks if the player is in a zone different to the

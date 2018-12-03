@@ -122,7 +122,7 @@ func init() {
 		animationState:   animationStateIdle,
 		pos:              pixel.ZV,
 		direction:        0,
-		inventory:        []string{},
+		inventory:        []*trophies.Trophy{},
 		hunger:           100,
 		bladder:          0,
 		animationFrame:   0,
@@ -300,13 +300,13 @@ func SetRotation(left, right, up, down bool) {
 }
 
 // GetInventory will return the players current inventory
-func GetInventory() []string {
+func GetInventory() []*trophies.Trophy {
 	return p.inventory
 }
 
 // SacrificeAll removes all items
 func SacrificeAll() {
-	p.inventory = []string{}
+	p.inventory = []*trophies.Trophy{}
 }
 
 // Draw draws the player to the target

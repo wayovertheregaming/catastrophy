@@ -21,7 +21,23 @@ var (
 )
 var (
 	// AllTrophies are all the tropies in the game
-	AllTrophies = []*Trophy{}
+	AllTrophies = []*Trophy{
+		AchToilet,
+		RidSpider,
+		AchPillow,
+		RidWife,
+		ItemShoe,
+		RidSuitcase,
+		AchFired,
+		RidPC,
+		ItemTuna,
+		AchTV,
+		RidMag,
+		ItemFood,
+		RidGuest,
+		AchLitter,
+		RidCata,
+	}
 
 	// HowManyUnsacrificed is how many trohpies are left to be sacrificed
 	HowManyUnsacrificed = len(AllTrophies)

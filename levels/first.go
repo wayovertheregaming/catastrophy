@@ -2,13 +2,18 @@ package levels
 
 import (
 	"image"
+	"strings"
 
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/riddles"
+	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
+	"github.com/wayovertheregaming/catastrophy/util/userinput"
 )
 
 const (
@@ -43,6 +48,8 @@ var (
 	// firstZoneFuncs is a map of function names (as they appear in the CSV) and
 	// the function as defined in this file
 	firstZoneFuncs = map[string]func(){}
+
+	spokenToSpider = false
 )
 
 func init() {
@@ -93,4 +100,36 @@ func updateFirst(dt float64, win *pixelgl.Window) {
 
 func drawFirst() {
 	firstBackgroundSprite.Draw(consts.GameView, pixel.IM.Moved(firstImageDimensions.Center()))
+}
+
+func speakToSpider() {
+	if spokenToSpider {
+		return
+	}
+
+	<-dialogue.Start(dialogue.FirstSpiderRiddle)
+	r, a := riddles.GetRiddle()
+
+	dialogue.Start([]dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     r,
+		},
+	})
+
+	userAns := userinput.GetUserInput()
+	if strings.ToLower(userAns) == strings.ToLower(a) {
+		// Answer is correct
+		spokenToSpider = true
+		player.GiveItem(trophies.RidSpider)
+	}
+
+	dialogue.Start([]dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     "Sorry, wrong.\nTry again later",
+		},
+	})
 }

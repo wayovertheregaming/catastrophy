@@ -33,10 +33,10 @@ func Sleep() {
 			player.SetPos(beforeSleepPos)
 		} else {
 			// Player is awake, send to shadow realm
-			gamestate.SetLevel(levels.ShadowRealm)
-
 			beforeSleepPos = player.GetPos()
 			beforeSleepLevel = gamestate.GetLevel()
+
+			gamestate.SetLevel(levels.ShadowRealm)
 		}
 	}()
 }

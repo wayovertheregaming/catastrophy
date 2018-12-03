@@ -301,6 +301,7 @@ func GetPos() pixel.Vec {
 // SetPos will set the players position.  This should be used when initiating a
 // level so the player is at the start position
 func SetPos(v pixel.Vec) {
+	catlog.Debugf("Setting player position to %v", v)
 	p.pos = v
 }
 

@@ -47,7 +47,9 @@ var (
 	firstZones *map[pixel.Rect]string
 	// firstZoneFuncs is a map of function names (as they appear in the CSV) and
 	// the function as defined in this file
-	firstZoneFuncs = map[string]func(){}
+	firstZoneFuncs = map[string]func(){
+		"spider": speakToSpider,
+	}
 
 	spokenToSpider = false
 )
@@ -107,29 +109,34 @@ func speakToSpider() {
 		return
 	}
 
-	<-dialogue.Start(dialogue.FirstSpiderRiddle)
-	r, a := riddles.GetRiddle()
+	go func() {
+		<-dialogue.Start(dialogue.FirstSpiderRiddle)
+		r, a := riddles.GetRiddle()
 
-	dialogue.Start([]dialogue.Dialogue{
-		dialogue.Dialogue{
-			IsPlayer: false,
-			Name:     "Spider",
-			Text:     r,
-		},
-	})
+		dialogue.Start([]dialogue.Dialogue{
+			dialogue.Dialogue{
+				IsPlayer: false,
+				Name:     "Spider",
+				Text:     r,
+			},
+		})
 
-	userAns := userinput.GetUserInput()
-	if strings.ToLower(userAns) == strings.ToLower(a) {
-		// Answer is correct
-		spokenToSpider = true
-		player.GiveItem(trophies.RidSpider)
-	}
+		userAns := strings.TrimSpace(userinput.GetUserInput())
+		catlog.Debugf("User: %s, actual: %s", strings.ToLower(userAns), strings.ToLower(a))
+		if strings.ToLower(userAns) == strings.ToLower(a) {
+			// Answer is correct
+			spokenToSpider = true
+			player.GiveItem(trophies.RidSpider)
 
-	dialogue.Start([]dialogue.Dialogue{
-		dialogue.Dialogue{
-			IsPlayer: false,
-			Name:     "Spider",
-			Text:     "Sorry, wrong.\nTry again later",
-		},
-	})
+			return
+		}
+
+		dialogue.Start([]dialogue.Dialogue{
+			dialogue.Dialogue{
+				IsPlayer: false,
+				Name:     "Spider",
+				Text:     "Sorry, wrong.\nTry again later",
+			},
+		})
+	}()
 }

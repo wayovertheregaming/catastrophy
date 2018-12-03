@@ -95,7 +95,7 @@ func Draw() {
 	consts.ImdLayer.Rectangle(0)
 
 	inpText.Clear()
-	// Print to scree the typed value followed by an underscore.  This is
+	// Print to screen the typed value followed by an underscore.  This is
 	// indicate the user should type
 	fmt.Fprintf(inpText, "%s_", typed)
 	inpText.Draw(consts.TextLayer, pixel.IM.Scaled(inpText.Orig, 7))

@@ -158,7 +158,7 @@ func WalkUp(dt float64, collisionables []pixel.Rect) {
 	}
 
 	AnimateWalk()
-	p.direction = 0
+
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Add(pixel.V(0, dt*velocity))
@@ -183,7 +183,7 @@ func WalkDown(dt float64, collisionables []pixel.Rect) {
 	}
 
 	AnimateWalk()
-	p.direction = math.Pi
+
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Sub(pixel.V(0, dt*velocity))
@@ -208,7 +208,7 @@ func WalkLeft(dt float64, collisionables []pixel.Rect) {
 	}
 
 	AnimateWalk()
-	p.direction = math.Pi / 2
+
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Sub(pixel.V(dt*velocity, 0))
@@ -233,7 +233,7 @@ func WalkRight(dt float64, collisionables []pixel.Rect) {
 	}
 
 	AnimateWalk()
-	p.direction = (math.Pi * 3) / 2
+
 	// nextPos is the potenial next position.  Use this to calculate if the player
 	// will collide
 	nextPos := p.pos.Add(pixel.V(dt*velocity, 0))
@@ -248,6 +248,54 @@ func WalkRight(dt float64, collisionables []pixel.Rect) {
 
 	// No collisions, move the player
 	p.pos = nextPos
+}
+
+// SetRotation will ensure the player is pointing in the right direction
+func SetRotation(left, right, up, down bool) {
+	if left {
+		if up {
+			// Going up left
+			p.direction = math.Pi / 4
+			return
+		}
+
+		if down {
+			// Going down left
+			p.direction = (math.Pi * 3) / 4
+			return
+		}
+
+		// Going left
+		p.direction = math.Pi / 2
+		return
+	}
+
+	if right {
+		if up {
+			// Going up right
+			p.direction = (math.Pi * 7) / 4
+			return
+		}
+
+		if down {
+			// Going down right
+			p.direction = (math.Pi * 5) / 4
+			return
+		}
+
+		// Going right
+		p.direction = (math.Pi * 3) / 2
+		return
+	}
+
+	if up {
+		p.direction = 0
+		return
+	}
+
+	if down {
+		p.direction = math.Pi
+	}
 }
 
 // GetInventory will return the players current inventory

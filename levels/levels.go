@@ -158,23 +158,30 @@ func mustParseFloat64(s string) float64 {
 // Returns if the player is moving - can be used to change animation
 func movePlayer(win *pixelgl.Window, dt float64, collisions []pixel.Rect) bool {
 	isMoving := false
+	var up, down, left, right bool
 
 	if win.Pressed(pixelgl.KeyW) || win.Pressed(pixelgl.KeyUp) {
 		player.WalkUp(dt, collisions)
+		up = true
 		isMoving = true
 	}
 	if win.Pressed(pixelgl.KeyS) || win.Pressed(pixelgl.KeyDown) {
 		player.WalkDown(dt, collisions)
+		down = true
 		isMoving = true
 	}
 	if win.Pressed(pixelgl.KeyA) || win.Pressed(pixelgl.KeyLeft) {
 		player.WalkLeft(dt, collisions)
+		left = true
 		isMoving = true
 	}
 	if win.Pressed(pixelgl.KeyD) || win.Pressed(pixelgl.KeyRight) {
 		player.WalkRight(dt, collisions)
+		right = true
 		isMoving = true
 	}
+
+	player.SetRotation(left, right, up, down)
 
 	return isMoving
 }

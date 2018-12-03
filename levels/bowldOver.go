@@ -6,6 +6,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
@@ -32,7 +33,7 @@ var (
 	// to collide: i.e. unpassable
 	bowldOverCollisions      []pixel.Rect
 	bowldOverImageDimensions pixel.Rect
-	bowldOverStartPos        = pixel.V(0, 0)
+	bowldOverStartPos        = pixel.V(0, 40)
 )
 
 func init() {
@@ -69,6 +70,6 @@ func updateBowldOver(dt float64, win *pixelgl.Window) {
 	}
 }
 
-func drawBowldOver(target pixel.Target) {
-	bowldOverBackgroundSprite.Draw(target, pixel.IM.Moved(bowldOverImageDimensions.Center()))
+func drawBowldOver() {
+	bowldOverBackgroundSprite.Draw(consts.GameView, pixel.IM.Moved(bowldOverImageDimensions.Center()))
 }

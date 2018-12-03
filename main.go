@@ -37,11 +37,6 @@ func run() {
 		catlog.Fatalf("Could not create window: %v", err)
 	}
 
-	// gameView is a batch drawing element for all game view things
-	// this restricts the size of the level to 3000x3000
-	// TODO(too much work with time restrictions to make this dynamic, but can be
-	// done)
-	gameView := pixelgl.NewCanvas(pixel.R(0, 0, 3000, 3000))
 	consts.TextLayer = pixelgl.NewCanvas(consts.WinBounds)
 
 	// Set the initial level
@@ -51,15 +46,15 @@ func run() {
 
 	for !win.Closed() {
 		win.Clear(backgroundColour)
-		gameView.Clear(backgroundColour)
 		consts.TextLayer.Clear(color.Transparent)
 		consts.ImdLayer.Clear()
+		consts.GameView.Clear(color.Transparent)
 
 		dt := time.Since(last).Seconds()
 		last = time.Now()
 
 		gamestate.Update(dt, win)
-		gamestate.Draw(gameView)
+		gamestate.Draw()
 
 		dialogue.Update(dt, win)
 
@@ -68,7 +63,7 @@ func run() {
 
 		// Shift the camera for the background
 		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
-		gameView.Draw(win, cam)
+		consts.GameView.Draw(win, cam)
 
 		// Draw ImDraw shape layer
 		consts.ImdLayer.Draw(win)

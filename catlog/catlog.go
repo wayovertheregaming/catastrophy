@@ -1,6 +1,7 @@
 package catlog
 
 import (
+	"fmt"
 	"log"
 )
 
@@ -10,11 +11,12 @@ var (
 
 // Fatal will write a fatal line to the log, then exit the application
 func Fatal(v ...interface{}) {
-	myLog.Fatal(v...)
+	myLog.Fatalf("[FATAL ERROR] %v", v...)
 }
 
 // Fatalf will write and format a fatal line to the log, then exit the
 // application
 func Fatalf(format string, v ...interface{}) {
-	myLog.Fatalf(format, v...)
+	formatted := fmt.Sprintf(format, v...)
+	myLog.Fatalf("[FATAL ERROR] %s", formatted)
 }

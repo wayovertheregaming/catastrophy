@@ -59,7 +59,7 @@ func initShadow() {
 
 func updateShadow(dt float64, win *pixelgl.Window) {
 	// Try move the player
-	if !movePlayer(win, dt, groundFloorCollisions) {
+	if !movePlayer(win, dt, []pixel.Rect{}) {
 		// Player is not moving, update animation
 		player.AnimateIdle()
 	}

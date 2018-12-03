@@ -21,6 +21,8 @@ const (
 	hungerRate      float64 = 2
 	maxBladder      float64 = 100
 	bladderFillRate float64 = 2
+
+	scaledFactor float64 = 4
 )
 
 // These consts hold different animation states
@@ -66,10 +68,7 @@ type player struct {
 // bounds returns the current bounding box of the player
 // This is the pos plus the player size
 func (p *player) bounds() pixel.Rect {
-	return pixel.Rect{
-		Min: p.pos,
-		Max: p.pos.Add(consts.PlayerSize),
-	}
+	return p.nextBounds(p.pos)
 }
 
 // nextBounds returns the next bounding box of the player
@@ -265,7 +264,7 @@ func Draw() {
 	playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
 	spritepic.Sprite.Draw(
 		consts.GameView,
-		pixel.IM.Scaled(playerShift, 2).Moved(playerShift).Rotated(playerShift, p.direction)
+		pixel.IM.Scaled(pixel.ZV, consts.PlayerScale).Moved(playerShift).Rotated(playerShift, p.direction),
 	)
 }
 

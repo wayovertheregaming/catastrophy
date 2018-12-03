@@ -34,10 +34,13 @@ var (
 	// WinCentre is the centre of the window as a vector
 	WinCentre = pixel.V(WinWidth/2, WinHeight/2)
 
+	// PlayerScale is how much to scale the player by
+	PlayerScale float64 = 4
 	// PlayerSize is the width and height of the player, assuming the player is
 	// facing upwards
-	// Note, not tested, just placeholder sizes
 	PlayerSize = pixel.V(PlayerSide, PlayerSide)
+	// PlayerCentre is half the player size
+	PlayerCentre = PlayerSize.Scaled(0.5)
 
 	// ImdLayer is used as the foreground drawing object.  This is drawn to the
 	// window late in the draw process so will be above most things

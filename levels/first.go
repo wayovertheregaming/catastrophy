@@ -8,6 +8,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/dialogue"
+	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/riddles"
 	"github.com/wayovertheregaming/catastrophy/trophies"
@@ -24,7 +25,6 @@ var (
 	// First is the first floor level
 	First = &Level{
 		name:          consts.LevelNameFirst,
-		updateFunc:    updateFirst,
 		drawFunc:      drawFirst,
 		initFunc:      initFirst,
 		displayPlayer: true,
@@ -38,7 +38,7 @@ var (
 	// to collide: i.e. unpassable
 	firstFloorCollisions []pixel.Rect
 	firstImageDimensions pixel.Rect
-	firstFloorStartPos   = pixel.V(1300, -1400)
+	firstFloorStartPos   = pixel.V(1200, -1400)
 
 	// firstZones holds the zones and the function name to call, as read from the
 	// CSV
@@ -50,6 +50,7 @@ var (
 		"wife":     wife,
 		"suitcase": suitcase,
 		"pc":       pc,
+		"stairs":   downstairs,
 	}
 
 	spokenToSpider   = false
@@ -60,6 +61,9 @@ var (
 
 func init() {
 	catlog.Debug("Preparing first floor")
+
+	// Had to move this here due to init loop - complicated
+	First.updateFunc = updateFirst
 
 	//firstImageConfig returns dimensions of firstImagePath
 	firstImageConfig, _, err := image.DecodeConfig(util.GetReaderFromFile(firstImagePath))
@@ -206,4 +210,11 @@ func pc() {
 
 func pcPassed() {
 	spokenToPC = true
+}
+
+func downstairs() {
+	catlog.Debug("Going downstairs")
+
+	dialogue.Start(dialogue.GoingDownstairs)
+	gamestate.SetLevel(Ground)
 }

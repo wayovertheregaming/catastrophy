@@ -12,6 +12,12 @@ var (
 			Text:     "You are going upstairs",
 		},
 	}
+	GoingDownstairs = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Text:     "You are going downstairs",
+		},
+	}
 
 	// FirstVisitToShadow is the dialogue which happens when the player first
 	// visits the shadow realm

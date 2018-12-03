@@ -37,7 +37,7 @@ var (
 	// to collide: i.e. unpassable
 	groundFloorCollisions []pixel.Rect
 	groundImageDimensions pixel.Rect
-	groundFloorStartPos   = pixel.V(-1300, -1400)
+	groundFloorStartPos   = pixel.V(-1200, -1200)
 
 	// groundZones holds the zones and the function name to call, as read from the
 	// CSV

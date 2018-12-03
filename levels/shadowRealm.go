@@ -122,12 +122,15 @@ func talkToGod() {
 	go func() {
 		if firstVisit {
 			<-dialogue.Start(dialogue.FirstVisitToShadow)
+			firstVisit = false
 		}
 
 		if len(player.GetInventory()) == 0 {
 			<-dialogue.Start(dialogue.ShadowHaveNoItems)
 		} else {
 			<-dialogue.Start(dialogue.ShadowHaveItems)
+			// Remove all items - they've been sacrificed
+			player.SacrificeAll()
 		}
 
 		<-dialogue.Start(dialogue.ShadowExit)

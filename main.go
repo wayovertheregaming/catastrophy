@@ -58,9 +58,6 @@ func run() {
 		if win.JustPressed(pixelgl.KeyP) {
 			levelchanger.Sleep()
 		}
-		if win.JustPressed(pixelgl.KeyO) {
-			catlog.Debug(player.GetPos())
-		}
 
 		dt := time.Since(last).Seconds()
 		last = time.Now()

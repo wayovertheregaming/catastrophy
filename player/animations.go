@@ -34,16 +34,11 @@ var (
 )
 
 var (
-	sleepingSprites = []spritePic{}
-	idlingSprites   = []spritePic{}
-	sittingSprites  = []spritePic{}
-	walkingSprites  = []spritePic{}
+	sleepingSprites = []consts.SpritePic{}
+	idlingSprites   = []consts.SpritePic{}
+	sittingSprites  = []consts.SpritePic{}
+	walkingSprites  = []consts.SpritePic{}
 )
-
-type spritePic struct {
-	sprite *pixel.Sprite
-	pic    *pixel.Picture
-}
 
 func init() {
 	catlog.Debug("Doing animation init")
@@ -54,26 +49,26 @@ func init() {
 	walkingSprites = loadIntoVar(walking)
 }
 
-func loadIntoVar(assetList map[string]pixel.Rect) []spritePic {
-	retSlice := []spritePic{}
+func loadIntoVar(assetList map[string]pixel.Rect) []consts.SpritePic {
+	retSlice := []consts.SpritePic{}
 
 	// Get the sprites from the image name list
 	for imgPath, r := range assetList {
 		catlog.Debugf("Loading player animation sprite %s", imgPath)
 
 		s, p := util.LoadSprite(imgPath, r)
-		sp := spritePic{s, &p}
+		sp := consts.SpritePic{s, &p}
 		retSlice = append(retSlice, sp)
 	}
 
 	return retSlice
 }
 
-func stateFrameToSprites(state, frame int) spritePic {
+func stateFrameToSprites(state, frame int) consts.SpritePic {
 	return stateToSprites(state)[frame]
 }
 
-func stateToSprites(state int) []spritePic {
+func stateToSprites(state int) []consts.SpritePic {
 	switch state {
 	case animationStateSleep:
 		return sleepingSprites

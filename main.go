@@ -8,6 +8,7 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/decorations"
 	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/levels"
@@ -51,12 +52,15 @@ func run() {
 		consts.TextLayer.Clear(color.Transparent)
 		consts.ImdLayer.Clear()
 		consts.GameView.Clear(color.Transparent)
+		consts.DecorationsLayer.Clear()
 
 		dt := time.Since(last).Seconds()
 		last = time.Now()
 
 		gamestate.Update(dt, win)
 		gamestate.Draw()
+
+		decorations.Draw()
 
 		dialogue.Update(dt, win)
 		dialogue.Draw()
@@ -68,6 +72,8 @@ func run() {
 		cam := pixel.IM.Moved(consts.WinBounds.Center().Sub(player.GetPos()))
 		consts.GameView.Draw(win, cam)
 
+		// Draw the decorations to window
+		consts.DecorationsLayer.Draw(win)
 		// Draw ImDraw shape layer
 		consts.ImdLayer.Draw(win)
 		consts.TextLayer.Draw(win, pixel.IM.Moved(consts.WinBounds.Center()))

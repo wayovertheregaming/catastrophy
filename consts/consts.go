@@ -36,8 +36,18 @@ var (
 	// TextLayer is used as a foreground text drawing layer.  This is drawn to the
 	// window late in the draw process so will be above most things
 	TextLayer *pixelgl.Canvas
-  
+
 	// GameView is a batch drawing element for all game view things. It is set at
 	// level init
 	GameView *pixelgl.Canvas
+
+	// DecorationsLayer is a batch layer mapped to the decorations spritesheet for
+	// efficient drawing
+	DecorationsLayer *pixel.Batch
 )
+
+// SpritePic holds a pixel sprite and Picture
+type SpritePic struct {
+	Sprite *pixel.Sprite
+	Pic    *pixel.Picture
+}

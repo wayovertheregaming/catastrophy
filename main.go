@@ -49,6 +49,9 @@ func run() {
 
 	last := time.Now()
 
+	// HowToPlay is called at launch, it will tell the player how to play the game
+	dialogue.Start(dialogue.HowToPlay)
+
 	for !win.Closed() {
 		win.Clear(backgroundColour)
 		consts.TextLayer.Clear(color.Transparent)

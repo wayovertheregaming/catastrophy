@@ -1,11 +1,5 @@
 package dialogue
 
-import (
-	"fmt"
-
-	"github.com/wayovertheregaming/catastrophy/trophies"
-)
-
 // This file is for storing actual dialogues
 // They should all be exported and no functions should be in this file
 // Each piece of text can be a maximum of 28 chars before needing an \n
@@ -109,11 +103,6 @@ var (
 
 	// ShadowExit is the dialogue to play when leaving the shadow realm
 	ShadowExit = []Dialogue{
-		Dialogue{
-			IsPlayer: false,
-			Name:     "Cat god",
-			Text:     fmt.Sprintf("There are %d things left to\ncollect", trophies.HowManyUnsacrificed),
-		},
 		Dialogue{
 			IsPlayer: false,
 			Name:     "Cat god",

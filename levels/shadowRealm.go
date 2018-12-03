@@ -1,6 +1,7 @@
 package levels
 
 import (
+	"fmt"
 	"image"
 	"math"
 
@@ -136,6 +137,13 @@ func talkToGod() {
 			player.SacrificeAll()
 		}
 
+		<-dialogue.Start([]dialogue.Dialogue{
+			dialogue.Dialogue{
+				IsPlayer: false,
+				Name:     "Cat god",
+				Text:     fmt.Sprintf("There are %d things left to\ncollect", trophies.HowManyUnsacrificed),
+			},
+		})
 		<-dialogue.Start(dialogue.ShadowExit)
 	}()
 }

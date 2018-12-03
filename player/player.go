@@ -10,7 +10,6 @@ import (
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/dialogue"
-	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
@@ -331,9 +330,10 @@ func Draw() {
 
 	// Draw to the centre of the window
 	// playerShift is how much to shift the player by so it sits in the middle of the window
-	playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
+	// playerShift := gamestate.GetLevel().Bounds().Center().Add(p.pos)
+	playerShift := consts.WinCentre
 	spritepic.Sprite.Draw(
-		consts.GameView,
+		consts.PlayerLayer,
 		pixel.IM.Scaled(pixel.ZV, consts.PlayerScale).Moved(playerShift).Rotated(playerShift, p.direction),
 	)
 }

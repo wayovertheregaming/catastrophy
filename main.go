@@ -40,6 +40,7 @@ func run() {
 	}
 
 	consts.TextLayer = pixelgl.NewCanvas(consts.WinBounds)
+	consts.PlayerLayer = pixelgl.NewCanvas(consts.WinBounds)
 
 	// Set the initial level
 	gamestate.SetLevel(levels.Ground)
@@ -53,6 +54,7 @@ func run() {
 		consts.TextLayer.Clear(color.Transparent)
 		consts.ImdLayer.Clear()
 		consts.GameView.Clear(color.Transparent)
+		consts.PlayerLayer.Clear(color.Transparent)
 		consts.DecorationsLayer.Clear()
 
 		if win.JustPressed(pixelgl.KeyP) {
@@ -82,6 +84,10 @@ func run() {
 
 		// Draw the decorations to window
 		consts.DecorationsLayer.Draw(win)
+
+		// Draw the player
+		consts.PlayerLayer.Draw(win, pixel.IM.Moved(consts.WinCentre))
+
 		// Draw ImDraw shape layer
 		consts.ImdLayer.Draw(win)
 		consts.TextLayer.Draw(win, pixel.IM.Moved(consts.WinBounds.Center()))

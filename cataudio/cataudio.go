@@ -81,6 +81,8 @@ func init() {
 
 // Play will attempt to play a sound
 func Play(filename string) {
+	catlog.Debugf("Attempting to play %s", filename)
+
 	// Check if audio file exists
 	if aud, ok := allAudioFiles[filename]; ok {
 		// If it does, play then return
@@ -107,16 +109,16 @@ func mustLoadAudioFile(path string) (beep.StreamSeekCloser, beep.Format) {
 	// Select the correct function to decode based on the extension
 	var decodeFunc func(io.ReadCloser) (beep.StreamSeekCloser, beep.Format, error)
 	switch ext {
-	case "wav":
+	case ".wav":
 		decodeFunc = wav.Decode
-	case "mp3":
+	case ".mp3":
 		decodeFunc = mp3.Decode
-	case "flac":
+	case ".flac":
 		decodeFunc = flac.Decode
-	case "ogg":
+	case ".ogg":
 		decodeFunc = vorbis.Decode
 	default:
-		catlog.Fatalf("Cannot determine decode function for %s", path)
+		catlog.Fatalf("Cannot determine decode function for %s.  Extension '%s' not found", path, ext)
 	}
 
 	s, format, err := decodeFunc(fReadCloser)

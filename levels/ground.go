@@ -6,6 +6,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
@@ -91,4 +92,10 @@ func updateGround(dt float64, win *pixelgl.Window) {
 
 func drawGround(target pixel.Target) {
 	groundBackgroundSprite.Draw(target, pixel.IM.Moved(groundImageDimensions.Center()))
+}
+
+// stairs is called by an activation zone, it will take the player to the first
+// floor
+func stairs() {
+	gamestate.SetLevel(First)
 }

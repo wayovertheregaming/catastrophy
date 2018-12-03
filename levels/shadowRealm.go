@@ -34,8 +34,8 @@ var (
 	shadowImageDimensions pixel.Rect
 	shadowFloorStartPos   = pixel.V(40, -1000)
 
-	catGodSprite       *pixel.Sprite
-	catGodPos          = pixel.V(-10, 300)
+	catGodSprite *pixel.Sprite
+	// catGodPos          = pixel.V(-10, 300)
 	catGodShift        = pixel.ZV
 	catGodShiftCounter float64
 )
@@ -82,7 +82,7 @@ func updateShadow(dt float64, win *pixelgl.Window) {
 
 	// Move cat god up and down
 	catGodShiftCounter += dt
-	catGodPos.Y = math.Sin(catGodShiftCounter * 10)
+	catGodShift.Y = math.Sin(catGodShiftCounter) * 10
 }
 
 func drawShadow() {

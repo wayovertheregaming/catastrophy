@@ -1,6 +1,7 @@
 package player
 
 import (
+	"fmt"
 	"math"
 	"sync/atomic"
 	"time"
@@ -8,6 +9,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
@@ -302,6 +304,20 @@ func SetRotation(left, right, up, down bool) {
 // GetInventory will return the players current inventory
 func GetInventory() []*trophies.Trophy {
 	return p.inventory
+}
+
+// GiveItem gives an item and marks it as collected
+func GiveItem(t *trophies.Trophy) {
+	p.inventory = append(p.inventory, t)
+	t.Collected = true
+
+	// Tell the user
+	dialogue.Start([]dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Text:     fmt.Sprintf("Congrates on getting a:\n%s", t.Name),
+		},
+	})
 }
 
 // SacrificeAll removes all items

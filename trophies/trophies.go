@@ -1,23 +1,42 @@
 package trophies
 
+// All trophies given in the game
+// comment out any we don't have time to add in!!!
+var (
+	AchToilet   = &Trophy{Name: "Achievement: Toilet water"}
+	RidSpider   = &Trophy{Name: "Riddle: spider"}
+	AchPillow   = &Trophy{Name: "Achievement: Pillow talk"}
+	RidWife     = &Trophy{Name: "Riddle: Wife"}
+	ItemShoe    = &Trophy{Name: "Item: shoe"}
+	RidSuitcase = &Trophy{Name: "Riddle: suitcase"}
+	AchFired    = &Trophy{Name: "Achievement: You're fired"}
+	RidPC       = &Trophy{Name: "Riddle: PC"}
+	ItemTuna    = &Trophy{Name: "Item: tin of tuna"}
+	AchTV       = &Trophy{Name: "Achievement: Block TV"}
+	RidMag      = &Trophy{Name: "Riddle: Magazine"}
+	ItemFood    = &Trophy{Name: "Item: Human food"}
+	RidGuest    = &Trophy{Name: "Riddle: Guest"}
+	AchLitter   = &Trophy{Name: "Achievement: littering"}
+	RidCata     = &Trophy{Name: "Riddle: catapillar"}
+)
 var (
 	// AllTrophies are all the tropies in the game
 	AllTrophies = []*Trophy{
-		&Trophy{Name: "Achievement: Toilet water"},
-		&Trophy{Name: "Riddle: spider"},
-		&Trophy{Name: "Achievement: Pillow talk"},
-		&Trophy{Name: "Riddle: Wife"},
-		&Trophy{Name: "Item: shoe"},
-		&Trophy{Name: "Riddle: suitcase"},
-		&Trophy{Name: "Phone"},
-		&Trophy{Name: "Riddle: PC"},
-		&Trophy{Name: "Item: tin of tuna"},
-		&Trophy{Name: "Achievement: Block TV"},
-		&Trophy{Name: "Riddle: Magazine"},
-		&Trophy{Name: "Item: Human food"},
-		&Trophy{Name: "Riddle: Guest"},
-		&Trophy{Name: "Achievement: littering"},
-		&Trophy{Name: "Riddle: catapillar"},
+		AchToilet,
+		RidSpider,
+		AchPillow,
+		RidWife,
+		ItemShoe,
+		RidSuitcase,
+		AchFired,
+		RidPC,
+		ItemTuna,
+		AchTV,
+		RidMag,
+		ItemFood,
+		RidGuest,
+		AchLitter,
+		RidCata,
 	}
 
 	// HowManyUnsacrificed is how many trohpies are left to be sacrificed

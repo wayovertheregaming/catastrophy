@@ -7,7 +7,10 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/riddles"
+	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -42,7 +45,11 @@ var (
 	firstZones *map[pixel.Rect]string
 	// firstZoneFuncs is a map of function names (as they appear in the CSV) and
 	// the function as defined in this file
-	firstZoneFuncs = map[string]func(){}
+	firstZoneFuncs = map[string]func(){
+		"spider": speakToSpider,
+	}
+
+	spokenToSpider = false
 )
 
 func init() {
@@ -93,4 +100,29 @@ func updateFirst(dt float64, win *pixelgl.Window) {
 
 func drawFirst() {
 	firstBackgroundSprite.Draw(consts.GameView, pixel.IM.Moved(firstImageDimensions.Center()))
+}
+
+func speakToSpider() {
+	if spokenToSpider {
+		return
+	}
+
+	failDialogue := []dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     "Sorry, wrong.\nTry again later",
+		},
+	}
+
+	riddles.RunRiddle(
+		dialogue.FirstSpiderRiddle,
+		failDialogue,
+		trophies.RidSpider,
+		passedSpider,
+	)
+}
+
+func passedSpider() {
+	spokenToSpider = true
 }

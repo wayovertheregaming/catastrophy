@@ -3,9 +3,14 @@ package riddles
 import (
 	"bytes"
 	"encoding/csv"
+	"strings"
 
 	"github.com/wayovertheregaming/catastrophy/assets"
 	"github.com/wayovertheregaming/catastrophy/catlog"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
+	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/trophies"
+	"github.com/wayovertheregaming/catastrophy/util/userinput"
 )
 
 const (
@@ -61,4 +66,30 @@ func GetRiddle() (string, string) {
 	r := riddles[counter]
 	counter++
 	return r.question, r.answer
+}
+
+// RunRiddle will run a riddle and check the answer for you
+func RunRiddle(initDialogue, failDialogue []dialogue.Dialogue, prize *trophies.Trophy, successFunc func()) {
+	go func() {
+		<-dialogue.Start(initDialogue)
+		r, a := GetRiddle()
+
+		dialogue.Start([]dialogue.Dialogue{
+			dialogue.Dialogue{
+				IsPlayer: false,
+				Text:     r,
+			},
+		})
+
+		userAns := strings.TrimSpace(userinput.GetUserInput())
+		catlog.Debugf("User: %s, actual: %s", strings.ToLower(userAns), strings.ToLower(a))
+		if strings.ToLower(userAns) == strings.ToLower(a) {
+			// Answer is correct
+			player.GiveItem(prize)
+			successFunc()
+			return
+		}
+
+		dialogue.Start(failDialogue)
+	}()
 }

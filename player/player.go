@@ -315,13 +315,13 @@ func Sleep() {
 	catlog.Debug("Going to sleep")
 
 	AnimateSleep()
+
 	// Cancel the animation and sleeping status after a few seconds
 	go func() {
+		time.Sleep(consts.SleepFor * 2)
 
-		time.Sleep(3 * time.Second)
 		catlog.Debug("Waking up")
 		// wake up
 		goingToSleep.Store(false)
 	}()
-
 }

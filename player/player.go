@@ -9,6 +9,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
+	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -52,7 +53,7 @@ type player struct {
 	// direction is the angle the player is pointing
 	// We'll only be dealing with right angles
 	direction float64
-	inventory []string
+	inventory []*trophies.Trophy
 	hunger    float64
 	bladder   float64
 	// animationFrame is the index of the frame

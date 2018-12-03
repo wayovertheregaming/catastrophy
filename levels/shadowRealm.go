@@ -10,6 +10,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -130,6 +131,7 @@ func talkToGod() {
 			<-dialogue.Start(dialogue.ShadowHaveNoItems)
 		} else {
 			<-dialogue.Start(dialogue.ShadowHaveItems)
+			trophies.Sacrifice(player.GetInventory())
 			// Remove all items - they've been sacrificed
 			player.SacrificeAll()
 		}

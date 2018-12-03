@@ -9,6 +9,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
+	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -52,7 +53,7 @@ type player struct {
 	// direction is the angle the player is pointing
 	// We'll only be dealing with right angles
 	direction float64
-	inventory []string
+	inventory []*trophies.Trophy
 	hunger    float64
 	bladder   float64
 	// animationFrame is the index of the frame
@@ -121,7 +122,7 @@ func init() {
 		animationState:   animationStateIdle,
 		pos:              pixel.ZV,
 		direction:        0,
-		inventory:        []string{},
+		inventory:        []*trophies.Trophy{},
 		hunger:           100,
 		bladder:          0,
 		animationFrame:   0,
@@ -299,13 +300,13 @@ func SetRotation(left, right, up, down bool) {
 }
 
 // GetInventory will return the players current inventory
-func GetInventory() []string {
+func GetInventory() []*trophies.Trophy {
 	return p.inventory
 }
 
 // SacrificeAll removes all items
 func SacrificeAll() {
-	p.inventory = []string{}
+	p.inventory = []*trophies.Trophy{}
 }
 
 // Draw draws the player to the target

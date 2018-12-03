@@ -14,22 +14,16 @@
 "Computer","First",0,2400,325,2525,660,2860
 "Filing Cabinet","First",0,2235,75,2400,980,2400
 "Telephone","First",965,2360,1150,2490,800,2750
-"Cupboard","Ground",0,0,0,0,0,0
-"Worktop","Ground",0,0,0,0,0,0
-"Oven","Ground",0,0,0,0,0,0
-"Dishwasher","Ground",0,0,0,0,0,0
-"Hob","Ground",0,0,0,0,0,0
-"Table & Chairs","Ground",0,0,0,0,0,0
-"TV","Ground",0,0,0,0,0,0
-"Sofa","Ground",0,0,0,0,0,0
-"Rug","Ground",0,0,0,0,0,0
-"Coffee Table","Ground",0,0,0,0,0,0
-"Plant","Ground",0,0,0,0,0,0
-"Dining Table & Chairs","Ground",0,0,0,0,0,0
-"Plate of Food","Ground",0,0,0,0,0,0
-"Sideboard","Ground",0,0,0,0,0,0
-"Sofa","Ground",0,0,0,0,0,0
-"Litter Tray","Ground",0,0,0,0,0,0
-"Plant","Ground",0,0,0,0,0,0
-
-"Door","???",0,0,0,0,0,0
+"Cupboard","Ground",325,2725,475,2800,330,2900
+"Cupboard2","Ground",325,2725,475,2800,600,2900
+"Oven","Ground",400,2625,650,2725,1700,2870
+"Table & Chairs","Ground",425,2400,625,2600,1650,2350
+"TV","Ground",775,2925,975,3000,2450,2080
+"Sofa","Ground",775,2825,950,2900,2450,1750
+"Rug 2","Ground",280,2900,450,3000,1600,1300
+"Plant 2","Ground",330,2610,375,2640,1150,1825
+"Plant 3","Ground",330,2610,375,2640,2920,1500
+"Dining Table & Chairs","Ground",775,2650,1100,2825,2600,600
+"Plate of Food","Ground",975,2975,1000,3000,2030,930
+"Litter Tray","Ground",975,2950,1025,2975,2150,2900
+"Sofa 2","Ground",775,2825,950,2900,2450,2330

@@ -1,0 +1,37 @@
+"Toilet","First",0,2885,75,3000,0,0
+"Bath","First",75,2885,285,3000,0,0
+"Bath Mat","First",285,2885,435,3000,0,0
+"Sink","First",435,2885,560,3000,0,0
+"Double Bed","First",0,2650,310,2870,0,0
+"Bedside Table","First",310,2780,445,2870,0,0
+"Rug","First",285,2885,435,3000,0,0
+"Lamp","First",445,2725,625,2870,0,0
+"Wardrobe","First",665,2735,1015,2895,0,0
+"Single Bed","First",0,2485,350,2630,0,0
+"Bedside Table","First",310,2780,445,2870,0,0
+"Plant","First",350,2495,425,2645,0,0
+"Chest of Drawers","First",495,2545,755,2650,0,0
+"Suitcase","First",800,2535,1075,2635,0,0
+"Computer","First",0,2295,440,2485,0,0
+"Filing Cabinet","First",485,2370,670,2495,0,0
+"Desk Chair","First",720,2350,915,2475,0,0
+"Telephone","First",965,2360,1150,2490,0,0
+"Cupboard","Ground",0,0,0,0,0,0
+"Worktop","Ground",0,0,0,0,0,0
+"Oven","Ground",0,0,0,0,0,0
+"Dishwasher","Ground",0,0,0,0,0,0
+"Hob","Ground",0,0,0,0,0,0
+"Table & Chairs","Ground",0,0,0,0,0,0
+"TV","Ground",0,0,0,0,0,0
+"Sofa","Ground",0,0,0,0,0,0
+"Rug","Ground",0,0,0,0,0,0
+"Coffee Table","Ground",0,0,0,0,0,0
+"Plant","Ground",0,0,0,0,0,0
+"Dining Table & Chairs","Ground",0,0,0,0,0,0
+"Plate of Food","Ground",0,0,0,0,0,0
+"Sideboard","Ground",0,0,0,0,0,0
+"Sofa","Ground",0,0,0,0,0,0
+"Litter Tray","Ground",0,0,0,0,0,0
+"Plant","Ground",0,0,0,0,0,0
+
+"Door","???",0,0,0,0,0,0

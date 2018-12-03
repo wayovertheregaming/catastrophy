@@ -46,10 +46,16 @@ var (
 	// firstZoneFuncs is a map of function names (as they appear in the CSV) and
 	// the function as defined in this file
 	firstZoneFuncs = map[string]func(){
-		"spider": speakToSpider,
+		"spider":   speakToSpider,
+		"wife":     wife,
+		"suitcase": suitcase,
+		"pc":       pc,
 	}
 
-	spokenToSpider = false
+	spokenToSpider   = false
+	spokenToWife     = false
+	spokenToSuitcase = false
+	spokenToPC       = false
 )
 
 func init() {
@@ -125,4 +131,79 @@ func speakToSpider() {
 
 func passedSpider() {
 	spokenToSpider = true
+}
+
+func wife() {
+	if spokenToWife {
+		return
+	}
+
+	failDialogue := []dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "Wife",
+			Text:     "Sorry, wrong.\nTry again later",
+		},
+	}
+
+	riddles.RunRiddle(
+		dialogue.FirstWifeRiddle,
+		failDialogue,
+		trophies.RidWife,
+		passedWife,
+	)
+}
+
+func passedWife() {
+	spokenToWife = true
+}
+
+func suitcase() {
+	if spokenToSuitcase {
+		return
+	}
+
+	failDialogue := []dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "Suitcase",
+			Text:     "Sorry, wrong.\nTry again later",
+		},
+	}
+
+	riddles.RunRiddle(
+		dialogue.FirstSuitcaseRiddle,
+		failDialogue,
+		trophies.RidSuitcase,
+		passedSuitcase,
+	)
+}
+
+func passedSuitcase() {
+	spokenToSuitcase = true
+}
+
+func pc() {
+	if spokenToPC {
+		return
+	}
+
+	failDialogue := []dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "PC",
+			Text:     "Sorry, wrong.\nTry again later",
+		},
+	}
+
+	riddles.RunRiddle(
+		dialogue.FirstPCRiddle,
+		failDialogue,
+		trophies.RidPC,
+		pcPassed,
+	)
+}
+
+func pcPassed() {
+	spokenToPC = true
 }

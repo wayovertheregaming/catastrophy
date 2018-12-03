@@ -161,4 +161,90 @@ var (
 			Text:     "I have a riddle for you",
 		},
 	}
+
+	// FirstWifeRiddle placeholder
+	FirstWifeRiddle = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owners wife",
+			Text:     "Hello kitty\nAren't you a pwetty kitty",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owners wife",
+			Text:     "Yes you are!",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owners wife",
+			Text:     "How about you solve a\nriddle?",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "A riddle?  I'm a cat",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owners wife",
+			Text:     "I'm sorry, I can't understand\ncat",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owners wife",
+			Text:     "Answer the riddle...",
+		},
+	}
+
+	// FirstSuitcaseRiddle placeholder
+	FirstSuitcaseRiddle = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Suitcase",
+			Text:     "Yo, I'm...",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "You're a suitcase",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Suitcase",
+			Text:     "Yup.",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "Whatever",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Suitcase",
+			Text:     "Riddle?",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "Sure",
+		},
+	}
+
+	// FirstPCRiddle placeholder
+	FirstPCRiddle = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Email",
+			Text:     "To human,\nI think you're stupid",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "Typical human email",
+		},
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Email",
+			Text:     "Prove you're not by\nsolving this riddle",
+		},
+		Dialogue{
+			IsPlayer: true,
+			Text:     "So many riddles in this\nhouse",
+		},
+	}
 )

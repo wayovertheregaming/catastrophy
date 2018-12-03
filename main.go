@@ -44,6 +44,8 @@ func run() {
 
 	// Set the initial level
 	gamestate.SetLevel(levels.Ground)
+	// Start unpaused
+	gamestate.UnPauseGame()
 
 	last := time.Now()
 

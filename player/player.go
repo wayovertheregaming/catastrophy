@@ -304,6 +304,12 @@ func GetInventory() []*trophies.Trophy {
 	return p.inventory
 }
 
+// GiveItem gives an item and marks it as collected
+func GiveItem(t *trophies.Trophy) {
+	p.inventory = append(p.inventory, t)
+	t.Collected = true
+}
+
 // SacrificeAll removes all items
 func SacrificeAll() {
 	p.inventory = []*trophies.Trophy{}

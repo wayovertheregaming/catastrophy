@@ -40,6 +40,10 @@ var (
 	// GameView is a batch drawing element for all game view things. It is set at
 	// level init
 	GameView *pixelgl.Canvas
+
+	// DecorationsLayer is a batch layer mapped to the decorations spritesheet for
+	// efficient drawing
+	DecorationsLayer *pixel.Batch
 )
 
 // SpritePic holds a pixel sprite and Picture

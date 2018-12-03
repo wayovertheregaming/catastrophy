@@ -44,6 +44,8 @@ var (
 
 	// atlas contains the font to writing text to screen
 	atlas *text.Atlas
+
+	hasStopped chan struct{}
 )
 
 func init() {
@@ -105,12 +107,17 @@ func (d *Dialogue) draw() {
 }
 
 // Start will play a dialogue.  This will pause the game until the dialogue ends
-func Start(dialogue []Dialogue) {
+func Start(dialogue []Dialogue) chan struct{} {
 	catlog.Debug("Starting dialogue")
 	gamestate.PauseGame()
 
+	// Create a channel to indicate when the dialogue completes
+	hasStopped = make(chan struct{}, 1)
+
 	currentDialogue = dialogue
 	dialoguePanel = 0
+
+	return hasStopped
 }
 
 // Draw will draw the current panel
@@ -125,6 +132,7 @@ func Draw() {
 		catlog.Debug("End of dialogue, exiting")
 
 		gamestate.UnPauseGame()
+		close(hasStopped)
 		// Reset dialogue info
 		dialoguePanel = -1
 		currentDialogue = []Dialogue{}

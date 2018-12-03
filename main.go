@@ -11,6 +11,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/decorations"
 	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
+	"github.com/wayovertheregaming/catastrophy/levelchanger"
 	"github.com/wayovertheregaming/catastrophy/levels"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util/userinput"
@@ -21,7 +22,7 @@ const (
 )
 
 var (
-	backgroundColour = color.RGBA{0x00, 0x00, 0x1a, 0xff}
+	backgroundColour = color.RGBA{0x00, 0x00, 0x00, 0xff}
 )
 
 func run() {
@@ -53,6 +54,10 @@ func run() {
 		consts.ImdLayer.Clear()
 		consts.GameView.Clear(color.Transparent)
 		consts.DecorationsLayer.Clear()
+
+		if win.JustPressed(pixelgl.KeyP) {
+			levelchanger.Sleep()
+		}
 
 		dt := time.Since(last).Seconds()
 		last = time.Now()

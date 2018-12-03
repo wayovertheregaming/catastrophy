@@ -2,8 +2,11 @@ package player
 
 import (
 	"math"
+	"sync/atomic"
+	"time"
 
 	"github.com/faiface/pixel"
+	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/util"
@@ -29,8 +32,14 @@ const (
 )
 
 var (
-	p player
+	p            player
+	goingToSleep atomic.Value
 )
+
+func init() {
+	catlog.Debug("Doing player init")
+	goingToSleep.Store(false)
+}
 
 // player represents the cat that the player controls
 type player struct {
@@ -76,10 +85,11 @@ func (p *player) nextBounds(v pixel.Vec) pixel.Rect {
 // reset the animation frame and counter if the state changes
 func (p *player) changeAnimationState(newState int) {
 	// If the current animation state is the same as the new requested state, just
-	// return
-	if p.animationState == newState {
+	// return.  Also return if force in sleep
+	if p.animationState == newState || goingToSleep.Load() == true {
 		return
 	}
+	catlog.Debugf("Setting state to %d", newState)
 	p.animationFrame = 0
 	p.animationCounter = 0
 
@@ -123,6 +133,7 @@ func init() {
 // AnimateSleep will set the player to animate sleeping
 func AnimateSleep() {
 	p.changeAnimationState(animationStateSleep)
+	goingToSleep.Store(true)
 }
 
 // AnimateSit will set the player to animate sitting
@@ -142,6 +153,11 @@ func AnimateWalk() {
 
 // WalkUp will move the player upwards and animate them walking
 func WalkUp(dt float64, collisionables []pixel.Rect) {
+	// Skip if force waiting to wake up
+	if goingToSleep.Load() == true {
+		return
+	}
+
 	AnimateWalk()
 	p.direction = 0
 	// nextPos is the potenial next position.  Use this to calculate if the player
@@ -162,6 +178,11 @@ func WalkUp(dt float64, collisionables []pixel.Rect) {
 
 // WalkDown will move the player downwards and animate them walking
 func WalkDown(dt float64, collisionables []pixel.Rect) {
+	// Skip if force waiting to wake up
+	if goingToSleep.Load() == true {
+		return
+	}
+
 	AnimateWalk()
 	p.direction = math.Pi
 	// nextPos is the potenial next position.  Use this to calculate if the player
@@ -182,6 +203,11 @@ func WalkDown(dt float64, collisionables []pixel.Rect) {
 
 // WalkLeft will move the player left and animate them walking
 func WalkLeft(dt float64, collisionables []pixel.Rect) {
+	// Skip if force waiting to wake up
+	if goingToSleep.Load() == true {
+		return
+	}
+
 	AnimateWalk()
 	p.direction = math.Pi / 2
 	// nextPos is the potenial next position.  Use this to calculate if the player
@@ -202,6 +228,11 @@ func WalkLeft(dt float64, collisionables []pixel.Rect) {
 
 // WalkRight will move the player right and animate them walking
 func WalkRight(dt float64, collisionables []pixel.Rect) {
+	// Skip if force waiting to wake up
+	if goingToSleep.Load() == true {
+		return
+	}
+
 	AnimateWalk()
 	p.direction = (math.Pi * 3) / 2
 	// nextPos is the potenial next position.  Use this to calculate if the player
@@ -270,10 +301,28 @@ func GetPos() pixel.Vec {
 // SetPos will set the players position.  This should be used when initiating a
 // level so the player is at the start position
 func SetPos(v pixel.Vec) {
+	catlog.Debugf("Setting player position to %v", v)
 	p.pos = v
 }
 
 // Update will update the player with things such as animiation frame
 func Update(dt float64) {
 	p.update(dt)
+}
+
+// Sleep will cause the cat to sleep.  This toggles the shadow realm level. This
+// file will keep track of the player position and the level the player was in
+func Sleep() {
+	catlog.Debug("Going to sleep")
+
+	AnimateSleep()
+
+	// Cancel the animation and sleeping status after a few seconds
+	go func() {
+		time.Sleep(consts.SleepFor * 2)
+
+		catlog.Debug("Waking up")
+		// wake up
+		goingToSleep.Store(false)
+	}()
 }

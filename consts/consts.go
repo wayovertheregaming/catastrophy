@@ -3,6 +3,8 @@
 package consts
 
 import (
+	"time"
+
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/imdraw"
 	"github.com/faiface/pixel/pixelgl"
@@ -16,6 +18,14 @@ const (
 
 	// PlayerSide is the size of one side of the player box
 	PlayerSide = 50
+)
+
+// Level names
+const (
+	LevelNameGround    = "Ground"
+	LevelNameFirst     = "First"
+	LevelNameShadow    = "Shadow Realm"
+	LevelNameBowldOver = "Bowl'd Over"
 )
 
 var (
@@ -44,6 +54,10 @@ var (
 	// DecorationsLayer is a batch layer mapped to the decorations spritesheet for
 	// efficient drawing
 	DecorationsLayer *pixel.Batch
+
+	// SleepFor is how long the player sleeps when transitioning to/from shadow
+	// realm
+	SleepFor = time.Second * 2
 )
 
 // SpritePic holds a pixel sprite and Picture

@@ -1,5 +1,7 @@
 package trophies
 
+import "github.com/wayovertheregaming/catastrophy/catlog"
+
 // All trophies given in the game
 // comment out any we don't have time to add in!!!
 var (
@@ -58,6 +60,7 @@ func Sacrifice(trs []*Trophy) {
 	for _, t := range trs {
 		for _, at := range AllTrophies {
 			if at.Name == t.Name {
+				catlog.Debugf("Sacrificing a %s", t.Name)
 				at.Sacrificed = true
 				sacrificedCount++
 			}
@@ -66,4 +69,5 @@ func Sacrifice(trs []*Trophy) {
 
 	// Reduce count of items unsacrificed
 	HowManyUnsacrificed -= sacrificedCount
+	catlog.Debugf("%d items left", HowManyUnsacrificed)
 }

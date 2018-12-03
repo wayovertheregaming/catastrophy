@@ -2,7 +2,6 @@ package levels
 
 import (
 	"image"
-	"strings"
 
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
@@ -13,7 +12,6 @@ import (
 	"github.com/wayovertheregaming/catastrophy/riddles"
 	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
-	"github.com/wayovertheregaming/catastrophy/util/userinput"
 )
 
 const (
@@ -109,34 +107,22 @@ func speakToSpider() {
 		return
 	}
 
-	go func() {
-		<-dialogue.Start(dialogue.FirstSpiderRiddle)
-		r, a := riddles.GetRiddle()
+	failDialogue := []dialogue.Dialogue{
+		dialogue.Dialogue{
+			IsPlayer: false,
+			Name:     "Spider",
+			Text:     "Sorry, wrong.\nTry again later",
+		},
+	}
 
-		dialogue.Start([]dialogue.Dialogue{
-			dialogue.Dialogue{
-				IsPlayer: false,
-				Name:     "Spider",
-				Text:     r,
-			},
-		})
+	riddles.RunRiddle(
+		dialogue.FirstSpiderRiddle,
+		failDialogue,
+		trophies.RidSpider,
+		passedSpider,
+	)
+}
 
-		userAns := strings.TrimSpace(userinput.GetUserInput())
-		catlog.Debugf("User: %s, actual: %s", strings.ToLower(userAns), strings.ToLower(a))
-		if strings.ToLower(userAns) == strings.ToLower(a) {
-			// Answer is correct
-			spokenToSpider = true
-			player.GiveItem(trophies.RidSpider)
-
-			return
-		}
-
-		dialogue.Start([]dialogue.Dialogue{
-			dialogue.Dialogue{
-				IsPlayer: false,
-				Name:     "Spider",
-				Text:     "Sorry, wrong.\nTry again later",
-			},
-		})
-	}()
+func passedSpider() {
+	spokenToSpider = true
 }

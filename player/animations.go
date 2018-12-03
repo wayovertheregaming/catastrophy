@@ -9,7 +9,7 @@ import (
 
 const (
 	// frameRate is the number of seconds each animation frame is displayed for
-	frameRate = 0.1
+	frameRate = 0.15
 )
 
 // These are the images for each frame of animation

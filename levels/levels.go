@@ -56,7 +56,6 @@ func (l *Level) Init() {
 	catlog.Debugf("Initialising %s", l.Name())
 
 	l.initFunc()
-	gamestate.UnPauseGame()
 }
 
 // Draw will draw the level and contents to the target

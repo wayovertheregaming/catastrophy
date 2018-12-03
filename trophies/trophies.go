@@ -20,8 +20,8 @@ var (
 		&Trophy{Name: "Riddle: catapillar"},
 	}
 
-	// HowManyUnsacrified is how many trohpies are left to be sacrificed
-	HowManyUnsacrified = len(AllTrophies)
+	// HowManyUnsacrificed is how many trohpies are left to be sacrificed
+	HowManyUnsacrificed = len(AllTrophies)
 )
 
 // Trophy could be an achievement or item the player gets from doing a challenge
@@ -46,5 +46,5 @@ func Sacrifice(trs []*Trophy) {
 	}
 
 	// Reduce count of items unsacrificed
-	HowManyUnsacrified -= sacrificedCount
+	HowManyUnsacrificed -= sacrificedCount
 }

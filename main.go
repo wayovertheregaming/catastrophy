@@ -40,7 +40,7 @@ func run() {
 	consts.TextLayer = pixelgl.NewCanvas(consts.WinBounds)
 
 	// Set the initial level
-	gamestate.SetLevel(levels.BowldOver)
+	gamestate.SetLevel(levels.Ground)
 	// Start unpaused
 	gamestate.UnPauseGame()
 

@@ -22,6 +22,8 @@ var (
 	idling = map[string]pixel.Rect{
 		"assets/graphics/catIdle1.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 		"assets/graphics/catIdle2.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catIdle3.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catIdle4.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 	}
 	sitting = map[string]pixel.Rect{
 		"assets/graphics/catSit1.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),

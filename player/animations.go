@@ -9,7 +9,7 @@ import (
 
 const (
 	// frameRate is the number of seconds each animation frame is displayed for
-	frameRate = 0.5
+	frameRate = 0.1
 )
 
 // These are the images for each frame of animation
@@ -30,6 +30,8 @@ var (
 	walking = map[string]pixel.Rect{
 		"assets/graphics/catWalk1.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 		"assets/graphics/catWalk2.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catWalk3.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
+		"assets/graphics/catWalk4.png": pixel.R(0, 0, consts.PlayerSide, consts.PlayerSide),
 	}
 )
 
@@ -57,7 +59,10 @@ func loadIntoVar(assetList map[string]pixel.Rect) []consts.SpritePic {
 		catlog.Debugf("Loading player animation sprite %s", imgPath)
 
 		s, p := util.LoadSprite(imgPath, r)
-		sp := consts.SpritePic{s, &p}
+		sp := consts.SpritePic{
+			Sprite: s,
+			Pic:    &p,
+		}
 		retSlice = append(retSlice, sp)
 	}
 

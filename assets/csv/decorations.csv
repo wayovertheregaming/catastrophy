@@ -1,21 +1,22 @@
-"Toilet","First",0,2885,75,3000,0,0
-"Bath","First",75,2885,285,3000,0,0
-"Bath Mat","First",285,2885,435,3000,0,0
-"Sink","First",435,2885,560,3000,0,0
-"Double Bed","First",0,2650,310,2870,0,0
-"Bedside Table","First",310,2780,445,2870,0,0
-"Rug","First",285,2885,435,3000,0,0
-"Lamp","First",445,2725,625,2870,0,0
-"Wardrobe","First",665,2735,1015,2895,0,0
-"Single Bed","First",0,2485,350,2630,0,0
-"Bedside Table","First",310,2780,445,2870,0,0
-"Plant","First",350,2495,425,2645,0,0
-"Chest of Drawers","First",495,2545,755,2650,0,0
-"Suitcase","First",800,2535,1075,2635,0,0
-"Computer","First",0,2295,440,2485,0,0
-"Filing Cabinet","First",485,2370,670,2495,0,0
-"Desk Chair","First",720,2350,915,2475,0,0
-"Telephone","First",965,2360,1150,2490,0,0
+"Toilet","First",0,2885,75,3000,100,1000
+"Bath","First",75,2885,285,3000,100,50
+"Bath Mat","First",285,2885,435,3000,500,550
+"Sink","First",435,2885,560,3000,950,950
+"Double Bed","First",0,2650,310,2870,350,1600
+"Bedside Table L","First",310,2780,445,2870,200,1200
+"Bedside Table R","First",310,2780,445,2870,200,1750
+"Rug","First",285,2885,435,3000,1200,1700
+"Lamp","First",445,2725,625,2870,1800,1900
+"Single Bed","First",0,2685,350,2630,1300,1750
+"Wardrobe","First",665,2735,1015,2895,2500,2850
+"Bedside Table","First",310,2780,445,2870,1600,2800
+"Plant","First",350,2495,425,2645,2150,1200
+"Chest of Drawers","First",495,2545,755,2650,2800,2800
+"Suitcase","First",800,2535,1075,2635,2300,2300
+"Computer","First",0,2295,440,2485,450,2750
+"Filing Cabinet","First",485,2370,670,2495,950,2300
+"Desk Chair","First",720,2350,915,2475,450,2500
+"Telephone","First",965,2360,1150,2490,800,2750
 "Cupboard","Ground",0,0,0,0,0,0
 "Worktop","Ground",0,0,0,0,0,0
 "Oven","Ground",0,0,0,0,0,0

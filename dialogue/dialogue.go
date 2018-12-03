@@ -92,7 +92,14 @@ func (d *Dialogue) draw() {
 	// TODO(low priority - type this out letter by letter)
 	text := text.New(posMin.Add(textShiftPos), atlas)
 	text.Color = textColour
-	fmt.Fprintf(text, "%s \n\n Press space to continue", d.Text)
+
+	// Include name if the dialogue has it set
+	if d.Name == "" {
+		// No name, just print text
+		fmt.Fprintf(text, "%s \n\n Press space to continue", d.Text)
+	} else {
+		fmt.Fprintf(text, "%s:\n%s \n\n Press space to continue", d.Name, d.Text)
+	}
 
 	text.Draw(consts.TextLayer, pixel.IM.Scaled(text.Orig, 2))
 }

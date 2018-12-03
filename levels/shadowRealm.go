@@ -8,13 +8,15 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
+	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/player"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
 const (
-	shadowImagePath = "assets/graphics/shadowRealm.png"
-	catGodImagePath = "assets/graphics/catGod.png"
+	shadowImagePath          = "assets/graphics/shadowRealm.png"
+	shadowActivationZonesCSV = "assets/csv/shadowZones.csv"
+	catGodImagePath          = "assets/graphics/catGod.png"
 )
 
 var (
@@ -35,9 +37,17 @@ var (
 	shadowImageDimensions pixel.Rect
 	shadowFloorStartPos   = pixel.V(40, -1000)
 
+	// shadowZones
+	shadowZones     *map[pixel.Rect]string
+	shadowZoneFuncs = map[string]func(){
+		"talkToGod": talkToGod,
+	}
+
 	catGodSprite       *pixel.Sprite
 	catGodShift        = pixel.ZV
 	catGodShiftCounter float64
+
+	firstVisit = true
 )
 
 func init() {
@@ -55,6 +65,7 @@ func init() {
 	// shadowmageDimensions is effectively the size of the image
 	shadowImageDimensions = pixel.R(0, 0, float64(shadowImageConfig.Width), float64(shadowImageConfig.Height))
 	ShadowRealm.bounds = shadowImageDimensions
+	shadowZones = loadActivationZones(shadowActivationZonesCSV, shadowImageDimensions)
 
 	// Load the background image
 	shadowBackgroundSprite, shadowBackgroundPic = util.LoadSprite(shadowImagePath, shadowImageDimensions)
@@ -83,6 +94,17 @@ func updateShadow(dt float64, win *pixelgl.Window) {
 	// Move cat god up and down
 	catGodShiftCounter += dt
 	catGodShift.Y = math.Sin(catGodShiftCounter) * 10
+
+	// Check for activation zone changes
+	zoneFunc := player.GetActivationZoneChange(*shadowZones)
+	if zoneFunc != "" {
+		catlog.Debugf("Got new zone, trying to call function '%s'", zoneFunc)
+		if f, ok := shadowZoneFuncs[zoneFunc]; ok {
+			f()
+		} else {
+			catlog.Debugf("Did not find function %s, doing nothing", zoneFunc)
+		}
+	}
 }
 
 func drawShadow() {
@@ -93,4 +115,25 @@ func drawShadow() {
 		consts.GameView,
 		pixel.IM.Moved(shadowImageDimensions.Center().Add(catGodShift)).Scaled(shadowImageDimensions.Center(), 3),
 	)
+}
+
+func talkToGod() {
+	// Have to run this in go routine because it blocks
+	// Each dialogue call to start waits for the channel to return
+	go func() {
+		if firstVisit {
+			<-dialogue.Start(dialogue.FirstVisitToShadow)
+			firstVisit = false
+		}
+
+		if len(player.GetInventory()) == 0 {
+			<-dialogue.Start(dialogue.ShadowHaveNoItems)
+		} else {
+			<-dialogue.Start(dialogue.ShadowHaveItems)
+			// Remove all items - they've been sacrificed
+			player.SacrificeAll()
+		}
+
+		<-dialogue.Start(dialogue.ShadowExit)
+	}()
 }

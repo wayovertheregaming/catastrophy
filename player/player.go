@@ -303,6 +303,11 @@ func GetInventory() []string {
 	return p.inventory
 }
 
+// SacrificeAll removes all items
+func SacrificeAll() {
+	p.inventory = []string{}
+}
+
 // Draw draws the player to the target
 func Draw() {
 	spritepic := stateFrameToSprites(p.animationState, p.animationFrame)

@@ -308,6 +308,12 @@ func GetInventory() []*trophies.Trophy {
 func GiveItem(t *trophies.Trophy) {
 	p.inventory = append(p.inventory, t)
 	t.Collected = true
+
+	// Tell the user
+	dialogues.Start([]dialogues.Dialogue{
+		IsPlayer: false,
+		Text: fmt.Sprintf("Congrates on getting a:\n%s", t.Name)
+	})
 }
 
 // SacrificeAll removes all items

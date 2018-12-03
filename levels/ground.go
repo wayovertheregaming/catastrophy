@@ -10,6 +10,7 @@ import (
 	"github.com/wayovertheregaming/catastrophy/dialogue"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
 	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/trophies"
 	"github.com/wayovertheregaming/catastrophy/util"
 )
 
@@ -46,7 +47,12 @@ var (
 	// the function as defined in this file
 	groundZoneFuncs = map[string]func(){
 		"stairs": stairs,
+		"tv":     tv,
+		"food":   food,
+		"tuna":   tuna,
 	}
+
+	tvCount = 0
 )
 
 func init() {
@@ -106,4 +112,31 @@ func stairs() {
 
 	dialogue.Start(dialogue.GoingUpstairs)
 	gamestate.SetLevel(First)
+}
+
+func tv() {
+	if tvCount < 3 {
+		tvCount++
+
+		switch tvCount {
+		case 1:
+			dialogue.Start(dialogue.GroundTV1)
+		case 2:
+			dialogue.Start(dialogue.GroundTV2)
+		case 3:
+			dialogue.Start(dialogue.GroundTV3)
+		}
+
+		return
+	}
+
+	player.GiveItem(trophies.AchTV)
+}
+
+func food() {
+	player.GiveItem(trophies.ItemFood)
+}
+
+func tuna() {
+	player.GiveItem(trophies.ItemTuna)
 }

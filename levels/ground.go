@@ -41,7 +41,9 @@ var (
 	groundZones *map[pixel.Rect]string
 	// groundZoneFuncs is a map of function names (as they appear in the CSV) and
 	// the function as defined in this file
-	groundZoneFuncs = map[string]func(){}
+	groundZoneFuncs = map[string]func(){
+		"stairs": stairs,
+	}
 )
 
 func init() {

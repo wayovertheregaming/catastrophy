@@ -34,8 +34,7 @@ var (
 	shadowImageDimensions pixel.Rect
 	shadowFloorStartPos   = pixel.V(40, -1000)
 
-	catGodSprite *pixel.Sprite
-	// catGodPos          = pixel.V(-10, 300)
+	catGodSprite       *pixel.Sprite
 	catGodShift        = pixel.ZV
 	catGodShiftCounter float64
 )

@@ -5,6 +5,15 @@ package dialogue
 // Each piece of text can be a maximum of 28 chars before needing an \n
 
 var (
+
+	//HowToPlay is the opening dialogue explaining the game
+	HowToPlay = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Text:     "WASD to move, P to sleep\nPlay as a cat not as a Sheep\nHope u think the game's neat\nCheers, Rich & Ben",
+		},
+	}
+
 	// GoingUpstairs tells the player they are going up the stairs
 	GoingUpstairs = []Dialogue{
 		Dialogue{

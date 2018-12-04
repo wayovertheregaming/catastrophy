@@ -236,4 +236,26 @@ var (
 			Text:     "So many riddles in this\nhouse",
 		},
 	}
+
+	GroundTV1 = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owner",
+			Text:     "Move cat\nI can't see the tv",
+		},
+	}
+	GroundTV2 = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owner",
+			Text:     "Cat this is really annoying",
+		},
+	}
+	GroundTV3 = []Dialogue{
+		Dialogue{
+			IsPlayer: false,
+			Name:     "Owner",
+			Text:     "STOP DOING THAT",
+		},
+	}
 )

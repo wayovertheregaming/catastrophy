@@ -14,11 +14,13 @@ import (
 	"github.com/wayovertheregaming/catastrophy/levelchanger"
 	"github.com/wayovertheregaming/catastrophy/levels"
 	"github.com/wayovertheregaming/catastrophy/player"
+	"github.com/wayovertheregaming/catastrophy/util"
 	"github.com/wayovertheregaming/catastrophy/util/userinput"
 )
 
 const (
 	winTitle = "Catastrophy"
+	iconPath = "assets/graphics/catSleep1.png"
 )
 
 var (
@@ -28,10 +30,14 @@ var (
 func run() {
 	catlog.Debug("Game launched")
 
+	catlog.Debug("Loading window icon")
+	windowIcon := util.LoadPic(iconPath)
+
 	cfg := pixelgl.WindowConfig{
 		Title:  winTitle,
 		Bounds: consts.WinBounds,
 		VSync:  true,
+		Icon:   []pixel.Picture{windowIcon},
 	}
 
 	win, err := pixelgl.NewWindow(cfg)

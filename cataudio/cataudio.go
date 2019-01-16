@@ -107,6 +107,11 @@ func Play(filename string) {
 	catlog.Info("Could not find %s while trying to play audio, will not play", filename)
 }
 
+// Stop will stop any music currently playing on the speaker.
+func Stop() {
+	speaker.Clear()
+}
+
 func mustLoadAudioFile(path string) (beep.StreamSeekCloser, beep.Format) {
 	catlog.Debugf("Loading audio file %s", path)
 

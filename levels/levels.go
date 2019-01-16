@@ -57,6 +57,8 @@ func (l *Level) Update(dt float64, win *pixelgl.Window) {
 func (l *Level) Init() {
 	catlog.Debugf("Initialising %s", l.Name())
 
+	// Stop any current playing music
+	cataudio.Stop()
 	// Play the level music
 	cataudio.Play(l.musicFile)
 

@@ -31,10 +31,10 @@ var (
 
 	// allAudioFiles holds all playable audio files
 	allAudioFiles = map[string]*audio{
-		"Menu.mp3":            {loops: -1},
-		"PlayingInGarden.mp3": {loops: -1},
-		"PlayingInHouse.mp3":  {loops: -1},
-		"ShadowRealm.mp3":     {loops: -1},
+		"Menu.mp3":            {loops: 5},
+		"PlayingInGarden.mp3": {loops: 5},
+		"PlayingInHouse.mp3":  {loops: 5},
+		"ShadowRealm.mp3":     {loops: 5},
 		"BirdsChirping.mp3":   {loops: 0},
 		"CatDrinking.mp3":     {loops: 0},
 		"CatPeeing.mp3":       {loops: 0},
@@ -55,7 +55,6 @@ var (
 
 type audio struct {
 	streamer beep.Streamer
-	format   beep.Format
 	loops    int
 }
 
@@ -76,13 +75,17 @@ func init() {
 		// Create the full path to the file
 		fullPath := filepath.Join(dirPrefix, filename)
 		// Get the streamseaker and format
-		ss, f := mustLoadAudioFile(fullPath)
+		ss, _ := mustLoadAudioFile(fullPath)
 
-		// Loop, converting to a streamer
-		s := beep.Loop(a.loops, ss)
+		var s beep.Streamer
+		if a.loops != 0 {
+			// Loop the streamer
+			s = beep.Loop(a.loops, ss)
+		} else {
+			s = ss
+		}
 
 		a.streamer = s
-		a.format = f
 
 		catlog.Debugf("Initialised audio file %s", fullPath)
 	}

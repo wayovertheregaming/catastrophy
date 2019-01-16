@@ -38,10 +38,10 @@ var (
 )
 
 var (
-	sleepingSprites = []consts.SpritePic{}
-	idlingSprites   = []consts.SpritePic{}
-	sittingSprites  = []consts.SpritePic{}
-	walkingSprites  = []consts.SpritePic{}
+	sleepingSprites []consts.SpritePic
+	idlingSprites   []consts.SpritePic
+	sittingSprites  []consts.SpritePic
+	walkingSprites  []consts.SpritePic
 )
 
 func init() {
@@ -54,7 +54,7 @@ func init() {
 }
 
 func loadIntoVar(assetList map[string]pixel.Rect) []consts.SpritePic {
-	retSlice := []consts.SpritePic{}
+	var retSlice []consts.SpritePic
 
 	// Get the sprites from the image name list
 	for imgPath, r := range assetList {

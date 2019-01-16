@@ -37,11 +37,6 @@ func IsPaused() bool {
 	return gs.runState == RunStatePaused
 }
 
-// IsPlaying will return whether the game is in a playing state
-func IsPlaying() bool {
-	return gs.runState == RunStatePlaying
-}
-
 // PauseGame will set the run state to paused.  This can be called regardless of
 // the current state
 func PauseGame() {

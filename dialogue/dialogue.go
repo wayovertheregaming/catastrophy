@@ -90,20 +90,20 @@ func (d *Dialogue) draw() {
 	)
 	consts.ImdLayer.Rectangle(borderThickness)
 
-	// Write text to screen
+	// Write textForScreen to screen
 	// TODO(low priority - type this out letter by letter)
-	text := text.New(posMin.Add(textShiftPos), atlas)
-	text.Color = textColour
+	textForScreen := text.New(posMin.Add(textShiftPos), atlas)
+	textForScreen.Color = textColour
 
 	// Include name if the dialogue has it set
 	if d.Name == "" {
-		// No name, just print text
-		fmt.Fprintf(text, "%s \n\n Press space to continue", d.Text)
+		// No name, just print textForScreen
+		_, _ = fmt.Fprintf(textForScreen, "%s \n\n Press space to continue", d.Text)
 	} else {
-		fmt.Fprintf(text, "%s:\n%s \n\n Press space to continue", d.Name, d.Text)
+		_, _ = fmt.Fprintf(textForScreen, "%s:\n%s \n\n Press space to continue", d.Name, d.Text)
 	}
 
-	text.Draw(consts.TextLayer, pixel.IM.Scaled(text.Orig, 2))
+	textForScreen.Draw(consts.TextLayer, pixel.IM.Scaled(textForScreen.Orig, 2))
 }
 
 // Start will play a dialogue.  This will pause the game until the dialogue ends

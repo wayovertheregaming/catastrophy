@@ -24,7 +24,7 @@ var (
 	// backgroundBounds is the rect that represents the background that users type
 	// into.  This is the full width of the window, but 1/3 of the height
 	backgroundBounds = pixel.R(0, consts.WinHeight/3, consts.WinWidth, (consts.WinHeight*2)/3)
-	backgroundColour = color.RGBA{0x8a, 0xc3, 0x6a, 0xdd}
+	backgroundColour = color.RGBA{R: 0x8a, G: 0xc3, B: 0x6a, A: 0xdd}
 	textStartPos     = pixel.V(consts.WinWidth/3, consts.WinHeight/2)
 
 	// atlas contains the font to writing text to screen
@@ -97,6 +97,6 @@ func Draw() {
 	inpText.Clear()
 	// Print to screen the typed value followed by an underscore.  This is
 	// indicate the user should type
-	fmt.Fprintf(inpText, "%s_", typed)
+	_, _ = fmt.Fprintf(inpText, "%s_", typed)
 	inpText.Draw(consts.TextLayer, pixel.IM.Scaled(inpText.Orig, 7))
 }

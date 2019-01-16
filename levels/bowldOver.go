@@ -27,7 +27,6 @@ var (
 	}
 
 	bowldOverBackgroundSprite *pixel.Sprite
-	bowldOverBackgroundPic    pixel.Picture
 
 	// bowldOverCollisions are all the rectangles which should cause the player
 	// to collide: i.e. unpassable
@@ -52,7 +51,7 @@ func init() {
 	BowldOver.bounds = bowldOverImageDimensions
 
 	// Load the background image
-	bowldOverBackgroundSprite, bowldOverBackgroundPic = util.LoadSprite(bowldOverImagePath, bowldOverImageDimensions)
+	bowldOverBackgroundSprite, _ = util.LoadSprite(bowldOverImagePath, bowldOverImageDimensions)
 
 	// Get all collision bounds from the CSV file
 	bowldOverCollisions = loadCollisions(bowldOverCollisionPath, BowldOver.bounds)

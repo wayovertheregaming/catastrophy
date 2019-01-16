@@ -22,7 +22,7 @@ const (
 )
 
 var (
-	backgroundColour = color.RGBA{0x00, 0x00, 0x00, 0xff}
+	backgroundColour = color.RGBA{R: 0x00, G: 0x00, B: 0x00, A: 0xff}
 )
 
 func run() {

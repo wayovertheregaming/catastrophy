@@ -16,13 +16,13 @@ func init() {
 }
 
 // Debug will write a debug line to the log
-func Debug(v ...interface{}) {}
+func Debug(_ ...interface{}) {}
 
 // Debugf will format and write a debug line to the log
-func Debugf(format string, v ...interface{}) {}
+func Debugf(_ string, _ ...interface{}) {}
 
 // Info will write an info line to the log
-func Info(v ...interface{}) {}
+func Info(_ ...interface{}) {}
 
 // Infof will write and format an info line to the log
-func Infof(format string, v ...interface{}) {}
+func Infof(_ string, _ ...interface{}) {}

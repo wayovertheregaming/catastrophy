@@ -11,6 +11,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/wayovertheregaming/catastrophy/assets"
+	"github.com/wayovertheregaming/catastrophy/cataudio"
 	"github.com/wayovertheregaming/catastrophy/catlog"
 	"github.com/wayovertheregaming/catastrophy/consts"
 	"github.com/wayovertheregaming/catastrophy/gamestate"
@@ -57,7 +58,7 @@ func (l *Level) Init() {
 	catlog.Debugf("Initialising %s", l.Name())
 
 	// Play the level music
-	// cataudio.Play(l.musicFile)
+	cataudio.Play(l.musicFile)
 
 	// Set the game view canvas according to the level bounds
 	consts.GameView = pixelgl.NewCanvas(l.Bounds())

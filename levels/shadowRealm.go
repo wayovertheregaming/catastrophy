@@ -33,7 +33,6 @@ var (
 	}
 
 	shadowBackgroundSprite *pixel.Sprite
-	shadowBackgroundPic    pixel.Picture
 
 	// shadowImageDimensions is effectively the size of the image
 	shadowImageDimensions pixel.Rect
@@ -56,7 +55,7 @@ func init() {
 	catlog.Debug("Preparing shadow realm level")
 
 	// Load the background image
-	shadowBackgroundSprite, shadowBackgroundPic = util.LoadSprite(shadowImagePath, shadowImageDimensions)
+	shadowBackgroundSprite, _ = util.LoadSprite(shadowImagePath, shadowImageDimensions)
 
 	// shadowImageConfig returns dimensions of groundImagePath
 	shadowImageConfig, _, err := image.DecodeConfig(util.GetReaderFromFile(groundImagePath))
@@ -70,7 +69,7 @@ func init() {
 	shadowZones = loadActivationZones(shadowActivationZonesCSV, shadowImageDimensions)
 
 	// Load the background image
-	shadowBackgroundSprite, shadowBackgroundPic = util.LoadSprite(shadowImagePath, shadowImageDimensions)
+	shadowBackgroundSprite, _ = util.LoadSprite(shadowImagePath, shadowImageDimensions)
 
 	// Get cat god
 	catGodImageConfig, _, err := image.DecodeConfig(util.GetReaderFromFile(catGodImagePath))
@@ -138,7 +137,7 @@ func talkToGod() {
 		}
 
 		<-dialogue.Start([]dialogue.Dialogue{
-			dialogue.Dialogue{
+			{
 				IsPlayer: false,
 				Name:     "Cat god",
 				Text:     fmt.Sprintf("There are %d things left to\ncollect", trophies.HowManyUnsacrificed),

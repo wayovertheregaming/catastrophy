@@ -75,7 +75,7 @@ func RunRiddle(initDialogue, failDialogue []dialogue.Dialogue, prize *trophies.T
 		r, a := GetRiddle()
 
 		dialogue.Start([]dialogue.Dialogue{
-			dialogue.Dialogue{
+			{
 				IsPlayer: false,
 				Text:     r,
 			},

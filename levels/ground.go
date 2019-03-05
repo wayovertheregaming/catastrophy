@@ -32,7 +32,6 @@ var (
 	}
 
 	groundBackgroundSprite *pixel.Sprite
-	groundBackgroundPic    pixel.Picture
 
 	// groundFloorCollisions are all the rectangles which should cause the player
 	// to collide: i.e. unpassable
@@ -58,7 +57,7 @@ var (
 func init() {
 	catlog.Debug("Preparing ground level")
 
-	//groundImageConfig returns dimensions of groundImagePath
+	// groundImageConfig returns dimensions of groundImagePath
 	groundImageConfig, _, err := image.DecodeConfig(util.GetReaderFromFile(groundImagePath))
 	if err != nil {
 		catlog.Fatalf("Could not load ground image %v", err)
@@ -72,7 +71,7 @@ func init() {
 	groundZones = loadActivationZones(groundActivationZonesCSV, groundImageDimensions)
 
 	// Load the background image
-	groundBackgroundSprite, groundBackgroundPic = util.LoadSprite(groundImagePath, groundImageDimensions)
+	groundBackgroundSprite, _ = util.LoadSprite(groundImagePath, groundImageDimensions)
 
 	// Get all collision bounds from the CSV file
 	groundFloorCollisions = loadCollisions(groundCollisionPath, Ground.bounds)

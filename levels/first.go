@@ -32,7 +32,6 @@ var (
 	}
 
 	firstBackgroundSprite *pixel.Sprite
-	firstBackgroundPic    pixel.Picture
 
 	// firstFloorCollisions are all the rectangles which should cause the player
 	// to collide: i.e. unpassable
@@ -65,7 +64,7 @@ func init() {
 	// Had to move this here due to init loop - complicated
 	First.updateFunc = updateFirst
 
-	//firstImageConfig returns dimensions of firstImagePath
+	// firstImageConfig returns dimensions of firstImagePath
 	firstImageConfig, _, err := image.DecodeConfig(util.GetReaderFromFile(firstImagePath))
 	if err != nil {
 		catlog.Fatalf("Could not load first floor image %v", err)
@@ -79,7 +78,7 @@ func init() {
 	firstZones = loadActivationZones(firstActivationZonesCSV, firstImageDimensions)
 
 	// Load the background image
-	firstBackgroundSprite, firstBackgroundPic = util.LoadSprite(firstImagePath, firstImageDimensions)
+	firstBackgroundSprite, _ = util.LoadSprite(firstImagePath, firstImageDimensions)
 
 	// Get all collision bounds from the CSV file
 	firstFloorCollisions = loadCollisions(firstCollisionPath, First.bounds)
@@ -118,7 +117,7 @@ func speakToSpider() {
 	}
 
 	failDialogue := []dialogue.Dialogue{
-		dialogue.Dialogue{
+		{
 			IsPlayer: false,
 			Name:     "Spider",
 			Text:     "Sorry, wrong.\nTry again later",
@@ -143,7 +142,7 @@ func wife() {
 	}
 
 	failDialogue := []dialogue.Dialogue{
-		dialogue.Dialogue{
+		{
 			IsPlayer: false,
 			Name:     "Wife",
 			Text:     "Sorry, wrong.\nTry again later",
@@ -168,7 +167,7 @@ func suitcase() {
 	}
 
 	failDialogue := []dialogue.Dialogue{
-		dialogue.Dialogue{
+		{
 			IsPlayer: false,
 			Name:     "Suitcase",
 			Text:     "Sorry, wrong.\nTry again later",
@@ -193,7 +192,7 @@ func pc() {
 	}
 
 	failDialogue := []dialogue.Dialogue{
-		dialogue.Dialogue{
+		{
 			IsPlayer: false,
 			Name:     "PC",
 			Text:     "Sorry, wrong.\nTry again later",

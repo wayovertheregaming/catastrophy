@@ -20,6 +20,8 @@ import (
 const (
 	// dirPrefix is the directory path for all audio files
 	dirPrefix = "assets/audio"
+
+	sampleRate = 44800
 )
 
 var (
@@ -28,52 +30,62 @@ var (
 	bufferSize = time.Second / 10
 
 	// allAudioFiles holds all playable audio files
-	// TODO(populate with filenames and loop counts as they are produced)
 	allAudioFiles = map[string]*audio{
-		"Menu.mp3":            &audio{loops: -1},
-		"PlayingInGarden.mp3": &audio{loops: -1},
-		"PlayingInHouse.mp3":  &audio{loops: -1},
-		"ShadowRealm.mp3":     &audio{loops: -1},
-		"BirdsChirping.mp3":   &audio{loops: 0},
-		"CatDrinking.mp3":     &audio{loops: 0},
-		"CatPeeing.mp3":       &audio{loops: 0},
-		"CatPoop.mp3":         &audio{loops: 0},
-		"CatWalking.mp3":      &audio{loops: 0},
-		"DoorClosed.mp3":      &audio{loops: 0},
-		"DoorOpen.mp3":        &audio{loops: 0},
-		"Excited.mp3":         &audio{loops: 0},
-		"Snoring.mp3":         &audio{loops: 0},
-		"TvNoise.mp3":         &audio{loops: 0},
-		"TvStatic.mp3":        &audio{loops: 0},
-		"WhistlingFall.mp3":   &audio{loops: 0},
+		"Menu.mp3":            {loops: 5},
+		"PlayingInGarden.mp3": {loops: 5},
+		"PlayingInHouse.mp3":  {loops: 5},
+		"ShadowRealm.mp3":     {loops: 5},
+		"BirdsChirping.mp3":   {loops: 0},
+		"CatDrinking.mp3":     {loops: 0},
+		"CatPeeing.mp3":       {loops: 0},
+		"CatPoop.mp3":         {loops: 0},
+		"CatWalking.mp3":      {loops: 0},
+		"DoorClosed.mp3":      {loops: 0},
+		"DoorOpen.mp3":        {loops: 0},
+		"Excited.mp3":         {loops: 0},
+		"Snoring.mp3":         {loops: 0},
+		"TvNoise.mp3":         {loops: 0},
+		"TvStatic.mp3":        {loops: 0},
+		"WhistlingFall.mp3":   {loops: 0},
 	}
+
+	// speakerRunning will prevent playing to an uninitialised speaker, in case of error
+	speakerRunning = false
 )
 
 type audio struct {
 	streamer beep.Streamer
-	format   beep.Format
 	loops    int
 }
 
 func (a *audio) play() {
-	speaker.Init(a.format.SampleRate, a.format.SampleRate.N(bufferSize))
 	speaker.Play(a.streamer)
 }
 
 func init() {
 	catlog.Debug("Doing cataudio init")
 
+	if err := speaker.Init(sampleRate, beep.SampleRate(sampleRate).N(bufferSize)); err != nil {
+		catlog.Infof("Failed to init speaker, no audio will play: %v", err)
+		return
+	}
+	speakerRunning = true
+
 	for filename, a := range allAudioFiles {
 		// Create the full path to the file
 		fullPath := filepath.Join(dirPrefix, filename)
 		// Get the streamseaker and format
-		ss, f := mustLoadAudioFile(fullPath)
+		ss, _ := mustLoadAudioFile(fullPath)
 
-		// Loop, converting to a streamer
-		s := beep.Loop(a.loops, ss)
+		var s beep.Streamer
+		if a.loops != 0 {
+			// Loop the streamer
+			s = beep.Loop(a.loops, ss)
+		} else {
+			s = ss
+		}
 
 		a.streamer = s
-		a.format = f
 
 		catlog.Debugf("Initialised audio file %s", fullPath)
 	}
@@ -81,6 +93,11 @@ func init() {
 
 // Play will attempt to play a sound
 func Play(filename string) {
+	if !speakerRunning {
+		catlog.Debug("Not playing file, speaker not initialised")
+		return
+	}
+
 	catlog.Debugf("Attempting to play %s", filename)
 
 	// Check if audio file exists
@@ -91,6 +108,11 @@ func Play(filename string) {
 	}
 
 	catlog.Info("Could not find %s while trying to play audio, will not play", filename)
+}
+
+// Stop will stop any music currently playing on the speaker.
+func Stop() {
+	speaker.Clear()
 }
 
 func mustLoadAudioFile(path string) (beep.StreamSeekCloser, beep.Format) {

@@ -18,13 +18,6 @@ const (
 	// velocity is the speed at which the player moves
 	// The number 10 is used as a placeholder, no idea how fast this is!
 	velocity float64 = 500
-
-	maxHunger       float64 = 100
-	hungerRate      float64 = 2
-	maxBladder      float64 = 100
-	bladderFillRate float64 = 2
-
-	scaledFactor float64 = 4
 )
 
 // These consts hold different animation states
@@ -135,11 +128,6 @@ func init() {
 func AnimateSleep() {
 	p.changeAnimationState(animationStateSleep)
 	goingToSleep.Store(true)
-}
-
-// AnimateSit will set the player to animate sitting
-func AnimateSit() {
-	p.changeAnimationState(animationStateSitting)
 }
 
 // AnimateIdle will set the player to animate idling/standing
@@ -312,7 +300,7 @@ func GiveItem(t *trophies.Trophy) {
 
 	// Tell the user
 	dialogue.Start([]dialogue.Dialogue{
-		dialogue.Dialogue{
+		{
 			IsPlayer: false,
 			Text:     fmt.Sprintf("Congrates on getting a:\n%s", t.Name),
 		},

@@ -5,21 +5,21 @@ import "github.com/wayovertheregaming/catastrophy/catlog"
 // All trophies given in the game
 // comment out any we don't have time to add in!!!
 var (
-	AchToilet   = &Trophy{Name: "Achievement: Toilet water"}
 	RidSpider   = &Trophy{Name: "Riddle: spider"}
-	AchPillow   = &Trophy{Name: "Achievement: Pillow talk"}
 	RidWife     = &Trophy{Name: "Riddle: Wife"}
-	ItemShoe    = &Trophy{Name: "Item: shoe"}
 	RidSuitcase = &Trophy{Name: "Riddle: suitcase"}
-	AchFired    = &Trophy{Name: "Achievement: You're fired"}
 	RidPC       = &Trophy{Name: "Riddle: PC"}
 	ItemTuna    = &Trophy{Name: "Item: tin of tuna"}
 	AchTV       = &Trophy{Name: "Achievement: Block TV"}
-	RidMag      = &Trophy{Name: "Riddle: Magazine"}
 	ItemFood    = &Trophy{Name: "Item: Human food"}
-	RidGuest    = &Trophy{Name: "Riddle: Guest"}
-	AchLitter   = &Trophy{Name: "Achievement: littering"}
-	RidCata     = &Trophy{Name: "Riddle: catapillar"}
+	// AchPillow   = &Trophy{Name: "Achievement: Pillow talk"}
+	// ItemShoe    = &Trophy{Name: "Item: shoe"}
+	// AchFired    = &Trophy{Name: "Achievement: You're fired"}
+	// RidMag      = &Trophy{Name: "Riddle: Magazine"}
+	// AchToilet   = &Trophy{Name: "Achievement: Toilet water"}
+	// RidGuest    = &Trophy{Name: "Riddle: Guest"}
+	// AchLitter   = &Trophy{Name: "Achievement: littering"}
+	// RidCata     = &Trophy{Name: "Riddle: catapillar"}
 )
 var (
 	// AllTrophies are all the tropies in the game
